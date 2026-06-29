@@ -342,12 +342,12 @@ footer a {
   </div>
 </div>
 
-<!-- 3번 -->
-<div class="question-block">
+<!-- 3번 (interactive) -->
+<div class="question-block" id="q3">
   <span class="q-number">3번</span>
   <span class="q-ref">마태 1,22-23</span>
   
-  <div class="q-text">'예수 그리스도의 탄생'에 대한 내용이다. ( )에 공통으로 들어갈 말을 쓰시오.</div>
+  <div class="q-text">'예수 그리스도의 탄생'에 대한 내용이다. ( )에 공통으로 들어갈 말은?</div>
   
   <div class="q-passage">
     주님께서 예언자를 통하여 하신 말씀이 이루어지려고 이 모든 일이 일어났다. 곧<br>
@@ -355,12 +355,21 @@ footer a {
     하신 말씀이다. (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)은 번역하면 '하느님께서 우리와 함께 계시다.'는 뜻이다.
   </div>
 
-  <div class="answer-box">
+  <ul class="q-options interactive" id="q3-options">
+    <li data-correct="false" onclick="toggleSingle(this, 'q3')">① 메시아</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q3')">② 엘리야</li>
+    <li data-correct="true" onclick="toggleSingle(this, 'q3')">③ 임마누엘</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q3')">④ 이사야</li>
+  </ul>
+
+  <button class="submit-btn" id="q3-submit" onclick="submitSingle('q3')">확인</button>
+
+  <div class="answer-box hidden" id="q3-answer">
     <div class="label">정답</div>
-    <div class="answer-text">임마누엘</div>
+    <div class="answer-text">③ 임마누엘</div>
   </div>
 
-  <div class="explain-box">
+  <div class="explain-box hidden" id="q3-explain">
     <div class="label">해설</div>
     <p>마태 1,23: "보아라, 동정녀가 잉태하여 아들을 낳으리니 그 이름을 임마누엘이라 하리라." 이는 이사야 7,14의 예언을 인용한 것입니다.</p>
     <p><b>임마누엘</b>(עִמָּנוּאֵל) = '하느님께서 우리와 함께 계시다'는 히브리어입니다. 예수님의 칭호로서 하느님이 인간과 함께하심을 의미합니다.</p>
@@ -484,10 +493,10 @@ function submitSingle(qId) {
   if (!selected) return;
 
   const isCorrect = selected.dataset.correct === 'true';
+  optionsList.classList.add('solved');
 
   if (isCorrect) {
     // 정답
-    optionsList.classList.add('solved');
     optionsList.querySelectorAll('li').forEach(li => {
       li.classList.remove('multi-selected');
       if (li === selected) {
@@ -496,17 +505,22 @@ function submitSingle(qId) {
         li.classList.add('disabled');
       }
     });
-    document.getElementById(qId + '-answer').classList.remove('hidden');
-    document.getElementById(qId + '-explain').classList.remove('hidden');
-    document.getElementById(qId + '-submit').classList.add('hidden');
   } else {
-    // 오답 — 빨갛게 1초 후 리셋
-    selected.classList.remove('multi-selected');
-    selected.classList.add('multi-wrong');
-    setTimeout(() => {
-      selected.classList.remove('multi-wrong');
-    }, 1000);
+    // 오답 — 선택한 것 빨강, 정답 초록 표시
+    optionsList.querySelectorAll('li').forEach(li => {
+      li.classList.remove('multi-selected');
+      if (li === selected) {
+        li.classList.add('selected-wrong');
+      } else if (li.dataset.correct === 'true') {
+        li.classList.add('selected-correct');
+      } else {
+        li.classList.add('disabled');
+      }
+    });
   }
+  document.getElementById(qId + '-answer').classList.remove('hidden');
+  document.getElementById(qId + '-explain').classList.remove('hidden');
+  document.getElementById(qId + '-submit').classList.add('hidden');
 }
 
 // 복수선택 문제
@@ -538,36 +552,36 @@ function submitMulti(qId) {
     if (!isCorrect && isSelected) noWrongSelected = false;
   });
 
+  optionsList.classList.add('solved');
+
   if (allCorrectSelected && noWrongSelected) {
     // 정답
-    optionsList.classList.add('solved');
     allItems.forEach(li => {
       li.classList.remove('multi-selected');
-      li.classList.remove('multi-wrong');
       if (li.dataset.correct === 'true') {
         li.classList.add('selected-correct');
       } else {
         li.classList.add('disabled');
       }
     });
-    document.getElementById(qId + '-answer').classList.remove('hidden');
-    document.getElementById(qId + '-explain').classList.remove('hidden');
-    document.getElementById(qId + '-submit').classList.add('hidden');
   } else {
-    // 오답 — 틀린 선택 표시 후 리셋
-    selected.forEach(li => {
-      if (li.dataset.correct !== 'true') {
-        li.classList.add('multi-wrong');
+    // 오답 — 틀린 선택 빨강, 정답 초록 표시
+    allItems.forEach(li => {
+      const isCorrect = li.dataset.correct === 'true';
+      const isSelected = li.classList.contains('multi-selected');
+      li.classList.remove('multi-selected');
+      if (isCorrect) {
+        li.classList.add('selected-correct');
+      } else if (isSelected) {
+        li.classList.add('selected-wrong');
+      } else {
+        li.classList.add('disabled');
       }
     });
-    // 잠시 후 선택 리셋
-    setTimeout(() => {
-      allItems.forEach(li => {
-        li.classList.remove('multi-selected');
-        li.classList.remove('multi-wrong');
-      });
-    }, 1000);
   }
+  document.getElementById(qId + '-answer').classList.remove('hidden');
+  document.getElementById(qId + '-explain').classList.remove('hidden');
+  document.getElementById(qId + '-submit').classList.add('hidden');
 }
 </script>
 
