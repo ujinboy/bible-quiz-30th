@@ -157,6 +157,30 @@ nav a.current {
   background: #fafafa;
   border-color: #ddd;
 }
+/* Multi-select styles */
+.q-options.interactive li.multi-selected {
+  background: #e3f2fd;
+  border: 2px solid #42a5f5;
+  cursor: pointer;
+}
+.q-options.interactive li.multi-wrong {
+  background: #ffebee;
+  border: 2px solid #e57373;
+}
+.submit-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: #8b6914;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.submit-btn:hover {
+  background: #6d5310;
+}
 .hidden { display: none; }
 .answer-box {
   background: #e3f2e8;
@@ -283,27 +307,29 @@ footer a {
   </div>
 </div>
 
-<!-- 2번 -->
-<div class="question-block">
+<!-- 2번 (interactive, 복수선택) -->
+<div class="question-block" id="q2">
   <span class="q-number">2번</span>
   <span class="q-ref">마태 1,18-21</span>
   <span class="q-type">복수선택</span>
   
   <div class="q-text">요셉이 마리아와 파혼하기로 생각을 굳혔을 때, 꿈에 주님의 천사가 나타나 한 말로 맞는 것을 모두 고르시오.</div>
   
-  <ul class="q-options">
-    <li class="correct">① 두려워하지 말고 마리아를 아내로 맞아들여라.</li>
-    <li class="correct">② 그 몸에 잉태된 아기는 성령으로 말미암은 것이다.</li>
-    <li class="wrong">③ 마리아가 아들을 낳으리니 그 이름을 야곱이라고 하여라.</li>
-    <li class="wrong">④ 그분께서 당신 백성을 이집트에서 이끌어 내실 것이다.</li>
+  <ul class="q-options interactive" id="q2-options">
+    <li data-correct="true" onclick="toggleMulti(this, 'q2')">① 두려워하지 말고 마리아를 아내로 맞아들여라.</li>
+    <li data-correct="true" onclick="toggleMulti(this, 'q2')">② 그 몸에 잉태된 아기는 성령으로 말미암은 것이다.</li>
+    <li data-correct="false" onclick="toggleMulti(this, 'q2')">③ 마리아가 아들을 낳으리니 그 이름을 야곱이라고 하여라.</li>
+    <li data-correct="false" onclick="toggleMulti(this, 'q2')">④ 그분께서 당신 백성을 이집트에서 이끌어 내실 것이다.</li>
   </ul>
 
-  <div class="answer-box">
+  <button class="submit-btn" id="q2-submit" onclick="submitMulti('q2')">확인</button>
+
+  <div class="answer-box hidden" id="q2-answer">
     <div class="label">정답</div>
     <div class="answer-text">①, ②</div>
   </div>
 
-  <div class="explain-box">
+  <div class="explain-box hidden" id="q2-explain">
     <div class="label">해설</div>
     <p>마태 1,20-21에서 천사가 요셉에게 한 말:</p>
     <p>"다윗의 자손 요셉아, 두려워하지 말고 마리아를 아내로 맞아들여라. 그 몸에 잉태된 아기는 성령으로 말미암은 것이다. 마리아가 아들을 낳으리니 그 이름을 <b>예수</b>라고 하여라."</p>
@@ -442,13 +468,14 @@ function checkAnswer(selected, qId) {
   const isCorrect = selected.dataset.correct === 'true';
 
   if (isCorrect) {
-    // 정답 선택
+    // 정답 선택 — 이전 오답 표시 제거
     optionsList.classList.add('solved');
-    selected.classList.add('selected-correct');
-    // 나머지 항목 비활성화
     optionsList.querySelectorAll('li').forEach(li => {
+      li.classList.remove('selected-wrong');
+      li.classList.remove('disabled');
       if (li !== selected) li.classList.add('disabled');
     });
+    selected.classList.add('selected-correct');
     // 정답 박스와 해설 표시
     document.getElementById(qId + '-answer').classList.remove('hidden');
     document.getElementById(qId + '-explain').classList.remove('hidden');
@@ -456,6 +483,67 @@ function checkAnswer(selected, qId) {
     // 오답 선택 — 빨갛게 표시만, 재시도 가능
     selected.classList.add('selected-wrong');
     selected.classList.add('disabled');
+  }
+}
+
+// 복수선택 문제
+function toggleMulti(selected, qId) {
+  const optionsList = document.getElementById(qId + '-options');
+  if (optionsList.classList.contains('solved')) return;
+
+  // 토글 선택 상태
+  selected.classList.toggle('multi-selected');
+}
+
+function submitMulti(qId) {
+  const optionsList = document.getElementById(qId + '-options');
+  if (optionsList.classList.contains('solved')) return;
+
+  const allItems = optionsList.querySelectorAll('li');
+  const selected = optionsList.querySelectorAll('li.multi-selected');
+
+  if (selected.length === 0) return; // 아무것도 선택 안 한 경우
+
+  // 정답 확인: 선택한 것이 모두 correct이고, correct를 모두 선택했는지
+  let allCorrectSelected = true;
+  let noWrongSelected = true;
+
+  allItems.forEach(li => {
+    const isCorrect = li.dataset.correct === 'true';
+    const isSelected = li.classList.contains('multi-selected');
+    if (isCorrect && !isSelected) allCorrectSelected = false;
+    if (!isCorrect && isSelected) noWrongSelected = false;
+  });
+
+  if (allCorrectSelected && noWrongSelected) {
+    // 정답
+    optionsList.classList.add('solved');
+    allItems.forEach(li => {
+      li.classList.remove('multi-selected');
+      li.classList.remove('multi-wrong');
+      if (li.dataset.correct === 'true') {
+        li.classList.add('selected-correct');
+      } else {
+        li.classList.add('disabled');
+      }
+    });
+    document.getElementById(qId + '-answer').classList.remove('hidden');
+    document.getElementById(qId + '-explain').classList.remove('hidden');
+    document.getElementById(qId + '-submit').classList.add('hidden');
+  } else {
+    // 오답 — 틀린 선택 표시 후 리셋
+    selected.forEach(li => {
+      if (li.dataset.correct !== 'true') {
+        li.classList.add('multi-wrong');
+      }
+    });
+    // 잠시 후 선택 리셋
+    setTimeout(() => {
+      allItems.forEach(li => {
+        li.classList.remove('multi-selected');
+        li.classList.remove('multi-wrong');
+      });
+    }, 1000);
   }
 }
 </script>
