@@ -188,11 +188,11 @@ footer a { color: #8b6914; text-decoration: none; margin: 0 8px; }
   <div class="q-text">각 열쇠의 보기를 선택하면 격자에 글자가 채워집니다.</div>
 
   <table style="border-collapse:collapse; margin:0 auto 14px; font-size:0.85em;">
-    <tr><td class="cw-w" id="c74-1-1"><small>①㉮</small></td><td class="cw-w" id="c74-1-2"></td><td class="cw-w" id="c74-1-3"></td><td class="cw-w" id="c74-1-4"></td><td class="cw-w" id="c74-1-5"></td><td class="cw-w" id="c74-1-6"></td><td class="cw-w" id="c74-1-7"><small>㉯</small></td><td class="cw-g"></td><td class="cw-g"></td></tr>
-    <tr><td class="cw-w" id="c74-2-1"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-2-7"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
-    <tr><td class="cw-w" id="c74-3-1"><small>②</small></td><td class="cw-w" id="c74-3-2"></td><td class="cw-w" id="c74-3-3"></td><td class="cw-w" id="c74-3-4"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-3-7"></td><td class="cw-g"></td><td class="cw-w" id="c74-3-9"><small>㉰</small></td></tr>
-    <tr><td class="cw-w" id="c74-4-1"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-4-7"></td><td class="cw-g"></td><td class="cw-w" id="c74-4-9"></td></tr>
-    <tr><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-5-6"><small>③</small></td><td class="cw-w" id="c74-5-7"></td><td class="cw-w" id="c74-5-8"></td><td class="cw-w" id="c74-5-9"></td></tr>
+    <tr><td class="cw-w" id="c74-1-1"><small>①㉮</small></td><td class="cw-w" id="c74-1-2"></td><td class="cw-w" id="c74-1-3"></td><td class="cw-w" id="c74-1-4"></td><td class="cw-w" id="c74-1-5"></td><td class="cw-w" id="c74-1-6"><small>㉯</small></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-w" id="c74-2-1"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-2-6"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-w" id="c74-3-1"><small>②</small></td><td class="cw-w" id="c74-3-2"></td><td class="cw-w" id="c74-3-3"></td><td class="cw-w" id="c74-3-4"></td><td class="cw-g"></td><td class="cw-w" id="c74-3-6"></td><td class="cw-g"></td><td class="cw-w" id="c74-3-8"><small>㉰</small></td></tr>
+    <tr><td class="cw-w" id="c74-4-1"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-4-6"></td><td class="cw-g"></td><td class="cw-w" id="c74-4-8"></td></tr>
+    <tr><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-5-5"><small>③</small></td><td class="cw-w" id="c74-5-6"></td><td class="cw-w" id="c74-5-7"></td><td class="cw-w" id="c74-5-8"></td></tr>
   </table>
 
   <div class="q-passage">
@@ -277,10 +277,10 @@ var cw74State={};
 var cw74Grid={
   clue1:{cells:['c74-1-1','c74-1-2','c74-1-3','c74-1-4','c74-1-5','c74-1-6'],answer:'깨끗한아마포'},
   clue2:{cells:['c74-3-1','c74-3-2','c74-3-3','c74-3-4'],answer:'아들이다'},
-  clue3:{cells:['c74-5-6','c74-5-7','c74-5-8','c74-5-9'],answer:'혼인잔치'},
+  clue3:{cells:['c74-5-5','c74-5-6','c74-5-7','c74-5-8'],answer:'혼인잔치'},
   clue4:{cells:['c74-1-1','c74-2-1','c74-3-1','c74-4-1'],answer:'깨달아라'},
-  clue5:{cells:['c74-1-7','c74-2-7','c74-3-7','c74-4-7','c74-5-7'],answer:'포도밭주인'},
-  clue6:{cells:['c74-3-9','c74-4-9','c74-5-9'],answer:'값어치'}
+  clue5:{cells:['c74-1-6','c74-2-6','c74-3-6','c74-4-6','c74-5-6'],answer:'포도밭주인'},
+  clue6:{cells:['c74-3-8','c74-4-8','c74-5-8'],answer:'값어치'}
 };
 function pickCW74(btn,clueId){var c=document.getElementById('q74-'+clueId);if(document.getElementById('q74-submit').classList.contains('hidden'))return;c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.remove('picked')});btn.classList.add('picked');cw74State[clueId]=btn.textContent;var word=btn.textContent.replace(/\s/g,'');var cells=cw74Grid[clueId].cells;for(var i=0;i<cells.length;i++){var cell=document.getElementById(cells[i]);if(cell&&word[i])cell.textContent=word[i];}}
 function submitCW74(){if(Object.keys(cw74State).length<6)return;var answers={clue1:'깨끗한 아마포',clue2:'아들이다',clue3:'혼인 잔치',clue4:'깨달아라',clue5:'포도밭 주인',clue6:'값어치'};Object.keys(answers).forEach(function(k){var c=document.getElementById('q74-'+k);var picked=c.querySelector('.cw-choice.picked');var correct=cw74State[k]===answers[k];c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.add('disabled');if(b===picked)b.classList.add(correct?'cw-choice-correct':'cw-choice-wrong');});var cells=cw74Grid[k].cells;var ans=cw74Grid[k].answer;for(var i=0;i<cells.length;i++){var cell=document.getElementById(cells[i]);if(correct){cell.classList.add('cw-correct');}else{cell.classList.add('cw-wrong');cell.textContent=ans[i];}}});document.getElementById('q74-answer').classList.remove('hidden');document.getElementById('q74-explain').classList.remove('hidden');document.getElementById('q74-submit').classList.add('hidden');}
