@@ -50,6 +50,10 @@ nav a.current { background: #8b6914; color: #fff; }
 .cw-choice.cw-choice-correct { background: #e8f5e9; border: 2px solid #4caf50; }
 .cw-choice.cw-choice-wrong { background: #ffebee; border: 2px solid #e57373; }
 .cw-choice.disabled { pointer-events: none; opacity: 0.7; }
+.cw-g { width: 32px; height: 32px; background: #e0e0e0; border: 1px solid #ccc; }
+.cw-w { width: 32px; height: 32px; background: #fff; border: 1px solid #999; text-align: center; vertical-align: middle; font-weight: bold; color: #1565c0; font-size: 0.95em; }
+.cw-w.cw-correct { background: #e8f5e9; color: #2e7d32; }
+.cw-w.cw-wrong { background: #ffebee; color: #c62828; }
 .submit-btn { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #8b6914; color: #fff; border: none; border-radius: 6px; font-size: 0.9em; cursor: pointer; }
 .submit-btn:hover { background: #6d5310; }
 .hidden { display: none; }
@@ -181,7 +185,15 @@ footer a { color: #8b6914; text-decoration: none; margin: 0 8px; }
 <!-- 74번 십자말풀이 -->
 <div class="question-block" id="q74">
   <span class="q-number">74번</span><span class="q-ref">마태 21~27장</span><span class="q-type">십자말</span>
-  <div class="q-text">각 열쇠의 보기를 선택하시오.</div>
+  <div class="q-text">각 열쇠의 보기를 선택하면 격자에 글자가 채워집니다.</div>
+
+  <table style="border-collapse:collapse; margin:0 auto 14px; font-size:0.85em;">
+    <tr><td class="cw-w" id="c74-1-1"></td><td class="cw-w" id="c74-1-2"></td><td class="cw-w" id="c74-1-3"></td><td class="cw-w" id="c74-1-4"></td><td class="cw-w" id="c74-1-5"></td><td class="cw-w" id="c74-1-6"></td><td class="cw-w" id="c74-1-7"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-w" id="c74-2-1"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-2-7"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-w" id="c74-3-1"></td><td class="cw-w" id="c74-3-2"></td><td class="cw-w" id="c74-3-3"></td><td class="cw-w" id="c74-3-4"></td><td class="cw-w" id="c74-3-5"></td><td class="cw-g"></td><td class="cw-w" id="c74-3-7"></td><td class="cw-g"></td><td class="cw-w" id="c74-3-9"></td></tr>
+    <tr><td class="cw-w" id="c74-4-1"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-4-7"></td><td class="cw-g"></td><td class="cw-w" id="c74-4-9"></td></tr>
+    <tr><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c74-5-6"></td><td class="cw-w" id="c74-5-7"></td><td class="cw-w" id="c74-5-8"></td><td class="cw-w" id="c74-5-9"></td></tr>
+  </table>
 
   <div class="q-passage">
     <b>가로 열쇠:</b><br>
@@ -262,8 +274,16 @@ function renderOP(qId){var o=document.getElementById(qId+'-options');o.querySele
 function submitOrdered(qId,count){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');var a=parseInt(l.dataset.answer);var pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
 
 var cw74State={};
-function pickCW74(btn,clueId){var c=document.getElementById('q74-'+clueId);if(document.getElementById('q74-submit').classList.contains('hidden'))return;c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.remove('picked')});btn.classList.add('picked');cw74State[clueId]=btn.textContent;}
-function submitCW74(){if(Object.keys(cw74State).length<6)return;var answers={clue1:'깨끗한 아마포',clue2:'아들이다',clue3:'혼인 잔치',clue4:'깨달아라',clue5:'포도밭 주인',clue6:'값어치'};Object.keys(answers).forEach(function(k){var c=document.getElementById('q74-'+k);var picked=c.querySelector('.cw-choice.picked');var correct=cw74State[k]===answers[k];c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.add('disabled');if(b===picked)b.classList.add(correct?'cw-choice-correct':'cw-choice-wrong');});});document.getElementById('q74-answer').classList.remove('hidden');document.getElementById('q74-explain').classList.remove('hidden');document.getElementById('q74-submit').classList.add('hidden');}
+var cw74Grid={
+  clue1:{cells:['c74-1-1','c74-1-2','c74-1-3','c74-1-4','c74-1-5','c74-1-6'],answer:'깨끗한아마포'},
+  clue2:{cells:['c74-3-1','c74-3-2','c74-3-3','c74-3-4'],answer:'아들이다'},
+  clue3:{cells:['c74-5-6','c74-5-7','c74-5-8','c74-5-9'],answer:'혼인잔치'},
+  clue4:{cells:['c74-1-1','c74-2-1','c74-3-1','c74-4-1'],answer:'깨달아라'},
+  clue5:{cells:['c74-1-7','c74-2-7','c74-3-7','c74-4-7','c74-5-7'],answer:'포도밭주인'},
+  clue6:{cells:['c74-3-9','c74-4-9','c74-5-9'],answer:'값어치'}
+};
+function pickCW74(btn,clueId){var c=document.getElementById('q74-'+clueId);if(document.getElementById('q74-submit').classList.contains('hidden'))return;c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.remove('picked')});btn.classList.add('picked');cw74State[clueId]=btn.textContent;var word=btn.textContent.replace(/\s/g,'');var cells=cw74Grid[clueId].cells;for(var i=0;i<cells.length;i++){var cell=document.getElementById(cells[i]);if(cell&&word[i])cell.textContent=word[i];}}
+function submitCW74(){if(Object.keys(cw74State).length<6)return;var answers={clue1:'깨끗한 아마포',clue2:'아들이다',clue3:'혼인 잔치',clue4:'깨달아라',clue5:'포도밭 주인',clue6:'값어치'};Object.keys(answers).forEach(function(k){var c=document.getElementById('q74-'+k);var picked=c.querySelector('.cw-choice.picked');var correct=cw74State[k]===answers[k];c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.add('disabled');if(b===picked)b.classList.add(correct?'cw-choice-correct':'cw-choice-wrong');});var cells=cw74Grid[k].cells;var ans=cw74Grid[k].answer;for(var i=0;i<cells.length;i++){var cell=document.getElementById(cells[i]);if(correct){cell.classList.add('cw-correct');}else{cell.classList.add('cw-wrong');cell.textContent=ans[i];}}});document.getElementById('q74-answer').classList.remove('hidden');document.getElementById('q74-explain').classList.remove('hidden');document.getElementById('q74-submit').classList.add('hidden');}
 </script>
 
 </body>
