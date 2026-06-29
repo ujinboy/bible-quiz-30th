@@ -130,6 +130,10 @@ nav a.current { background: #8b6914; color: #fff; }
 }
 .input-group input.input-correct { border: 2px solid #4caf50; background: #e8f5e9; }
 .input-group input.input-wrong { border: 2px solid #e57373; background: #ffebee; }
+/* Crossword grid */
+.cw-gray { width: 32px; height: 32px; background: #e0e0e0; border: 1px solid #ccc; }
+.cw-white { width: 32px; height: 32px; background: #fff; border: 1px solid #999; text-align: center; vertical-align: middle; }
+.cw-marker { font-size: 0.7em; font-weight: bold; color: #555; }
 .submit-btn {
   display: inline-block; margin-top: 10px; padding: 8px 20px;
   background: #8b6914; color: #fff; border: none;
@@ -367,6 +371,27 @@ footer a { color: #8b6914; text-decoration: none; margin: 0 8px; }
   
   <div class="q-text">십자말풀이 열쇠를 보고, 각 빈칸에 알맞은 단어를 입력하시오.</div>
   
+  <table style="border-collapse:collapse; margin:0 auto 14px; font-size:0.8em;">
+    <tr>
+      <td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white cw-marker">㉰</td><td class="cw-gray"></td><td class="cw-gray"></td>
+    </tr>
+    <tr>
+      <td class="cw-white cw-marker">㉮</td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td>
+    </tr>
+    <tr>
+      <td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white cw-marker">①</td><td class="cw-white"></td><td class="cw-white"></td><td class="cw-white"></td><td class="cw-white"></td><td class="cw-gray"></td>
+    </tr>
+    <tr>
+      <td class="cw-white"></td><td class="cw-gray"></td><td class="cw-white cw-marker">㉯</td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td>
+    </tr>
+    <tr>
+      <td class="cw-white cw-marker">②</td><td class="cw-white"></td><td class="cw-white"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td>
+    </tr>
+    <tr>
+      <td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td>
+    </tr>
+  </table>
+
   <div class="q-passage">
     <b>가로 열쇠:</b><br>
     ① ○○○○○, 자비로운 사람들! 그들은 자비를 입을 것이다. (5,7)<br>
