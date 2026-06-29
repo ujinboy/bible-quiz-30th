@@ -151,6 +151,7 @@ nav a.current {
 .q-options.interactive li.disabled {
   cursor: default;
   opacity: 0.7;
+  pointer-events: none;
 }
 .q-options.interactive li.disabled:hover {
   background: #fafafa;
@@ -435,35 +436,26 @@ footer a {
 <script>
 function checkAnswer(selected, qId) {
   const optionsList = document.getElementById(qId + '-options');
-  // 이미 답을 선택한 경우 무시
-  if (optionsList.classList.contains('answered')) return;
-  optionsList.classList.add('answered');
+  // 이미 정답을 맞춘 경우 무시
+  if (optionsList.classList.contains('solved')) return;
 
   const isCorrect = selected.dataset.correct === 'true';
-  const allItems = optionsList.querySelectorAll('li');
-
-  // 모든 항목 비활성화
-  allItems.forEach(li => {
-    li.classList.add('disabled');
-  });
 
   if (isCorrect) {
     // 정답 선택
+    optionsList.classList.add('solved');
     selected.classList.add('selected-correct');
+    // 나머지 항목 비활성화
+    optionsList.querySelectorAll('li').forEach(li => {
+      if (li !== selected) li.classList.add('disabled');
+    });
     // 정답 박스와 해설 표시
     document.getElementById(qId + '-answer').classList.remove('hidden');
     document.getElementById(qId + '-explain').classList.remove('hidden');
   } else {
-    // 오답 선택
+    // 오답 선택 — 빨갛게 표시만, 재시도 가능
     selected.classList.add('selected-wrong');
-    // 정답 항목 표시
-    allItems.forEach(li => {
-      if (li.dataset.correct === 'true') {
-        li.classList.add('reveal-correct');
-      }
-    });
-    // 정답 박스만 표시 (해설은 숨김 유지)
-    document.getElementById(qId + '-answer').classList.remove('hidden');
+    selected.classList.add('disabled');
   }
 }
 </script>
