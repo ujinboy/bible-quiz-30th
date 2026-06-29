@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30차 성경잔치 공부 3일차 (마태오 복음서)</title>
+<meta property="og:title" content="30차 성경잔치 공부 3일차">
+<meta property="og:description" content="마태오 복음서 12~17번 문제">
+<meta property="og:image" content="https://ujinboy.github.io/bible-quiz-30th/images/1.jpg">
+<meta property="og:url" content="https://ujinboy.github.io/bible-quiz-30th/study_day3.html">
+<meta property="og:type" content="website">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f0eb;
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+header {
+  text-align: center;
+  padding: 30px 0 20px;
+  border-bottom: 2px solid #8b6914;
+  margin-bottom: 30px;
+}
+header h1 { font-size: 1.4em; color: #8b6914; margin-bottom: 5px; }
+header p { font-size: 0.9em; color: #666; }
+nav {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  justify-content: center; margin-bottom: 30px;
+}
+nav a {
+  display: inline-block; padding: 4px 10px;
+  background: #e8dcc8; color: #5a4a2a;
+  text-decoration: none; border-radius: 4px; font-size: 0.8em;
+}
+nav a.current { background: #8b6914; color: #fff; }
+.question-block {
+  background: #fff; border-radius: 10px;
+  padding: 24px; margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.q-number {
+  display: inline-block; background: #8b6914; color: #fff;
+  font-size: 0.75em; font-weight: bold;
+  padding: 3px 10px; border-radius: 12px; margin-bottom: 12px;
+}
+.q-ref { display: inline-block; font-size: 0.75em; color: #888; margin-left: 8px; }
+.q-type {
+  display: inline-block; font-size: 0.7em; color: #fff;
+  background: #5a8f5a; padding: 2px 8px; border-radius: 8px; margin-left: 6px;
+}
+.q-text { font-size: 1.05em; font-weight: 600; margin-bottom: 14px; color: #1a1a1a; }
+.q-passage {
+  background: #f9f6f1; border-left: 3px solid #d4b96a;
+  padding: 12px 16px; margin-bottom: 14px;
+  font-size: 0.92em; color: #444; border-radius: 0 6px 6px 0;
+}
+.q-options { list-style: none; margin-bottom: 16px; }
+.q-options li {
+  padding: 8px 12px; margin-bottom: 6px;
+  border-radius: 6px; font-size: 0.93em;
+}
+.q-options.interactive li {
+  background: #fafafa; border: 1px solid #ddd;
+  color: #2c2c2c; font-weight: normal;
+  cursor: pointer; transition: background 0.2s;
+}
+.q-options.interactive li:hover { background: #f0ebe3; border-color: #c0a060; }
+.q-options.interactive li.selected-correct {
+  background: #e8f5e9; border: 2px solid #4caf50; font-weight: 600; cursor: default;
+}
+.q-options.interactive li.selected-wrong {
+  background: #ffebee; border: 2px solid #e57373; color: #c62828; cursor: default;
+}
+.q-options.interactive li.disabled { cursor: default; opacity: 0.7; pointer-events: none; }
+.q-options.interactive li.multi-selected {
+  background: #e3f2fd; border: 2px solid #42a5f5; cursor: pointer;
+}
+.q-options.interactive li.multi-wrong {
+  background: #ffebee; border: 2px solid #e57373;
+}
+/* OX styles */
+.ox-options { display: flex; gap: 12px; margin-bottom: 16px; }
+.ox-btn {
+  flex: 1; padding: 14px; text-align: center;
+  font-size: 1.3em; font-weight: bold;
+  border: 2px solid #ddd; border-radius: 10px;
+  background: #fafafa; cursor: pointer; transition: all 0.2s;
+}
+.ox-btn:hover { background: #f0ebe3; border-color: #c0a060; }
+.ox-btn.selected { background: #e3f2fd; border-color: #42a5f5; }
+.ox-btn.ox-correct { background: #e8f5e9; border-color: #4caf50; font-weight: bold; }
+.ox-btn.ox-wrong { background: #ffebee; border-color: #e57373; }
+.ox-btn.disabled { pointer-events: none; opacity: 0.7; }
+/* 선 잇기 styles */
+.match-area { display: flex; gap: 16px; margin-bottom: 16px; }
+.match-left, .match-right { flex: 1; }
+.match-left li, .match-right li {
+  padding: 10px 12px; margin-bottom: 8px;
+  border-radius: 6px; font-size: 0.88em;
+  background: #fafafa; border: 1px solid #ddd;
+  cursor: pointer; transition: all 0.2s;
+}
+.match-left li:hover, .match-right li:hover { background: #f0ebe3; border-color: #c0a060; }
+.match-left li.active { background: #e3f2fd; border: 2px solid #42a5f5; }
+.match-left li.matched, .match-right li.matched {
+  background: #e8f5e9; border: 2px solid #4caf50; cursor: default;
+}
+.match-left li.match-wrong, .match-right li.match-wrong {
+  background: #ffebee; border: 2px solid #e57373;
+}
+.match-left li.disabled, .match-right li.disabled { pointer-events: none; opacity: 0.7; }
+.match-pair-badge {
+  display: inline-block; background: #4caf50; color: #fff;
+  font-size: 0.7em; font-weight: bold; width: 18px; height: 18px;
+  line-height: 18px; text-align: center; border-radius: 50%; margin-right: 6px;
+}
+/* 텍스트 입력 styles */
+.input-group { margin-bottom: 12px; }
+.input-group label {
+  display: block; font-size: 0.88em; color: #555; margin-bottom: 4px;
+}
+.input-group input {
+  width: 100%; padding: 8px 12px; border: 1px solid #ddd;
+  border-radius: 6px; font-size: 0.95em;
+}
+.input-group input.input-correct { border: 2px solid #4caf50; background: #e8f5e9; }
+.input-group input.input-wrong { border: 2px solid #e57373; background: #ffebee; }
+.submit-btn {
+  display: inline-block; margin-top: 10px; padding: 8px 20px;
+  background: #8b6914; color: #fff; border: none;
+  border-radius: 6px; font-size: 0.9em; cursor: pointer;
+}
+.submit-btn:hover { background: #6d5310; }
+.hidden { display: none; }
+.answer-box {
+  background: #e3f2e8; border: 1px solid #a5d6a7;
+  border-radius: 8px; padding: 14px 18px; margin-bottom: 14px;
+}
+.answer-box .label { font-size: 0.8em; font-weight: bold; color: #2e7d32; margin-bottom: 4px; }
+.answer-box .answer-text { font-size: 1em; font-weight: 600; color: #1b5e20; }
+.explain-box {
+  background: #fff8e1; border: 1px solid #ffe082;
+  border-radius: 8px; padding: 14px 18px;
+}
+.explain-box .label { font-size: 0.8em; font-weight: bold; color: #f57f17; margin-bottom: 6px; }
+.explain-box p { font-size: 0.9em; color: #444; margin-bottom: 6px; }
+.explain-box .wrong-reason {
+  font-size: 0.85em; color: #777;
+  padding-left: 12px; border-left: 2px solid #ffe082; margin-top: 8px;
+}
+footer {
+  text-align: center; padding: 30px 0; color: #999;
+  font-size: 0.8em; border-top: 1px solid #ddd; margin-top: 20px;
+}
+footer a { color: #8b6914; text-decoration: none; margin: 0 8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>30차 성경잔치 공부 3일차</h1>
+  <p>마태오 복음서 (12~17번)</p>
+</header>
+
+<nav>
+  <a href="study_day1.html">1일차</a>
+  <a href="study_day2.html">2일차</a>
+  <a href="study_day3.html" class="current">3일차</a>
+  <a href="#">4일차</a>
+  <a href="#">5일차</a>
+  <a href="#">6일차</a>
+  <a href="#">7일차</a>
+  <a href="#">8일차</a>
+  <a href="#">9일차</a>
+  <a href="#">10일차</a>
+  <a href="#">11일차</a>
+  <a href="#">12일차</a>
+  <a href="#">13일차</a>
+  <a href="#">14일차</a>
+  <a href="#">15일차</a>
+  <a href="#">16일차</a>
+  <a href="#">17일차</a>
+  <a href="#">18일차</a>
+  <a href="#">19일차</a>
+  <a href="#">20일차</a>
+  <a href="#">21일차</a>
+  <a href="#">22일차</a>
+  <a href="#">23일차</a>
+  <a href="#">24일차</a>
+  <a href="#">25일차</a>
+  <a href="#">26일차</a>
+  <a href="#">27일차</a>
+  <a href="#">28일차</a>
+</nav>
+
+<!-- 12번 (복수선택) -->
+<div class="question-block" id="q12">
+  <span class="q-number">12번</span>
+  <span class="q-ref">마태 4,23</span>
+  <span class="q-type">복수선택</span>
+  
+  <div class="q-text">예수님께서 온 갈릴래아를 두루 다니시며 하신 일을 모두 고르시오.</div>
+  
+  <ul class="q-options interactive" id="q12-options">
+    <li data-correct="false" onclick="toggleMulti(this, 'q12')">① 회당에서 세례를 주셨다.</li>
+    <li data-correct="true" onclick="toggleMulti(this, 'q12')">② 하늘 나라의 복음을 선포하셨다.</li>
+    <li data-correct="true" onclick="toggleMulti(this, 'q12')">③ 백성 가운데에서 병자와 허약한 이들을 모두 고쳐 주셨다.</li>
+    <li data-correct="false" onclick="toggleMulti(this, 'q12')">④ 지혜롭다고 알려진 율법 학자들을 불러 모으셨다.</li>
+  </ul>
+
+  <button class="submit-btn" id="q12-submit" onclick="submitMulti('q12')">확인</button>
+
+  <div class="answer-box hidden" id="q12-answer">
+    <div class="label">정답</div>
+    <div class="answer-text">②, ③</div>
+  </div>
+
+  <div class="explain-box hidden" id="q12-explain">
+    <div class="label">해설</div>
+    <p>마태 4,23: "예수님께서 온 갈릴래아를 두루 다니시며 회당에서 <b>가르치시고</b> 하늘 나라의 <b>복음을 선포하시며</b> 백성 가운데에서 <b>병자와 허약한 이들을 모두 고쳐 주셨다</b>."</p>
+    <div class="wrong-reason">
+      <p>① 회당에서 '가르치셨다'는 맞지만 '세례를 주셨다'는 틀립니다.</p>
+      <p>④ 율법 학자들을 불러 모으셨다는 내용은 없습니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 13번 (선 잇기) -->
+<div class="question-block" id="q13">
+  <span class="q-number">13번</span>
+  <span class="q-ref">마태 5,3-10</span>
+  <span class="q-type">연결</span>
+  
+  <div class="q-text">'참행복'에 대한 예수님의 말씀이다. 왼쪽을 먼저 선택하고, 맞는 오른쪽을 선택하시오.</div>
+  
+  <div class="match-area">
+    <ul class="match-left" id="q13-left">
+      <li data-pair="1" onclick="selectLeft(this, 'q13')">① 마음이 가난한 사람들!</li>
+      <li data-pair="2" onclick="selectLeft(this, 'q13')">② 슬퍼하는 사람들!</li>
+      <li data-pair="3" onclick="selectLeft(this, 'q13')">③ 마음이 깨끗한 사람들!</li>
+    </ul>
+    <ul class="match-right" id="q13-right">
+      <li data-pair="3" onclick="selectRight(this, 'q13')">㉮ 그들은 하느님을 볼 것이다.</li>
+      <li data-pair="1" onclick="selectRight(this, 'q13')">㉯ 하늘 나라가 그들의 것이다.</li>
+      <li data-pair="2" onclick="selectRight(this, 'q13')">㉰ 그들은 위로를 받을 것이다.</li>
+    </ul>
+  </div>
+
+  <button class="submit-btn" id="q13-submit" onclick="submitMatch('q13', 3)">확인</button>
+
+  <div class="answer-box hidden" id="q13-answer">
+    <div class="label">정답</div>
+    <div class="answer-text">① ㉯, ② ㉰, ③ ㉮</div>
+  </div>
+
+  <div class="explain-box hidden" id="q13-explain">
+    <div class="label">해설</div>
+    <p>마태 5,3: "행복하여라, 마음이 가난한 사람들! <b>하늘 나라가 그들의 것이다.</b>"</p>
+    <p>마태 5,4: "행복하여라, 슬퍼하는 사람들! <b>그들은 위로를 받을 것이다.</b>"</p>
+    <p>마태 5,8: "행복하여라, 마음이 깨끗한 사람들! <b>그들은 하느님을 볼 것이다.</b>"</p>
+  </div>
+</div>
+
+<!-- 14번 (OX) -->
+<div class="question-block" id="q14">
+  <span class="q-number">14번</span>
+  <span class="q-ref">마태 5,23-24</span>
+  <span class="q-type">OX</span>
+  
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  
+  <div class="q-passage">
+    네가 제단에 예물을 바치려고 하다가, 거기에서 형제가 너에게 원망을 품고 있는 것이 생각나거든, 예물을 먼저 제단에 바친 후 물러가 그 형제와 화해하여라.
+  </div>
+
+  <div class="ox-options" id="q14-ox">
+    <div class="ox-btn" data-value="O" onclick="selectOX(this, 'q14')">O</div>
+    <div class="ox-btn" data-value="X" onclick="selectOX(this, 'q14')">X</div>
+  </div>
+
+  <button class="submit-btn" id="q14-submit" onclick="submitOX('q14', 'X')">확인</button>
+
+  <div class="answer-box hidden" id="q14-answer">
+    <div class="label">정답</div>
+    <div class="answer-text">X</div>
+  </div>
+
+  <div class="explain-box hidden" id="q14-explain">
+    <div class="label">해설</div>
+    <p>마태 5,23-24: "예물을 제단에 <b>놓아두고</b> 물러가 <b>먼저</b> 그 형제와 화해하고, 그런 다음에 돌아와 예물을 바쳐라."</p>
+    <p>즉, 예물을 먼저 바치는 것이 아니라, 먼저 화해한 후에 예물을 바치라는 가르침입니다.</p>
+  </div>
+</div>
+
+<!-- 15번 (OX) -->
+<div class="question-block" id="q15">
+  <span class="q-number">15번</span>
+  <span class="q-ref">마태 5,41-42</span>
+  <span class="q-type">OX</span>
+  
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  
+  <div class="q-passage">
+    누가 너에게 천 걸음을 가자고 강요하거든, 그와 함께 이천 걸음을 가 주어라. 달라는 자에게 주고 꾸려는 자를 물리치지 마라.
+  </div>
+
+  <div class="ox-options" id="q15-ox">
+    <div class="ox-btn" data-value="O" onclick="selectOX(this, 'q15')">O</div>
+    <div class="ox-btn" data-value="X" onclick="selectOX(this, 'q15')">X</div>
+  </div>
+
+  <button class="submit-btn" id="q15-submit" onclick="submitOX('q15', 'O')">확인</button>
+
+  <div class="answer-box hidden" id="q15-answer">
+    <div class="label">정답</div>
+    <div class="answer-text">O</div>
+  </div>
+
+  <div class="explain-box hidden" id="q15-explain">
+    <div class="label">해설</div>
+    <p>마태 5,41-42: "누가 너에게 <b>천 걸음</b>을 가자고 강요하거든, 그와 함께 <b>이천 걸음</b>을 가 주어라. 달라는 자에게 주고 꾸려는 자를 물리치지 마라."</p>
+    <p>원문 그대로이므로 O가 정답입니다.</p>
+  </div>
+</div>
+
+<!-- 16번 (OX) -->
+<div class="question-block" id="q16">
+  <span class="q-number">16번</span>
+  <span class="q-ref">마태 5,44-45</span>
+  <span class="q-type">OX</span>
+  
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  
+  <div class="q-passage">
+    너희는 원수를 사랑하여라. 그리고 너희를 박해하는 자들을 위하여 기도하여라. 그래야 너희가 하늘에 계신 너희 아버지의 자녀가 될 수 있다.
+  </div>
+
+  <div class="ox-options" id="q16-ox">
+    <div class="ox-btn" data-value="O" onclick="selectOX(this, 'q16')">O</div>
+    <div class="ox-btn" data-value="X" onclick="selectOX(this, 'q16')">X</div>
+  </div>
+
+  <button class="submit-btn" id="q16-submit" onclick="submitOX('q16', 'O')">확인</button>
+
+  <div class="answer-box hidden" id="q16-answer">
+    <div class="label">정답</div>
+    <div class="answer-text">O</div>
+  </div>
+
+  <div class="explain-box hidden" id="q16-explain">
+    <div class="label">해설</div>
+    <p>마태 5,44-45: "너희는 <b>원수를 사랑하여라</b>. 그리고 너희를 <b>박해하는 자들을 위하여 기도하여라</b>. 그래야 너희가 하늘에 계신 너희 아버지의 자녀가 될 수 있다."</p>
+    <p>원문 그대로이므로 O가 정답입니다.</p>
+  </div>
+</div>
+
+<!-- 17번 (십자말풀이 - 텍스트 입력) -->
+<div class="question-block" id="q17">
+  <span class="q-number">17번</span>
+  <span class="q-ref">마태 1~5장</span>
+  <span class="q-type">빈칸</span>
+  
+  <div class="q-text">십자말풀이 열쇠를 보고, 각 빈칸에 알맞은 단어를 입력하시오.</div>
+  
+  <div class="q-passage">
+    <b>가로 열쇠:</b><br>
+    ① ○○○○○, 자비로운 사람들! 그들은 자비를 입을 것이다. (5,7)<br>
+    ② 다윗의 자손이며 ○○○○의 자손이신 예수 그리스도의 족보. (1,1)<br><br>
+    <b>세로 열쇠:</b><br>
+    ㉮ ○○○가 태어날 곳이 어디인지 물어보았다. (2,4)<br>
+    ㉯ 울음소리와 애끊는 통곡 소리. ○○이 자식들을 잃고 운다. (2,18)<br>
+    ㉰ 너를 고소한 자와 함께 법정으로 가는 도중에 얼른 ○○○ ○○. (5,25)
+  </div>
+
+  <div class="input-group">
+    <label>① 가로 (5글자)</label>
+    <input type="text" id="q17-input-1" placeholder="○○○○○">
+  </div>
+  <div class="input-group">
+    <label>② 가로 (4글자)</label>
+    <input type="text" id="q17-input-2" placeholder="○○○○">
+  </div>
+  <div class="input-group">
+    <label>㉮ 세로 (3글자)</label>
+    <input type="text" id="q17-input-3" placeholder="○○○">
+  </div>
+  <div class="input-group">
+    <label>㉯ 세로 (2글자)</label>
+    <input type="text" id="q17-input-4" placeholder="○○">
+  </div>
+  <div class="input-group">
+    <label>㉰ 세로 (5글자, 띄어쓰기 포함)</label>
+    <input type="text" id="q17-input-5" placeholder="○○○ ○○">
+  </div>
+
+  <button class="submit-btn" id="q17-submit" onclick="submitCrossword('q17')">확인</button>
+
+  <div class="answer-box hidden" id="q17-answer">
+    <div class="label">정답</div>
+    <div class="answer-text">① 행복하여라 ② 아브라함 ㉮ 메시아 ㉯ 라헬 ㉰ 타협하여라</div>
+  </div>
+
+  <div class="explain-box hidden" id="q17-explain">
+    <div class="label">해설</div>
+    <p>① 마태 5,7: "<b>행복하여라</b>, 자비로운 사람들! 그들은 자비를 입을 것이다."</p>
+    <p>② 마태 1,1: "다윗의 자손이며 <b>아브라함</b>의 자손이신 예수 그리스도의 족보."</p>
+    <p>㉮ 마태 2,4: "대사제들과 백성의 율법 학자들을 모두 모아, <b>메시아</b>가 태어날 곳이 어디인지 물어보았다."</p>
+    <p>㉯ 마태 2,18: "울음소리와 애끊는 통곡 소리. <b>라헬</b>이 자식들을 잃고 운다."</p>
+    <p>㉰ 마태 5,25: "너를 고소한 자와 함께 법정으로 가는 도중에 얼른 <b>타협하여라</b>."</p>
+  </div>
+</div>
+
+<footer>
+  <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집 | 천주교 수원교구 복음화국</p>
+  <p style="margin-top:8px;">
+    <a href="study_day2.html">← 이전</a> | 
+    <a href="#">다음 →</a>
+  </p>
+</footer>
+
+<script>
+// === 복수선택 ===
+function toggleMulti(selected, qId) {
+  const optionsList = document.getElementById(qId + '-options');
+  if (optionsList.classList.contains('solved')) return;
+  selected.classList.toggle('multi-selected');
+}
+
+function submitMulti(qId) {
+  const optionsList = document.getElementById(qId + '-options');
+  if (optionsList.classList.contains('solved')) return;
+  const allItems = optionsList.querySelectorAll('li');
+  const selected = optionsList.querySelectorAll('li.multi-selected');
+  if (selected.length === 0) return;
+
+  let allCorrectSelected = true;
+  let noWrongSelected = true;
+  allItems.forEach(li => {
+    const isCorrect = li.dataset.correct === 'true';
+    const isSelected = li.classList.contains('multi-selected');
+    if (isCorrect && !isSelected) allCorrectSelected = false;
+    if (!isCorrect && isSelected) noWrongSelected = false;
+  });
+
+  optionsList.classList.add('solved');
+  if (allCorrectSelected && noWrongSelected) {
+    allItems.forEach(li => {
+      li.classList.remove('multi-selected');
+      if (li.dataset.correct === 'true') li.classList.add('selected-correct');
+      else li.classList.add('disabled');
+    });
+  } else {
+    allItems.forEach(li => {
+      const isCorrect = li.dataset.correct === 'true';
+      const isSelected = li.classList.contains('multi-selected');
+      li.classList.remove('multi-selected');
+      if (isCorrect) li.classList.add('selected-correct');
+      else if (isSelected) li.classList.add('selected-wrong');
+      else li.classList.add('disabled');
+    });
+  }
+  document.getElementById(qId + '-answer').classList.remove('hidden');
+  document.getElementById(qId + '-explain').classList.remove('hidden');
+  document.getElementById(qId + '-submit').classList.add('hidden');
+}
+
+// === OX ===
+function selectOX(btn, qId) {
+  const container = document.getElementById(qId + '-ox');
+  if (container.classList.contains('solved')) return;
+  container.querySelectorAll('.ox-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function submitOX(qId, correctAnswer) {
+  const container = document.getElementById(qId + '-ox');
+  if (container.classList.contains('solved')) return;
+  const selected = container.querySelector('.ox-btn.selected');
+  if (!selected) return;
+
+  container.classList.add('solved');
+  const isCorrect = selected.dataset.value === correctAnswer;
+
+  container.querySelectorAll('.ox-btn').forEach(btn => {
+    btn.classList.remove('selected');
+    if (btn.dataset.value === correctAnswer) {
+      btn.classList.add('ox-correct');
+    } else if (btn === selected && !isCorrect) {
+      btn.classList.add('ox-wrong');
+    } else {
+      btn.classList.add('disabled');
+    }
+  });
+
+  document.getElementById(qId + '-answer').classList.remove('hidden');
+  document.getElementById(qId + '-explain').classList.remove('hidden');
+  document.getElementById(qId + '-submit').classList.add('hidden');
+}
+
+// === 선 잇기 ===
+const matchState = {};
+
+function selectLeft(li, qId) {
+  if (!matchState[qId]) matchState[qId] = { pairs: [], activeLeft: null };
+  const state = matchState[qId];
+  if (li.classList.contains('matched')) return;
+
+  // 이전 active 해제
+  const leftList = document.getElementById(qId + '-left');
+  leftList.querySelectorAll('li').forEach(l => l.classList.remove('active'));
+
+  li.classList.add('active');
+  state.activeLeft = li;
+}
+
+function selectRight(ri, qId) {
+  if (!matchState[qId]) matchState[qId] = { pairs: [], activeLeft: null };
+  const state = matchState[qId];
+  if (!state.activeLeft) return;
+  if (ri.classList.contains('matched')) return;
+
+  // 쌍 맺기
+  const pairNum = state.pairs.length + 1;
+  state.pairs.push({ left: state.activeLeft, right: ri });
+
+  // 뱃지 추가
+  const badgeL = document.createElement('span');
+  badgeL.className = 'match-pair-badge';
+  badgeL.textContent = pairNum;
+  state.activeLeft.insertBefore(badgeL, state.activeLeft.firstChild);
+
+  const badgeR = document.createElement('span');
+  badgeR.className = 'match-pair-badge';
+  badgeR.textContent = pairNum;
+  ri.insertBefore(badgeR, ri.firstChild);
+
+  state.activeLeft.classList.remove('active');
+  state.activeLeft.classList.add('matched');
+  ri.classList.add('matched');
+  state.activeLeft = null;
+}
+
+function submitMatch(qId, totalPairs) {
+  if (!matchState[qId]) return;
+  const state = matchState[qId];
+  if (state.pairs.length !== totalPairs) return;
+
+  const leftList = document.getElementById(qId + '-left');
+  const rightList = document.getElementById(qId + '-right');
+  leftList.classList.add('solved');
+
+  let allCorrect = true;
+  state.pairs.forEach(pair => {
+    const leftPair = pair.left.dataset.pair;
+    const rightPair = pair.right.dataset.pair;
+    if (leftPair === rightPair) {
+      // 이미 matched (초록)
+    } else {
+      allCorrect = false;
+      pair.left.classList.remove('matched');
+      pair.left.classList.add('match-wrong');
+      pair.right.classList.remove('matched');
+      pair.right.classList.add('match-wrong');
+    }
+  });
+
+  // 모든 항목 비활성화
+  leftList.querySelectorAll('li').forEach(li => li.classList.add('disabled'));
+  rightList.querySelectorAll('li').forEach(li => li.classList.add('disabled'));
+
+  document.getElementById(qId + '-answer').classList.remove('hidden');
+  document.getElementById(qId + '-explain').classList.remove('hidden');
+  document.getElementById(qId + '-submit').classList.add('hidden');
+}
+
+// === 십자말풀이 (텍스트 입력) ===
+function submitCrossword(qId) {
+  const answers = ['행복하여라', '아브라함', '메시아', '라헬', '타협하여라'];
+  let allCorrect = true;
+
+  for (let i = 0; i < answers.length; i++) {
+    const input = document.getElementById(qId + '-input-' + (i + 1));
+    const val = input.value.trim().replace(/\s+/g, ' ');
+    if (val === answers[i]) {
+      input.classList.add('input-correct');
+      input.classList.remove('input-wrong');
+    } else {
+      input.classList.add('input-wrong');
+      input.classList.remove('input-correct');
+      allCorrect = false;
+    }
+    input.readOnly = true;
+  }
+
+  document.getElementById(qId + '-answer').classList.remove('hidden');
+  document.getElementById(qId + '-explain').classList.remove('hidden');
+  document.getElementById(qId + '-submit').classList.add('hidden');
+}
+</script>
+
+</body>
+</html>
