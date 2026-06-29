@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30차 성경잔치 공부 8일차 (마르코 복음서)</title>
+<meta property="og:title" content="30차 성경잔치 공부 8일차">
+<meta property="og:description" content="마르코 복음서 1~7번 문제">
+<meta property="og:image" content="https://ujinboy.github.io/bible-quiz-30th/images/1.jpg">
+<meta property="og:url" content="https://ujinboy.github.io/bible-quiz-30th/study_day8.html">
+<meta property="og:type" content="website">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2c2c2c; line-height: 1.7; padding: 20px; max-width: 720px; margin: 0 auto; }
+header { text-align: center; padding: 30px 0 20px; border-bottom: 2px solid #7b5ea7; margin-bottom: 30px; }
+header h1 { font-size: 1.4em; color: #7b5ea7; margin-bottom: 5px; }
+header p { font-size: 0.9em; color: #666; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 30px; }
+nav a { display: inline-block; padding: 4px 10px; text-decoration: none; border-radius: 4px; font-size: 0.8em; color: #fff; }
+nav a.mt { background: #a0b4d9; }
+nav a.mk { background: #b8a3cf; }
+nav a.lk { background: #8cc8a4; }
+nav a.jn { background: #e8b580; }
+nav a.current { background: #7b5ea7; }
+nav a.mt.current { background: #5c7cba; }
+nav a.lk.current { background: #4a9e6f; }
+nav a.jn.current { background: #c97a2e; }
+.question-block { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.q-number { display: inline-block; background: #7b5ea7; color: #fff; font-size: 0.75em; font-weight: bold; padding: 3px 10px; border-radius: 12px; margin-bottom: 12px; }
+.q-ref { display: inline-block; font-size: 0.75em; color: #888; margin-left: 8px; }
+.q-type { display: inline-block; font-size: 0.7em; color: #fff; background: #5a8f5a; padding: 2px 8px; border-radius: 8px; margin-left: 6px; }
+.q-text { font-size: 1.05em; font-weight: 600; margin-bottom: 14px; color: #1a1a1a; }
+.q-passage { background: #f9f6f1; border-left: 3px solid #b8a3cf; padding: 12px 16px; margin-bottom: 14px; font-size: 0.92em; color: #444; border-radius: 0 6px 6px 0; }
+.q-options { list-style: none; margin-bottom: 16px; }
+.q-options li { padding: 8px 12px; margin-bottom: 6px; border-radius: 6px; font-size: 0.93em; }
+.q-options.interactive li { background: #fafafa; border: 1px solid #ddd; color: #2c2c2c; font-weight: normal; cursor: pointer; transition: background 0.2s; }
+.q-options.interactive li:hover { background: #f0ebe3; border-color: #c0a060; }
+.q-options.interactive li.selected-correct { background: #e8f5e9; border: 2px solid #4caf50; font-weight: 600; cursor: default; }
+.q-options.interactive li.selected-wrong { background: #ffebee; border: 2px solid #e57373; color: #c62828; cursor: default; }
+.q-options.interactive li.disabled { cursor: default; opacity: 0.7; pointer-events: none; }
+.q-options.interactive li.multi-selected { background: #e3f2fd; border: 2px solid #42a5f5; cursor: pointer; }
+.q-options.interactive li.order-1::before { content: "\2460 "; font-weight: bold; color: #1565c0; }
+.q-options.interactive li.order-2::before { content: "\2461 "; font-weight: bold; color: #1565c0; }
+.ox-options { display: flex; gap: 12px; margin-bottom: 16px; }
+.ox-btn { flex: 1; padding: 14px; text-align: center; font-size: 1.3em; font-weight: bold; border: 2px solid #ddd; border-radius: 10px; background: #fafafa; cursor: pointer; transition: all 0.2s; }
+.ox-btn:hover { background: #f0ebe3; border-color: #c0a060; }
+.ox-btn.selected { background: #e3f2fd; border-color: #42a5f5; }
+.ox-btn.ox-correct { background: #e8f5e9; border-color: #4caf50; }
+.ox-btn.ox-wrong { background: #ffebee; border-color: #e57373; }
+.ox-btn.disabled { pointer-events: none; opacity: 0.7; }
+.submit-btn { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #7b5ea7; color: #fff; border: none; border-radius: 6px; font-size: 0.9em; cursor: pointer; }
+.submit-btn:hover { background: #5a4580; }
+.hidden { display: none; }
+.answer-box { background: #e3f2e8; border: 1px solid #a5d6a7; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px; }
+.answer-box .label { font-size: 0.8em; font-weight: bold; color: #2e7d32; margin-bottom: 4px; }
+.answer-box .answer-text { font-size: 1em; font-weight: 600; color: #1b5e20; }
+.explain-box { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; }
+.explain-box .label { font-size: 0.8em; font-weight: bold; color: #f57f17; margin-bottom: 6px; }
+.explain-box p { font-size: 0.9em; color: #444; margin-bottom: 6px; }
+footer { text-align: center; padding: 30px 0; color: #999; font-size: 0.8em; border-top: 1px solid #ddd; margin-top: 20px; }
+footer a { color: #7b5ea7; text-decoration: none; margin: 0 8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>30차 성경잔치 공부 8일차</h1>
+  <p>마르코 복음서 (1~7번)</p>
+</header>
+
+<nav>
+  <a href="study_day1.html" class="mt">1일차</a><a href="study_day2.html" class="mt">2일차</a><a href="study_day3.html" class="mt">3일차</a><a href="study_day4.html" class="mt">4일차</a><a href="study_day5.html" class="mt">5일차</a><a href="study_day6.html" class="mt">6일차</a><a href="study_day7.html" class="mt">7일차</a><a href="study_day8.html" class="mk current">8일차</a><a href="#" class="mk">9일차</a><a href="#" class="mk">10일차</a><a href="#" class="mk">11일차</a><a href="#" class="mk">12일차</a><a href="#" class="mk">13일차</a><a href="#" class="mk">14일차</a><a href="#" class="lk">15일차</a><a href="#" class="lk">16일차</a><a href="#" class="lk">17일차</a><a href="#" class="lk">18일차</a><a href="#" class="lk">19일차</a><a href="#" class="lk">20일차</a><a href="#" class="lk">21일차</a><a href="#" class="jn">22일차</a><a href="#" class="jn">23일차</a><a href="#" class="jn">24일차</a><a href="#" class="jn">25일차</a><a href="#" class="jn">26일차</a><a href="#" class="jn">27일차</a><a href="#" class="jn">28일차</a>
+</nav>
+
+<!-- 1번 -->
+<div class="question-block" id="q1">
+  <span class="q-number">1번</span><span class="q-ref">마르 1,1</span>
+  <div class="q-text">마르코 복음서의 시작이다. ( )에 들어갈 말은?</div>
+  <div class="q-passage">하느님의 아드님 예수 그리스도의 (<u>&nbsp;&nbsp;&nbsp;&nbsp;</u>)의 시작.</div>
+  <ul class="q-options interactive" id="q1-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q1')">① 말씀</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q1')">② 족보</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q1')">③ 이야기</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q1')">④ 복음</li>
+  </ul>
+  <button class="submit-btn" id="q1-submit" onclick="submitSingle('q1')">확인</button>
+  <div class="answer-box hidden" id="q1-answer"><div class="label">정답</div><div class="answer-text">④ 복음</div></div>
+  <div class="explain-box hidden" id="q1-explain"><div class="label">해설</div><p>마르 1,1: "하느님의 아드님 예수 그리스도의 <b>복음</b>의 시작."</p></div>
+</div>
+
+<!-- 2번 -->
+<div class="question-block" id="q2">
+  <span class="q-number">2번</span><span class="q-ref">마르 1,4-8</span>
+  <div class="q-text">세례자 요한에 대한 내용으로 맞는 것은?</div>
+  <ul class="q-options interactive" id="q2-options">
+    <li data-correct="true" onclick="toggleSingle(this,'q2')">① 광야에 나타나 죄의 용서를 위한 회개의 세례를 선포하였다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q2')">② 주변의 모든 이민족들이 그에게 나아가 세례를 받았다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q2')">③ 아마포 옷을 입고 허리에 자주색 띠를 둘렀다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q2')">④ 하늘에서 내려오는 만나와 메추라기를 먹고 살았다.</li>
+  </ul>
+  <button class="submit-btn" id="q2-submit" onclick="submitSingle('q2')">확인</button>
+  <div class="answer-box hidden" id="q2-answer"><div class="label">정답</div><div class="answer-text">①</div></div>
+  <div class="explain-box hidden" id="q2-explain"><div class="label">해설</div><p>마르 1,4: "세례자 요한이 <b>광야에 나타나 죄의 용서를 위한 회개의 세례를 선포하였다.</b>"</p><p>③ 실제로는 낙타 털옷을 입고 허리에 가죽 띠를 둘렀습니다. (마르 1,6)</p></div>
+</div>
+
+<!-- 3번 (2개 순서 선택) -->
+<div class="question-block" id="q3">
+  <span class="q-number">3번</span><span class="q-ref">마르 1,10-11</span>
+  <div class="q-text">예수님 세례 때의 내용이다. ( )에 들어갈 말을 순서대로 선택하시오.</div>
+  <div class="q-passage">(①)이 갈라지며 성령께서 비둘기처럼 내려오시는 것을 보셨다. (①)에서 소리가 들려왔다. "너는 내가 사랑하는 (②), 내 마음에 드는 (②)이다."</div>
+  <ul class="q-options interactive" id="q3-options">
+    <li data-answer="1" onclick="toggleOrdered(this,'q3')">하늘</li>
+    <li data-answer="2" onclick="toggleOrdered(this,'q3')">아들</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q3')">구름</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q3')">종</li>
+  </ul>
+  <button class="submit-btn" id="q3-submit" onclick="submitOrdered('q3',2)">확인</button>
+  <div class="answer-box hidden" id="q3-answer"><div class="label">정답</div><div class="answer-text">① 하늘 ② 아들</div></div>
+  <div class="explain-box hidden" id="q3-explain"><div class="label">해설</div><p>마르 1,10-11: "<b>하늘</b>이 갈라지며... <b>하늘</b>에서 소리가 들려왔다. '너는 내가 사랑하는 <b>아들</b>, 내 마음에 드는 <b>아들</b>이다.'"</p></div>
+</div>
+
+<!-- 4번 -->
+<div class="question-block" id="q4">
+  <span class="q-number">4번</span><span class="q-ref">마르 1,12-13</span>
+  <div class="q-text">예수님께서 사십 일 동안 사탄에게 유혹을 받으신 곳은?</div>
+  <ul class="q-options interactive" id="q4-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q4')">① 산속</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q4')">② 광야</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q4')">③ 계곡</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q4')">④ 호수</li>
+  </ul>
+  <button class="submit-btn" id="q4-submit" onclick="submitSingle('q4')">확인</button>
+  <div class="answer-box hidden" id="q4-answer"><div class="label">정답</div><div class="answer-text">② 광야</div></div>
+  <div class="explain-box hidden" id="q4-explain"><div class="label">해설</div><p>마르 1,12-13: "성령께서 곧 예수님을 <b>광야</b>로 내보내셨다. 예수님께서는 사십 일 동안 광야에 계시면서 사탄에게 유혹을 받으셨다."</p></div>
+</div>
+
+<!-- 5번 -->
+<div class="question-block" id="q5">
+  <span class="q-number">5번</span><span class="q-ref">마르 1,25-27</span>
+  <div class="q-text">회당에서 더러운 영이 큰 소리를 지르며 나가자, 사람들이 놀라서 한 말로 맞는 것은?</div>
+  <ul class="q-options interactive" id="q5-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q5')">① 율법학자들의 가르침과 같습니다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q5')">② 저희는 당신이 누구신지 압니다.</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q5')">③ 새롭고 권위 있는 가르침이다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q5')">④ 하느님의 거룩하신 분이시다.</li>
+  </ul>
+  <button class="submit-btn" id="q5-submit" onclick="submitSingle('q5')">확인</button>
+  <div class="answer-box hidden" id="q5-answer"><div class="label">정답</div><div class="answer-text">③</div></div>
+  <div class="explain-box hidden" id="q5-explain"><div class="label">해설</div><p>마르 1,27: "모두 놀라 서로 물었다. '이게 어찌 된 일이냐? <b>새롭고 권위 있는 가르침이다.</b> 저분이 더러운 영들에게 명령하시니 그것들도 복종하는구나.'"</p></div>
+</div>
+
+<!-- 6번 -->
+<div class="question-block" id="q6">
+  <span class="q-number">6번</span><span class="q-ref">마르 1,40-45</span>
+  <div class="q-text">예수님께서 나병 환자에게 가엾은 마음이 드셔서 손을 내밀어 대시며 하신 말씀은?</div>
+  <ul class="q-options interactive" id="q6-options">
+    <li data-correct="true" onclick="toggleSingle(this,'q6')">① 내가 하고자 하니 깨끗하게 되어라.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q6')">② 물로 몸을 씻어 깨끗하게 하여라.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q6')">③ 먼저 예물을 바치고 다시 오너라.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q6')">④ 이 이야기가 널리 알려지게 하여라.</li>
+  </ul>
+  <button class="submit-btn" id="q6-submit" onclick="submitSingle('q6')">확인</button>
+  <div class="answer-box hidden" id="q6-answer"><div class="label">정답</div><div class="answer-text">①</div></div>
+  <div class="explain-box hidden" id="q6-explain"><div class="label">해설</div><p>마르 1,41: "예수님께서 가엾은 마음이 드시어 손을 내밀어 그에게 대시며 '<b>내가 하고자 하니 깨끗하게 되어라.</b>' 하고 이르셨다."</p></div>
+</div>
+
+<!-- 7번 OX -->
+<div class="question-block" id="q7">
+  <span class="q-number">7번</span><span class="q-ref">마르 2,5</span><span class="q-type">OX</span>
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">예수님께서 중풍 병자를 데리고 온 사람들의 믿음을 보시고 중풍 병자에게 말씀하셨다. "얘야, 너는 죄를 용서받았다."</div>
+  <div class="ox-options" id="q7-ox"><div class="ox-btn" data-value="O" onclick="selectOX(this,'q7')">O</div><div class="ox-btn" data-value="X" onclick="selectOX(this,'q7')">X</div></div>
+  <button class="submit-btn" id="q7-submit" onclick="submitOX('q7','O')">확인</button>
+  <div class="answer-box hidden" id="q7-answer"><div class="label">정답</div><div class="answer-text">O</div></div>
+  <div class="explain-box hidden" id="q7-explain"><div class="label">해설</div><p>마르 2,5: "예수님께서 그들의 믿음을 보시고 중풍 병자에게 '<b>얘야, 너는 죄를 용서받았다.</b>' 하고 이르셨다." 원문 그대로이므로 O.</p></div>
+</div>
+
+<footer>
+  <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집 | 천주교 수원교구 복음화국</p>
+  <p style="margin-top:8px;"><a href="study_day7.html">← 이전</a> | <a href="study_day9.html">다음 →</a></p>
+</footer>
+
+<script>
+function toggleSingle(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected')});s.classList.add('multi-selected');}
+function submitSingle(qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;var s=o.querySelector('li.multi-selected');if(!s)return;var c=s.dataset.correct==='true';o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected');if(c){if(l===s)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(l===s)l.classList.add('selected-wrong');else if(l.dataset.correct==='true')l.classList.add('selected-correct');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+function selectOX(btn,qId){var c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;c.querySelectorAll('.ox-btn').forEach(function(b){b.classList.remove('selected')});btn.classList.add('selected');}
+function submitOX(qId,ans){var c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;var s=c.querySelector('.ox-btn.selected');if(!s)return;c.classList.add('solved');c.querySelectorAll('.ox-btn').forEach(function(b){b.classList.remove('selected');if(b.dataset.value===ans)b.classList.add('ox-correct');else if(b===s&&b.dataset.value!==ans)b.classList.add('ox-wrong');else b.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var orderedState={};
+function toggleOrdered(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId])orderedState[qId]=[];var idx=orderedState[qId].indexOf(s);if(idx!==-1){orderedState[qId].splice(idx,1);renderOP(qId);return;}orderedState[qId].push(s);renderOP(qId);}
+function renderOP(qId){var o=document.getElementById(qId+'-options');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');});orderedState[qId].forEach(function(l,i){l.classList.add('multi-selected');l.classList.add('order-'+(i+1));});}
+function submitOrdered(qId,count){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');var a=parseInt(l.dataset.answer);var pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+</script>
+
+</body>
+</html>
