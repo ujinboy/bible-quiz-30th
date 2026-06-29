@@ -285,11 +285,13 @@ footer a {
   <div class="q-text">'예수 그리스도의 족보'의 내용으로 맞는 것은?</div>
   
   <ul class="q-options interactive" id="q1-options">
-    <li data-correct="false" onclick="checkAnswer(this, 'q1')">① 아브라함은 이사악을 낳고 이사악은 보아즈를 낳았다.</li>
-    <li data-correct="false" onclick="checkAnswer(this, 'q1')">② 이사이는 솔로몬 임금을 낳았다.</li>
-    <li data-correct="true" onclick="checkAnswer(this, 'q1')">③ 마리아에게서 그리스도라고 불리는 예수님께서 태어나셨다.</li>
-    <li data-correct="false" onclick="checkAnswer(this, 'q1')">④ 이 모든 세대의 수는 아브라함부터 그리스도까지가 십사 대이다.</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q1')">① 아브라함은 이사악을 낳고 이사악은 보아즈를 낳았다.</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q1')">② 이사이는 솔로몬 임금을 낳았다.</li>
+    <li data-correct="true" onclick="toggleSingle(this, 'q1')">③ 마리아에게서 그리스도라고 불리는 예수님께서 태어나셨다.</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q1')">④ 이 모든 세대의 수는 아브라함부터 그리스도까지가 십사 대이다.</li>
   </ul>
+
+  <button class="submit-btn" id="q1-submit" onclick="submitSingle('q1')">확인</button>
 
   <div class="answer-box hidden" id="q1-answer">
     <div class="label">정답</div>
@@ -460,29 +462,50 @@ footer a {
 </footer>
 
 <script>
-function checkAnswer(selected, qId) {
+// 단일선택: 하나만 선택 가능
+function toggleSingle(selected, qId) {
   const optionsList = document.getElementById(qId + '-options');
-  // 이미 정답을 맞춘 경우 무시
   if (optionsList.classList.contains('solved')) return;
+
+  // 이전 선택 해제
+  optionsList.querySelectorAll('li').forEach(li => {
+    li.classList.remove('multi-selected');
+  });
+  // 새로 선택
+  selected.classList.add('multi-selected');
+}
+
+// 단일선택 확인
+function submitSingle(qId) {
+  const optionsList = document.getElementById(qId + '-options');
+  if (optionsList.classList.contains('solved')) return;
+
+  const selected = optionsList.querySelector('li.multi-selected');
+  if (!selected) return;
 
   const isCorrect = selected.dataset.correct === 'true';
 
   if (isCorrect) {
-    // 정답 선택 — 이전 오답 표시 제거
+    // 정답
     optionsList.classList.add('solved');
     optionsList.querySelectorAll('li').forEach(li => {
-      li.classList.remove('selected-wrong');
-      li.classList.remove('disabled');
-      if (li !== selected) li.classList.add('disabled');
+      li.classList.remove('multi-selected');
+      if (li === selected) {
+        li.classList.add('selected-correct');
+      } else {
+        li.classList.add('disabled');
+      }
     });
-    selected.classList.add('selected-correct');
-    // 정답 박스와 해설 표시
     document.getElementById(qId + '-answer').classList.remove('hidden');
     document.getElementById(qId + '-explain').classList.remove('hidden');
+    document.getElementById(qId + '-submit').classList.add('hidden');
   } else {
-    // 오답 선택 — 빨갛게 표시만, 재시도 가능
-    selected.classList.add('selected-wrong');
-    selected.classList.add('disabled');
+    // 오답 — 빨갛게 1초 후 리셋
+    selected.classList.remove('multi-selected');
+    selected.classList.add('multi-wrong');
+    setTimeout(() => {
+      selected.classList.remove('multi-wrong');
+    }, 1000);
   }
 }
 
