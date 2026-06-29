@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30차 성경잔치 공부 1일차 (마태오 복음서)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f0eb;
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+header {
+  text-align: center;
+  padding: 30px 0 20px;
+  border-bottom: 2px solid #8b6914;
+  margin-bottom: 30px;
+}
+header h1 {
+  font-size: 1.4em;
+  color: #8b6914;
+  margin-bottom: 5px;
+}
+header p {
+  font-size: 0.9em;
+  color: #666;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+nav a {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #e8dcc8;
+  color: #5a4a2a;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+nav a.current {
+  background: #8b6914;
+  color: #fff;
+}
+.question-block {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.q-number {
+  display: inline-block;
+  background: #8b6914;
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.q-ref {
+  display: inline-block;
+  font-size: 0.75em;
+  color: #888;
+  margin-left: 8px;
+}
+.q-type {
+  display: inline-block;
+  font-size: 0.7em;
+  color: #fff;
+  background: #5a8f5a;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-left: 6px;
+}
+.q-text {
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #1a1a1a;
+}
+.q-passage {
+  background: #f9f6f1;
+  border-left: 3px solid #d4b96a;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  font-size: 0.92em;
+  color: #444;
+  border-radius: 0 6px 6px 0;
+}
+.q-options {
+  list-style: none;
+  margin-bottom: 16px;
+}
+.q-options li {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  font-size: 0.93em;
+}
+.q-options li.correct {
+  background: #e8f5e9;
+  border: 1px solid #81c784;
+  font-weight: 600;
+}
+.q-options li.wrong {
+  background: #fafafa;
+  border: 1px solid #eee;
+  color: #888;
+}
+/* Interactive quiz styles */
+.q-options.interactive li {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  color: #2c2c2c;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.q-options.interactive li:hover {
+  background: #f0ebe3;
+  border-color: #c0a060;
+}
+.q-options.interactive li.selected-correct {
+  background: #e8f5e9;
+  border: 2px solid #4caf50;
+  font-weight: 600;
+  cursor: default;
+}
+.q-options.interactive li.selected-wrong {
+  background: #ffebee;
+  border: 2px solid #e57373;
+  color: #c62828;
+  cursor: default;
+}
+.q-options.interactive li.reveal-correct {
+  background: #e8f5e9;
+  border: 1px solid #81c784;
+  font-weight: 600;
+  cursor: default;
+}
+.q-options.interactive li.disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+.q-options.interactive li.disabled:hover {
+  background: #fafafa;
+  border-color: #ddd;
+}
+.hidden { display: none; }
+.answer-box {
+  background: #e3f2e8;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+.answer-box .label {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 4px;
+}
+.answer-box .answer-text {
+  font-size: 1em;
+  font-weight: 600;
+  color: #1b5e20;
+}
+.explain-box {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+.explain-box .label {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #f57f17;
+  margin-bottom: 6px;
+}
+.explain-box p {
+  font-size: 0.9em;
+  color: #444;
+  margin-bottom: 6px;
+}
+.explain-box .wrong-reason {
+  font-size: 0.85em;
+  color: #777;
+  padding-left: 12px;
+  border-left: 2px solid #ffe082;
+  margin-top: 8px;
+}
+footer {
+  text-align: center;
+  padding: 30px 0;
+  color: #999;
+  font-size: 0.8em;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+}
+footer a {
+  color: #8b6914;
+  text-decoration: none;
+  margin: 0 8px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>30차 성경잔치 공부 1일차</h1>
+  <p>마태오 복음서 (1~6번)</p>
+</header>
+
+<nav>
+  <a href="#" class="current">1일차</a>
+  <a href="#">2일차</a>
+  <a href="#">3일차</a>
+  <a href="#">4일차</a>
+  <a href="#">5일차</a>
+  <a href="#">6일차</a>
+  <a href="#">7일차</a>
+  <a href="#">8일차</a>
+  <a href="#">9일차</a>
+  <a href="#">10일차</a>
+  <a href="#">11일차</a>
+  <a href="#">12일차</a>
+  <a href="#">13일차</a>
+  <a href="#">14일차</a>
+  <a href="#">15일차</a>
+  <a href="#">16일차</a>
+  <a href="#">17일차</a>
+  <a href="#">18일차</a>
+  <a href="#">19일차</a>
+  <a href="#">20일차</a>
+  <a href="#">21일차</a>
+  <a href="#">22일차</a>
+  <a href="#">23일차</a>
+  <a href="#">24일차</a>
+  <a href="#">25일차</a>
+  <a href="#">26일차</a>
+  <a href="#">27일차</a>
+  <a href="#">28일차</a>
+</nav>
+
+<!-- 1번 (interactive) -->
+<div class="question-block" id="q1">
+  <span class="q-number">1번</span>
+  <span class="q-ref">마태 1,1-17</span>
+  
+  <div class="q-text">'예수 그리스도의 족보'의 내용으로 맞는 것은?</div>
+  
+  <ul class="q-options interactive" id="q1-options">
+    <li data-correct="false" onclick="checkAnswer(this, 'q1')">① 아브라함은 이사악을 낳고 이사악은 보아즈를 낳았다.</li>
+    <li data-correct="false" onclick="checkAnswer(this, 'q1')">② 이사이는 솔로몬 임금을 낳았다.</li>
+    <li data-correct="true" onclick="checkAnswer(this, 'q1')">③ 마리아에게서 그리스도라고 불리는 예수님께서 태어나셨다.</li>
+    <li data-correct="false" onclick="checkAnswer(this, 'q1')">④ 이 모든 세대의 수는 아브라함부터 그리스도까지가 십사 대이다.</li>
+  </ul>
+
+  <div class="answer-box hidden" id="q1-answer">
+    <div class="label">정답</div>
+    <div class="answer-text">③</div>
+  </div>
+
+  <div class="explain-box hidden" id="q1-explain">
+    <div class="label">해설</div>
+    <p>마태 1,16: "야곱은 마리아의 남편 요셉을 낳았는데, 마리아에게서 그리스도라고 불리는 예수님께서 태어나셨다."</p>
+    <div class="wrong-reason">
+      <p>① 이사악은 <b>야곱</b>을 낳았습니다. 보아즈는 살몬의 아들입니다. (마태 1,2-5)</p>
+      <p>② 이사이는 <b>다윗</b> 임금을 낳았습니다. 솔로몬은 다윗의 아들입니다. (마태 1,6)</p>
+      <p>④ 아브라함~다윗 14대, 다윗~바빌론 유배 14대, 유배~그리스도 14대로 총 <b>42대</b>입니다. (마태 1,17)</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2번 -->
+<div class="question-block">
+  <span class="q-number">2번</span>
+  <span class="q-ref">마태 1,18-21</span>
+  <span class="q-type">복수선택</span>
+  
+  <div class="q-text">요셉이 마리아와 파혼하기로 생각을 굳혔을 때, 꿈에 주님의 천사가 나타나 한 말로 맞는 것을 모두 고르시오.</div>
+  
+  <ul class="q-options">
+    <li class="correct">① 두려워하지 말고 마리아를 아내로 맞아들여라.</li>
+    <li class="correct">② 그 몸에 잉태된 아기는 성령으로 말미암은 것이다.</li>
+    <li class="wrong">③ 마리아가 아들을 낳으리니 그 이름을 야곱이라고 하여라.</li>
+    <li class="wrong">④ 그분께서 당신 백성을 이집트에서 이끌어 내실 것이다.</li>
+  </ul>
+
+  <div class="answer-box">
+    <div class="label">정답</div>
+    <div class="answer-text">①, ②</div>
+  </div>
+
+  <div class="explain-box">
+    <div class="label">해설</div>
+    <p>마태 1,20-21에서 천사가 요셉에게 한 말:</p>
+    <p>"다윗의 자손 요셉아, 두려워하지 말고 마리아를 아내로 맞아들여라. 그 몸에 잉태된 아기는 성령으로 말미암은 것이다. 마리아가 아들을 낳으리니 그 이름을 <b>예수</b>라고 하여라."</p>
+    <div class="wrong-reason">
+      <p>③ 이름을 <b>예수</b>라 하라고 하셨지 야곱이 아닙니다. (마태 1,21)</p>
+      <p>④ "당신 백성을 <b>죄에서</b> 구원하실 것이다"라고 하셨지, 이집트에서 이끌어 내신다는 말씀이 아닙니다. (마태 1,21)</p>
+    </div>
+  </div>
+</div>
+
+<!-- 3번 -->
+<div class="question-block">
+  <span class="q-number">3번</span>
+  <span class="q-ref">마태 1,22-23</span>
+  
+  <div class="q-text">'예수 그리스도의 탄생'에 대한 내용이다. ( )에 공통으로 들어갈 말을 쓰시오.</div>
+  
+  <div class="q-passage">
+    주님께서 예언자를 통하여 하신 말씀이 이루어지려고 이 모든 일이 일어났다. 곧<br>
+    "보아라, 동정녀가 잉태하여 아들을 낳으리니 그 이름을 (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)이라고 하리라."<br>
+    하신 말씀이다. (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)은 번역하면 '하느님께서 우리와 함께 계시다.'는 뜻이다.
+  </div>
+
+  <div class="answer-box">
+    <div class="label">정답</div>
+    <div class="answer-text">임마누엘</div>
+  </div>
+
+  <div class="explain-box">
+    <div class="label">해설</div>
+    <p>마태 1,23: "보아라, 동정녀가 잉태하여 아들을 낳으리니 그 이름을 임마누엘이라 하리라." 이는 이사야 7,14의 예언을 인용한 것입니다.</p>
+    <p><b>임마누엘</b>(עִמָּנוּאֵל) = '하느님께서 우리와 함께 계시다'는 히브리어입니다. 예수님의 칭호로서 하느님이 인간과 함께하심을 의미합니다.</p>
+  </div>
+</div>
+
+<!-- 4번 -->
+<div class="question-block">
+  <span class="q-number">4번</span>
+  <span class="q-ref">마태 2,1</span>
+  
+  <div class="q-text">예수님께서 태어나신 곳은?</div>
+  
+  <ul class="q-options">
+    <li class="correct">① 베들레헴</li>
+    <li class="wrong">② 예루살렘</li>
+    <li class="wrong">③ 헤브론</li>
+    <li class="wrong">④ 카파르나움</li>
+  </ul>
+
+  <div class="answer-box">
+    <div class="label">정답</div>
+    <div class="answer-text">①</div>
+  </div>
+
+  <div class="explain-box">
+    <div class="label">해설</div>
+    <p>마태 2,1: "헤로데 임금 때에 유다 <b>베들레헴</b>에서 예수님께서 태어나셨다."</p>
+    <div class="wrong-reason">
+      <p>② 예루살렘은 헤로데 임금이 있던 곳이며, 박사들이 먼저 찾아간 곳입니다.</p>
+      <p>③ 헤브론은 즈카르야와 엘리사벳이 살던 유다 산간 지역입니다.</p>
+      <p>④ 카파르나움은 예수님의 공생활 거점으로, 태어나신 곳이 아닙니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 5번 -->
+<div class="question-block">
+  <span class="q-number">5번</span>
+  <span class="q-ref">마태 2,7-12</span>
+  
+  <div class="q-text">동방에서 온 박사들이 아기가 있는 집에 들어가서 한 행동으로 맞는 것은?</div>
+  
+  <ul class="q-options">
+    <li class="wrong">① 어머니 마리아에게 아기의 앞날에 대해 말해 주었다.</li>
+    <li class="wrong">② 요셉에게 통치자의 탄생에 대한 예언자의 기록을 보여 주었다.</li>
+    <li class="correct">③ 아기에게 엎드려 경배하고, 황금과 유향과 몰약을 예물로 드렸다.</li>
+    <li class="wrong">④ 헤로데에게 사람을 보내어 아기가 태어난 곳을 알려 주었다.</li>
+  </ul>
+
+  <div class="answer-box">
+    <div class="label">정답</div>
+    <div class="answer-text">③</div>
+  </div>
+
+  <div class="explain-box">
+    <div class="label">해설</div>
+    <p>마태 2,11: "그들은 집에 들어가 어머니 마리아와 함께 있는 아기를 보고 땅에 엎드려 경배하였다. 그리고 보물 상자를 열어 <b>황금과 유향과 몰약</b>을 예물로 드렸다."</p>
+    <div class="wrong-reason">
+      <p>① 아기의 앞날에 대해 말한 것은 시메온입니다. (루카 2,34-35)</p>
+      <p>② 박사들은 요셉에게 기록을 보여준 적이 없습니다.</p>
+      <p>④ 오히려 박사들은 꿈에 지시를 받아 헤로데에게 돌아가지 <b>않고</b> 다른 길로 고국에 돌아갔습니다. (마태 2,12)</p>
+    </div>
+  </div>
+</div>
+
+<!-- 6번 -->
+<div class="question-block">
+  <span class="q-number">6번</span>
+  <span class="q-ref">마태 2,13-15</span>
+  
+  <div class="q-text">꿈에 주님의 천사가 요셉에게 나타나서 아기와 그 어머니를 데리고 피신하라고 한 곳은?</div>
+  
+  <ul class="q-options">
+    <li class="wrong">① 시리아</li>
+    <li class="wrong">② 바빌론</li>
+    <li class="wrong">③ 미디안</li>
+    <li class="correct">④ 이집트</li>
+  </ul>
+
+  <div class="answer-box">
+    <div class="label">정답</div>
+    <div class="answer-text">④</div>
+  </div>
+
+  <div class="explain-box">
+    <div class="label">해설</div>
+    <p>마태 2,13: "주님의 천사가 꿈에 요셉에게 나타나 말하였다. '일어나 아기와 그 어머니를 데리고 <b>이집트</b>로 피신하여라. 내가 너에게 일러 줄 때까지 거기에 있어라. 헤로데가 아기를 찾아 없애 버리려고 한다.'"</p>
+    <p>이는 호세 11,1의 예언("내가 이집트에서 내 아들을 불러냈다")이 이루어지게 합니다. (마태 2,15)</p>
+  </div>
+</div>
+
+<footer>
+  <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집 | 천주교 수원교구 복음화국</p>
+  <p style="margin-top:8px;">
+    <a href="#">← 이전</a> | 
+    <a href="#">다음 →</a>
+  </p>
+</footer>
+
+<script>
+function checkAnswer(selected, qId) {
+  const optionsList = document.getElementById(qId + '-options');
+  // 이미 답을 선택한 경우 무시
+  if (optionsList.classList.contains('answered')) return;
+  optionsList.classList.add('answered');
+
+  const isCorrect = selected.dataset.correct === 'true';
+  const allItems = optionsList.querySelectorAll('li');
+
+  // 모든 항목 비활성화
+  allItems.forEach(li => {
+    li.classList.add('disabled');
+  });
+
+  if (isCorrect) {
+    // 정답 선택
+    selected.classList.add('selected-correct');
+    // 정답 박스와 해설 표시
+    document.getElementById(qId + '-answer').classList.remove('hidden');
+    document.getElementById(qId + '-explain').classList.remove('hidden');
+  } else {
+    // 오답 선택
+    selected.classList.add('selected-wrong');
+    // 정답 항목 표시
+    allItems.forEach(li => {
+      if (li.dataset.correct === 'true') {
+        li.classList.add('reveal-correct');
+      }
+    });
+    // 정답 박스만 표시 (해설은 숨김 유지)
+    document.getElementById(qId + '-answer').classList.remove('hidden');
+  }
+}
+</script>
+
+</body>
+</html>

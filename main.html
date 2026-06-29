@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제30차 성경잔치 공부</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f0eb;
+  color: #2c2c2c;
+  line-height: 1.7;
+  padding: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+header {
+  text-align: center;
+  padding: 40px 0 24px;
+  border-bottom: 2px solid #8b6914;
+  margin-bottom: 30px;
+}
+header h1 {
+  font-size: 1.6em;
+  color: #8b6914;
+  margin-bottom: 6px;
+}
+header p {
+  font-size: 0.9em;
+  color: #666;
+}
+.section-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #5a4a2a;
+  margin: 28px 0 14px;
+  padding-left: 10px;
+  border-left: 4px solid #8b6914;
+}
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.day-card {
+  display: block;
+  background: #fff;
+  border: 1px solid #e0d6c4;
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-decoration: none;
+  color: #2c2c2c;
+  text-align: center;
+  transition: all 0.15s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.day-card:hover {
+  background: #f9f4ec;
+  border-color: #8b6914;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.day-card .day-num {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #8b6914;
+}
+.day-card .day-desc {
+  font-size: 0.75em;
+  color: #888;
+  margin-top: 4px;
+}
+.gospel-badge {
+  display: inline-block;
+  font-size: 0.7em;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.gospel-mt { background: #5c7cba; }
+.gospel-mk { background: #7b5ea7; }
+.gospel-lk { background: #4a9e6f; }
+.gospel-jn { background: #c97a2e; }
+.info-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 24px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.info-box h3 {
+  font-size: 0.95em;
+  color: #8b6914;
+  margin-bottom: 10px;
+}
+.info-box ul {
+  list-style: none;
+  font-size: 0.88em;
+}
+.info-box ul li {
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.info-box ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #8b6914;
+}
+footer {
+  text-align: center;
+  padding: 30px 0;
+  color: #999;
+  font-size: 0.8em;
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/1.jpg" alt="제30차 성경잔치" style="width:100%; max-width:720px; border-radius:10px; margin-bottom:16px;">
+  <p style="font-size:0.82em; color:#999;">복음서 편 | 28일 완성</p>
+</header>
+
+<div class="info-box">
+  <h3>사용법</h3>
+  <ul>
+    <li>하루 한 단원씩 28일간 복음서 전체를 공부합니다.</li>
+    <li>문제 + 정답 + 해설을 함께 읽으며 성경 내용을 익힙니다.</li>
+    <li>각 일차를 클릭하면 해당 공부 페이지로 이동합니다.</li>
+  </ul>
+</div>
+
+<div class="section-title">마태오 복음서 (1~7일차)</div>
+<div class="day-grid">
+  <a class="day-card" href="study_day1.html">
+    <span class="gospel-badge gospel-mt">마태오</span>
+    <div class="day-num">1일차</div>
+    <div class="day-desc">1~11번</div>
+  </a>
+  <a class="day-card" href="study_day2.html">
+    <span class="gospel-badge gospel-mt">마태오</span>
+    <div class="day-num">2일차</div>
+    <div class="day-desc">12~22번</div>
+  </a>
+  <a class="day-card" href="study_day3.html">
+    <span class="gospel-badge gospel-mt">마태오</span>
+    <div class="day-num">3일차</div>
+    <div class="day-desc">23~33번</div>
+  </a>
+  <a class="day-card" href="study_day4.html">
+    <span class="gospel-badge gospel-mt">마태오</span>
+    <div class="day-num">4일차</div>
+    <div class="day-desc">34~44번</div>
+  </a>
+  <a class="day-card" href="study_day5.html">
+    <span class="gospel-badge gospel-mt">마태오</span>
+    <div class="day-num">5일차</div>
+    <div class="day-desc">45~55번</div>
+  </a>
+  <a class="day-card" href="study_day6.html">
+    <span class="gospel-badge gospel-mt">마태오</span>
+    <div class="day-num">6일차</div>
+    <div class="day-desc">56~66번</div>
+  </a>
+  <a class="day-card" href="study_day7.html">
+    <span class="gospel-badge gospel-mt">마태오</span>
+    <div class="day-num">7일차</div>
+    <div class="day-desc">67~76번</div>
+  </a>
+</div>
+
+<div class="section-title">마르코 복음서 (8~14일차)</div>
+<div class="day-grid">
+  <a class="day-card" href="study_day8.html">
+    <span class="gospel-badge gospel-mk">마르코</span>
+    <div class="day-num">8일차</div>
+    <div class="day-desc">1~7번</div>
+  </a>
+  <a class="day-card" href="study_day9.html">
+    <span class="gospel-badge gospel-mk">마르코</span>
+    <div class="day-num">9일차</div>
+    <div class="day-desc">8~14번</div>
+  </a>
+  <a class="day-card" href="study_day10.html">
+    <span class="gospel-badge gospel-mk">마르코</span>
+    <div class="day-num">10일차</div>
+    <div class="day-desc">15~21번</div>
+  </a>
+  <a class="day-card" href="study_day11.html">
+    <span class="gospel-badge gospel-mk">마르코</span>
+    <div class="day-num">11일차</div>
+    <div class="day-desc">22~28번</div>
+  </a>
+  <a class="day-card" href="study_day12.html">
+    <span class="gospel-badge gospel-mk">마르코</span>
+    <div class="day-num">12일차</div>
+    <div class="day-desc">29~35번</div>
+  </a>
+  <a class="day-card" href="study_day13.html">
+    <span class="gospel-badge gospel-mk">마르코</span>
+    <div class="day-num">13일차</div>
+    <div class="day-desc">36~42번</div>
+  </a>
+  <a class="day-card" href="study_day14.html">
+    <span class="gospel-badge gospel-mk">마르코</span>
+    <div class="day-num">14일차</div>
+    <div class="day-desc">43~49번</div>
+  </a>
+</div>
+
+<div class="section-title">루카 복음서 (15~21일차)</div>
+<div class="day-grid">
+  <a class="day-card" href="study_day15.html">
+    <span class="gospel-badge gospel-lk">루카</span>
+    <div class="day-num">15일차</div>
+    <div class="day-desc">1~10번</div>
+  </a>
+  <a class="day-card" href="study_day16.html">
+    <span class="gospel-badge gospel-lk">루카</span>
+    <div class="day-num">16일차</div>
+    <div class="day-desc">11~19번</div>
+  </a>
+  <a class="day-card" href="study_day17.html">
+    <span class="gospel-badge gospel-lk">루카</span>
+    <div class="day-num">17일차</div>
+    <div class="day-desc">20~28번</div>
+  </a>
+  <a class="day-card" href="study_day18.html">
+    <span class="gospel-badge gospel-lk">루카</span>
+    <div class="day-num">18일차</div>
+    <div class="day-desc">29~37번</div>
+  </a>
+  <a class="day-card" href="study_day19.html">
+    <span class="gospel-badge gospel-lk">루카</span>
+    <div class="day-num">19일차</div>
+    <div class="day-desc">38~46번</div>
+  </a>
+  <a class="day-card" href="study_day20.html">
+    <span class="gospel-badge gospel-lk">루카</span>
+    <div class="day-num">20일차</div>
+    <div class="day-desc">47~55번</div>
+  </a>
+  <a class="day-card" href="study_day21.html">
+    <span class="gospel-badge gospel-lk">루카</span>
+    <div class="day-num">21일차</div>
+    <div class="day-desc">56~64번</div>
+  </a>
+</div>
+
+<div class="section-title">요한 복음서 (22~28일차)</div>
+<div class="day-grid">
+  <a class="day-card" href="study_day22.html">
+    <span class="gospel-badge gospel-jn">요한</span>
+    <div class="day-num">22일차</div>
+    <div class="day-desc">1~8번</div>
+  </a>
+  <a class="day-card" href="study_day23.html">
+    <span class="gospel-badge gospel-jn">요한</span>
+    <div class="day-num">23일차</div>
+    <div class="day-desc">9~16번</div>
+  </a>
+  <a class="day-card" href="study_day24.html">
+    <span class="gospel-badge gospel-jn">요한</span>
+    <div class="day-num">24일차</div>
+    <div class="day-desc">17~24번</div>
+  </a>
+  <a class="day-card" href="study_day25.html">
+    <span class="gospel-badge gospel-jn">요한</span>
+    <div class="day-num">25일차</div>
+    <div class="day-desc">25~33번</div>
+  </a>
+  <a class="day-card" href="study_day26.html">
+    <span class="gospel-badge gospel-jn">요한</span>
+    <div class="day-num">26일차</div>
+    <div class="day-desc">34~41번</div>
+  </a>
+  <a class="day-card" href="study_day27.html">
+    <span class="gospel-badge gospel-jn">요한</span>
+    <div class="day-num">27일차</div>
+    <div class="day-desc">42~49번</div>
+  </a>
+  <a class="day-card" href="study_day28.html">
+    <span class="gospel-badge gospel-jn">요한</span>
+    <div class="day-num">28일차</div>
+    <div class="day-desc">50~57번</div>
+  </a>
+</div>
+
+<div class="info-box">
+  <h3>범위</h3>
+  <ul>
+    <li>마태오 복음서: 76문제 (1~7일차)</li>
+    <li>마르코 복음서: 49문제 (8~14일차)</li>
+    <li>루카 복음서: 64문제 (15~21일차)</li>
+    <li>요한 복음서: 57문제 (22~28일차)</li>
+    <li>총 246문제 | 문제 유형: 사지선다, 복수선택, OX, 빈칸, 연결, 순서, 십자말풀이</li>
+  </ul>
+</div>
+
+<footer>
+  <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집</p>
+  <p>천주교 수원교구 복음화국</p>
+</footer>
+
+</body>
+</html>
