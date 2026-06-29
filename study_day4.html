@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>30차 성경잔치 공부 4일차 (마태오 복음서)</title>
 <meta property="og:title" content="30차 성경잔치 공부 4일차">
-<meta property="og:description" content="마태오 복음서 18~22번 문제">
+<meta property="og:description" content="마태오 복음서 34~44번 문제">
 <meta property="og:image" content="https://ujinboy.github.io/bible-quiz-30th/images/1.jpg">
 <meta property="og:url" content="https://ujinboy.github.io/bible-quiz-30th/study_day4.html">
 <meta property="og:type" content="website">
@@ -21,6 +21,7 @@ nav a.current { background: #8b6914; color: #fff; }
 .question-block { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .q-number { display: inline-block; background: #8b6914; color: #fff; font-size: 0.75em; font-weight: bold; padding: 3px 10px; border-radius: 12px; margin-bottom: 12px; }
 .q-ref { display: inline-block; font-size: 0.75em; color: #888; margin-left: 8px; }
+.q-type { display: inline-block; font-size: 0.7em; color: #fff; background: #5a8f5a; padding: 2px 8px; border-radius: 8px; margin-left: 6px; }
 .q-text { font-size: 1.05em; font-weight: 600; margin-bottom: 14px; color: #1a1a1a; }
 .q-passage { background: #f9f6f1; border-left: 3px solid #d4b96a; padding: 12px 16px; margin-bottom: 14px; font-size: 0.92em; color: #444; border-radius: 0 6px 6px 0; }
 .q-options { list-style: none; margin-bottom: 16px; }
@@ -31,6 +32,16 @@ nav a.current { background: #8b6914; color: #fff; }
 .q-options.interactive li.selected-wrong { background: #ffebee; border: 2px solid #e57373; color: #c62828; cursor: default; }
 .q-options.interactive li.disabled { cursor: default; opacity: 0.7; pointer-events: none; }
 .q-options.interactive li.multi-selected { background: #e3f2fd; border: 2px solid #42a5f5; cursor: pointer; }
+.q-options.interactive li.order-1::before { content: "① "; font-weight: bold; color: #1565c0; }
+.q-options.interactive li.order-2::before { content: "② "; font-weight: bold; color: #1565c0; }
+/* OX */
+.ox-options { display: flex; gap: 12px; margin-bottom: 16px; }
+.ox-btn { flex: 1; padding: 14px; text-align: center; font-size: 1.3em; font-weight: bold; border: 2px solid #ddd; border-radius: 10px; background: #fafafa; cursor: pointer; transition: all 0.2s; }
+.ox-btn:hover { background: #f0ebe3; border-color: #c0a060; }
+.ox-btn.selected { background: #e3f2fd; border-color: #42a5f5; }
+.ox-btn.ox-correct { background: #e8f5e9; border-color: #4caf50; }
+.ox-btn.ox-wrong { background: #ffebee; border-color: #e57373; }
+.ox-btn.disabled { pointer-events: none; opacity: 0.7; }
 .submit-btn { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #8b6914; color: #fff; border: none; border-radius: 6px; font-size: 0.9em; cursor: pointer; }
 .submit-btn:hover { background: #6d5310; }
 .hidden { display: none; }
@@ -48,241 +59,181 @@ footer a { color: #8b6914; text-decoration: none; margin: 0 8px; }
 
 <header>
   <h1>30차 성경잔치 공부 4일차</h1>
-  <p>마태오 복음서 (18~22번)</p>
+  <p>마태오 복음서 (34~44번)</p>
 </header>
 
 <nav>
-  <a href="study_day1.html">1일차</a>
-  <a href="study_day2.html">2일차</a>
-  <a href="study_day3.html">3일차</a>
-  <a href="study_day4.html" class="current">4일차</a>
-  <a href="#">5일차</a>
-  <a href="#">6일차</a>
-  <a href="#">7일차</a>
-  <a href="#">8일차</a>
-  <a href="#">9일차</a>
-  <a href="#">10일차</a>
-  <a href="#">11일차</a>
-  <a href="#">12일차</a>
-  <a href="#">13일차</a>
-  <a href="#">14일차</a>
-  <a href="#">15일차</a>
-  <a href="#">16일차</a>
-  <a href="#">17일차</a>
-  <a href="#">18일차</a>
-  <a href="#">19일차</a>
-  <a href="#">20일차</a>
-  <a href="#">21일차</a>
-  <a href="#">22일차</a>
-  <a href="#">23일차</a>
-  <a href="#">24일차</a>
-  <a href="#">25일차</a>
-  <a href="#">26일차</a>
-  <a href="#">27일차</a>
-  <a href="#">28일차</a>
+  <a href="study_day1.html">1일차</a><a href="study_day2.html">2일차</a><a href="study_day3.html">3일차</a><a href="study_day4.html" class="current">4일차</a><a href="study_day5.html">5일차</a><a href="study_day6.html">6일차</a><a href="study_day7.html">7일차</a><a href="#">8일차</a><a href="#">9일차</a><a href="#">10일차</a><a href="#">11일차</a><a href="#">12일차</a><a href="#">13일차</a><a href="#">14일차</a><a href="#">15일차</a><a href="#">16일차</a><a href="#">17일차</a><a href="#">18일차</a><a href="#">19일차</a><a href="#">20일차</a><a href="#">21일차</a><a href="#">22일차</a><a href="#">23일차</a><a href="#">24일차</a><a href="#">25일차</a><a href="#">26일차</a><a href="#">27일차</a><a href="#">28일차</a>
 </nav>
 
-<!-- 18번 -->
-<div class="question-block" id="q18">
-  <span class="q-number">18번</span>
-  <span class="q-ref">마태 6,3-6</span>
-  
-  <div class="q-text">'올바른 자선'과 '올바른 기도'에 대한 예수님의 말씀이다. ( )에 공통으로 들어갈 말은?</div>
-  
-  <div class="q-passage">
-    * 네 자선을 숨겨 두어라. 그러면 (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)<br>
-    * 숨어 계신 네 아버지께 기도하여라. 그러면 (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)
-  </div>
-
-  <ul class="q-options interactive" id="q18-options">
-    <li data-correct="false" onclick="toggleSingle(this, 'q18')">① 하느님께서 너에게 영원한 생명을 주실 것이다.</li>
-    <li data-correct="true" onclick="toggleSingle(this, 'q18')">② 숨은 일도 보시는 네 아버지께서 너에게 갚아 주실 것이다.</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q18')">③ 네 아버지께서 너의 죄를 용서해 주실 것이다.</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q18')">④ 하늘에 계신 아버지께서 너를 기억하실 것이다.</li>
+<!-- 34번 -->
+<div class="question-block" id="q34">
+  <span class="q-number">34번</span><span class="q-ref">마태 13,23</span>
+  <div class="q-text">씨 뿌리는 사람의 비유에서, 말씀을 듣고 깨달아 열매를 맺는 사람은 어디에 뿌려진 씨와 같은가?</div>
+  <ul class="q-options interactive" id="q34-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q34')">① 길</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q34')">② 돌밭</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q34')">③ 가시덤불 속</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q34')">④ 좋은 땅</li>
   </ul>
+  <button class="submit-btn" id="q34-submit" onclick="submitSingle('q34')">확인</button>
+  <div class="answer-box hidden" id="q34-answer"><div class="label">정답</div><div class="answer-text">④ 좋은 땅</div></div>
+  <div class="explain-box hidden" id="q34-explain"><div class="label">해설</div><p>마태 13,23: "<b>좋은 땅</b>에 뿌려진 씨는 이러한 사람이다. 그는 말씀을 듣고 깨달는다. 그런 사람은 열매를 맺는데, 어떤 사람은 백 배, 어떤 사람은 예순 배, 어떤 사람은 서른 배를 낸다."</p></div>
+</div>
 
-  <button class="submit-btn" id="q18-submit" onclick="submitSingle('q18')">확인</button>
+<!-- 35번 -->
+<div class="question-block" id="q35">
+  <span class="q-number">35번</span><span class="q-ref">마태 13,24-30</span>
+  <div class="q-text">'가라지의 비유'에서, 종들이 가라지를 거두어 낼까 묻자 집주인이 이른 말은?</div>
+  <ul class="q-options interactive" id="q35-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q35')">① 밀과 가라지를 모두 거두어서 곳간에 모아들여라.</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q35')">② 수확 때까지 둘 다 함께 자라도록 내버려두어라.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q35')">③ 지금 당장 가라지들을 골라 뽑아버려라.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q35')">④ 모두 거두어 내고 씨를 새로 뿌려라.</li>
+  </ul>
+  <button class="submit-btn" id="q35-submit" onclick="submitSingle('q35')">확인</button>
+  <div class="answer-box hidden" id="q35-answer"><div class="label">정답</div><div class="answer-text">②</div></div>
+  <div class="explain-box hidden" id="q35-explain"><div class="label">해설</div><p>마태 13,29-30: "아니다. 가라지를 거두어 내다가 밀까지 함께 뽑을 수 있다. <b>수확 때까지 둘 다 함께 자라도록 내버려두어라.</b>"</p></div>
+</div>
 
-  <div class="answer-box hidden" id="q18-answer">
-    <div class="label">정답</div>
-    <div class="answer-text">②</div>
-  </div>
-
-  <div class="explain-box hidden" id="q18-explain">
-    <div class="label">해설</div>
-    <p>마태 6,4 / 6,6: "<b>숨은 일도 보시는 네 아버지께서 너에게 갚아 주실 것이다.</b>"</p>
-    <p>자선과 기도 모두 남에게 보이려고 하지 말고 숨겨서 하라는 가르침입니다.</p>
+<!-- 36번 (빈칸 2개 → 2개 순서 선택) -->
+<div class="question-block" id="q36">
+  <span class="q-number">36번</span><span class="q-ref">마태 13,44-46</span>
+  <div class="q-text">하늘 나라에 대한 비유이다. ( )에 들어갈 말을 순서대로 선택하시오.</div>
+  <div class="q-passage">하늘 나라는 (<u>① &nbsp;&nbsp;&nbsp;&nbsp;</u>)과 같다. … 또 하늘 나라는 (<u>② &nbsp;&nbsp;&nbsp;&nbsp;</u>)과 같다.</div>
+  <ul class="q-options interactive" id="q36-options">
+    <li data-answer="1" onclick="toggleOrdered(this,'q36')">밭에 숨겨진 보물</li>
+    <li data-answer="2" onclick="toggleOrdered(this,'q36')">좋은 진주를 찾는 상인</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q36')">겨자씨 한 알</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q36')">바다에 던져 온갖 물고기를 모아들이는 그물</li>
+  </ul>
+  <button class="submit-btn" id="q36-submit" onclick="submitOrdered('q36',2)">확인</button>
+  <div class="answer-box hidden" id="q36-answer"><div class="label">정답</div><div class="answer-text">① 밭에 숨겨진 보물 ② 좋은 진주를 찾는 상인</div></div>
+  <div class="explain-box hidden" id="q36-explain"><div class="label">해설</div>
+    <p>마태 13,44: "하늘 나라는 <b>밭에 숨겨진 보물</b>과 같다."</p>
+    <p>마태 13,45: "또 하늘 나라는 <b>좋은 진주를 찾는 상인</b>과 같다."</p>
   </div>
 </div>
 
-<!-- 19번 -->
-<div class="question-block" id="q19">
-  <span class="q-number">19번</span>
-  <span class="q-ref">마태 6,20-21</span>
-  
+<!-- 37번 -->
+<div class="question-block" id="q37">
+  <span class="q-number">37번</span><span class="q-ref">마태 13,54-57</span>
+  <div class="q-text">예수님께서 고향에서 못마땅하게 여기는 이들에게 이르신 말씀은?</div>
+  <ul class="q-options interactive" id="q37-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q37')">① 내가 언제까지 너희를 참아 주어야 한다는 말이냐?</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q37')">② 예언자는 어디에서나 존경받지만 고향과 집안에서만은 존경받지 못한다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q37')">③ 너희에게 믿음이 생기도록 더 많은 기적을 보여 주겠다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q37')">④ 너희의 눈과 마음이 닫혀 있으니 발의 먼지를 털어 버리고 이 곳을 떠나겠다.</li>
+  </ul>
+  <button class="submit-btn" id="q37-submit" onclick="submitSingle('q37')">확인</button>
+  <div class="answer-box hidden" id="q37-answer"><div class="label">정답</div><div class="answer-text">②</div></div>
+  <div class="explain-box hidden" id="q37-explain"><div class="label">해설</div><p>마태 13,57: "<b>예언자는 어디에서나 존경받지만 고향과 집안에서만은 존경받지 못한다.</b>"</p></div>
+</div>
+
+<!-- 38번 (OX) -->
+<div class="question-block" id="q38">
+  <span class="q-number">38번</span><span class="q-ref">마태 14,15</span><span class="q-type">OX</span>
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">저녁때가 되자 예수님께서는 군중을 돌려보내시어, 마을로 가서 스스로 먹을거리를 사게 하셨다.</div>
+  <div class="ox-options" id="q38-ox">
+    <div class="ox-btn" data-value="O" onclick="selectOX(this,'q38')">O</div>
+    <div class="ox-btn" data-value="X" onclick="selectOX(this,'q38')">X</div>
+  </div>
+  <button class="submit-btn" id="q38-submit" onclick="submitOX('q38','X')">확인</button>
+  <div class="answer-box hidden" id="q38-answer"><div class="label">정답</div><div class="answer-text">X</div></div>
+  <div class="explain-box hidden" id="q38-explain"><div class="label">해설</div><p>마태 14,16: 제자들이 군중을 돌려보내자고 하자, 예수님께서는 "<b>너희가 그들에게 먹을 것을 주어라.</b>" 하셨습니다. 돌려보내신 것이 아닙니다.</p></div>
+</div>
+
+<div class="question-block" id="q39">
+  <span class="q-number">39번</span><span class="q-ref">마태 14,19</span><span class="q-type">OX</span>
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">예수님께서 빵 다섯 개와 물고기 두 마리를 손에 들고 하늘을 우러러 찬미를 드리신 다음 빵을 떼어 제자들에게 주시니, 제자들이 그것을 군중에게 나누어 주었다.</div>
+  <div class="ox-options" id="q39-ox"><div class="ox-btn" data-value="O" onclick="selectOX(this,'q39')">O</div><div class="ox-btn" data-value="X" onclick="selectOX(this,'q39')">X</div></div>
+  <button class="submit-btn" id="q39-submit" onclick="submitOX('q39','O')">확인</button>
+  <div class="answer-box hidden" id="q39-answer"><div class="label">정답</div><div class="answer-text">O</div></div>
+  <div class="explain-box hidden" id="q39-explain"><div class="label">해설</div><p>마태 14,19: 원문 그대로이므로 O가 정답입니다.</p></div>
+</div>
+<div class="question-block" id="q40">
+  <span class="q-number">40번</span><span class="q-ref">마태 14,20</span><span class="q-type">OX</span>
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">사람들은 모두 배불리 먹었다. 그리고 남은 조각을 모으니 열두 광주리에 가득 찼다.</div>
+  <div class="ox-options" id="q40-ox"><div class="ox-btn" data-value="O" onclick="selectOX(this,'q40')">O</div><div class="ox-btn" data-value="X" onclick="selectOX(this,'q40')">X</div></div>
+  <button class="submit-btn" id="q40-submit" onclick="submitOX('q40','O')">확인</button>
+  <div class="answer-box hidden" id="q40-answer"><div class="label">정답</div><div class="answer-text">O</div></div>
+  <div class="explain-box hidden" id="q40-explain"><div class="label">해설</div><p>마태 14,20: 원문 그대로이므로 O가 정답입니다.</p></div>
+</div>
+<div class="question-block" id="q41">
+  <span class="q-number">41번</span><span class="q-ref">마태 15,10-18</span>
   <div class="q-text">( )에 공통으로 들어갈 말은?</div>
-  
-  <div class="q-passage">
-    하늘에 (<u>&nbsp;&nbsp;&nbsp;</u>)을 쌓아라. 거기에서는 좀도 녹도 망가뜨리지 못하고, 도둑들이 뚫고 들어오지도 못하며 훔쳐 가지도 못한다. 사실 너의 (<u>&nbsp;&nbsp;&nbsp;</u>)이 있는 곳에 너의 마음도 있다.
-  </div>
-
-  <ul class="q-options interactive" id="q19-options">
-    <li data-correct="false" onclick="toggleSingle(this, 'q19')">① 업적</li>
-    <li data-correct="true" onclick="toggleSingle(this, 'q19')">② 보물</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q19')">③ 양식</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q19')">④ 명성</li>
+  <div class="q-passage">( )으로 들어가는 것이 사람을 더럽히지 않는다. 오히려 ( )에서 나오는 것이 사람을 더럽힌다.</div>
+  <ul class="q-options interactive" id="q41-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q41')">① 집</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q41')">② 손안</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q41')">③ 입</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q41')">④ 품속</li>
   </ul>
-
-  <button class="submit-btn" id="q19-submit" onclick="submitSingle('q19')">확인</button>
-
-  <div class="answer-box hidden" id="q19-answer">
-    <div class="label">정답</div>
-    <div class="answer-text">② 보물</div>
-  </div>
-
-  <div class="explain-box hidden" id="q19-explain">
-    <div class="label">해설</div>
-    <p>마태 6,20-21: "하늘에 <b>보물</b>을 쌓아라. 사실 너의 <b>보물</b>이 있는 곳에 너의 마음도 있다."</p>
-  </div>
+  <button class="submit-btn" id="q41-submit" onclick="submitSingle('q41')">확인</button>
+  <div class="answer-box hidden" id="q41-answer"><div class="label">정답</div><div class="answer-text">③ 입</div></div>
+  <div class="explain-box hidden" id="q41-explain"><div class="label">해설</div><p>마태 15,11: "<b>입</b>으로 들어가는 것이 사람을 더럽히지 않는다. 오히려 <b>입</b>에서 나오는 것이 사람을 더럽힌다."</p></div>
 </div>
-
-<!-- 20번 -->
-<div class="question-block" id="q20">
-  <span class="q-number">20번</span>
-  <span class="q-ref">마태 7,12</span>
-  
-  <div class="q-text">'황금률'이라 불리는 마태 7,12의 말씀이다. ( )에 들어갈 말은?</div>
-  
-  <div class="q-passage">
-    그러므로 (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)<br>
-    이것이 율법과 예언서의 정신이다.
-  </div>
-
-  <ul class="q-options interactive" id="q20-options">
-    <li data-correct="false" onclick="toggleSingle(this, 'q20')">① 너희는 원수를 사랑하고 박해하는 자를 위하여 기도하여라.</li>
-    <li data-correct="true" onclick="toggleSingle(this, 'q20')">② 남이 너희에게 해 주기를 바라는 그대로 너희도 남에게 해 주어라.</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q20')">③ 너희 아버지께서 완전하신 것처럼 너희도 완전한 사람이 되어라.</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q20')">④ 먼저 하느님의 나라와 그분의 의로움을 찾아라.</li>
+<div class="question-block" id="q42">
+  <span class="q-number">42번</span><span class="q-ref">마태 15,21-28</span>
+  <div class="q-text">'가나안 여자의 믿음'에 대한 내용으로 맞는 것은?</div>
+  <ul class="q-options interactive" id="q42-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q42')">① 가나안 부인이 예수님께 딸의 나병을 고쳐 달라고 소리를 질렀다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q42')">② 예수님께서 부인에게 딸을 데려오라고 말씀하셨다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q42')">③ 그 여자는 강아지들도 주인의 상에서 떨어지는 부스러기는 먹지 않는다고 말하였다.</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q42')">④ 예수님께서 "아, 여인아! 네 믿음이 참으로 크구나. 네가 바라는 대로 될 것이다." 하셨다.</li>
   </ul>
-
-  <button class="submit-btn" id="q20-submit" onclick="submitSingle('q20')">확인</button>
-
-  <div class="answer-box hidden" id="q20-answer">
-    <div class="label">정답</div>
-    <div class="answer-text">②</div>
-  </div>
-
-  <div class="explain-box hidden" id="q20-explain">
-    <div class="label">해설</div>
-    <p>마태 7,12: "그러므로 <b>남이 너희에게 해 주기를 바라는 그대로 너희도 남에게 해 주어라.</b> 이것이 율법과 예언서의 정신이다."</p>
-    <p>이 말씀은 '황금률(Golden Rule)'로 불리며, 모든 윤리의 핵심을 요약합니다.</p>
-  </div>
+  <button class="submit-btn" id="q42-submit" onclick="submitSingle('q42')">확인</button>
+  <div class="answer-box hidden" id="q42-answer"><div class="label">정답</div><div class="answer-text">④</div></div>
+  <div class="explain-box hidden" id="q42-explain"><div class="label">해설</div><p>마태 15,28: "예수님께서 그 여자에게 말씀하셨다. '<b>아, 여인아! 네 믿음이 참으로 크구나. 네가 바라는 대로 될 것이다.</b>'"</p><p>③은 '먹지 않는다'가 아니라 '먹습니다'가 맞습니다. 여자가 "먹습니다"라며 간청한 것입니다.</p></div>
 </div>
-
-<!-- 21번 -->
-<div class="question-block" id="q21">
-  <span class="q-number">21번</span>
-  <span class="q-ref">마태 7,24</span>
-  
-  <div class="q-text">예수님께서 자기 집을 반석 위에 지은 슬기로운 사람과 같은 것이라고 한 이는?</div>
-
-  <ul class="q-options interactive" id="q21-options">
-    <li data-correct="false" onclick="toggleSingle(this, 'q21')">① 예수님께 '주님, 주님!' 하고 말하는 이</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q21')">② 주님의 이름으로 예언을 하는 이</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q21')">③ 주님의 이름으로 많은 기적을 일으키는 이</li>
-    <li data-correct="true" onclick="toggleSingle(this, 'q21')">④ 예수님의 말씀을 듣고 실행하는 이</li>
+<div class="question-block" id="q43">
+  <span class="q-number">43번</span><span class="q-ref">마태 16,18-19</span>
+  <div class="q-text">( )에 들어갈 말이 바르게 연결된 것은?</div>
+  <div class="q-passage">너는 베드로이다. 내가 이 반석 위에 내 (<u>&nbsp;&nbsp;</u>)를 세울 터인즉, 저승의 세력도 그것을 이기지 못할 것이다. 또 나는 너에게 하늘 나라의 (<u>&nbsp;&nbsp;</u>)를 주겠다.</div>
+  <ul class="q-options interactive" id="q43-options">
+    <li data-correct="true" onclick="toggleSingle(this,'q43')">① 교회 – 열쇠</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q43')">② 성채 – 열쇠</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q43')">③ 교회 – 반지</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q43')">④ 성채 – 반지</li>
   </ul>
-
-  <button class="submit-btn" id="q21-submit" onclick="submitSingle('q21')">확인</button>
-
-  <div class="answer-box hidden" id="q21-answer">
-    <div class="label">정답</div>
-    <div class="answer-text">④</div>
-  </div>
-
-  <div class="explain-box hidden" id="q21-explain">
-    <div class="label">해설</div>
-    <p>마태 7,24: "그러므로 내가 한 이 말을 <b>듣고 실행하는</b> 이는 모두 자기 집을 반석 위에 지은 슬기로운 사람과 같을 것이다."</p>
-    <p>말씀을 듣기만 하는 것이 아니라 '실행'까지 해야 한다는 가르침입니다.</p>
-  </div>
+  <button class="submit-btn" id="q43-submit" onclick="submitSingle('q43')">확인</button>
+  <div class="answer-box hidden" id="q43-answer"><div class="label">정답</div><div class="answer-text">① 교회 – 열쇠</div></div>
+  <div class="explain-box hidden" id="q43-explain"><div class="label">해설</div><p>마태 16,18-19: "내가 이 반석 위에 내 <b>교회</b>를 세울 터인즉... 또 나는 너에게 하늘 나라의 <b>열쇠</b>를 주겠다."</p></div>
 </div>
-
-<!-- 22번 -->
-<div class="question-block" id="q22">
-  <span class="q-number">22번</span>
-  <span class="q-ref">마태 8,8</span>
-  
-  <div class="q-text">백인대장이 예수님께 한 대답이다. ( )에 들어갈 말은?</div>
-  
-  <div class="q-passage">
-    주님, 저는 주님을 제 지붕 아래로 모실 자격이 없습니다. (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>) 그러면 제 종이 나을 것입니다.
-  </div>
-
-  <ul class="q-options interactive" id="q22-options">
-    <li data-correct="false" onclick="toggleSingle(this, 'q22')">① 다만 저에게 손을 얹어 주십시오.</li>
-    <li data-correct="true" onclick="toggleSingle(this, 'q22')">② 그저 한 말씀만 해 주십시오.</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q22')">③ 저를 위해 기도해 주십시오.</li>
-    <li data-correct="false" onclick="toggleSingle(this, 'q22')">④ 제 종에게 직접 찾아가 주십시오.</li>
+<div class="question-block" id="q44">
+  <span class="q-number">44번</span><span class="q-ref">마태 16,24-27</span>
+  <div class="q-text">( )에 들어갈 말을 순서대로 선택하시오.</div>
+  <div class="q-passage">* 누구든지 내 뒤를 따라오려면, (<u>① &nbsp;&nbsp;&nbsp;&nbsp;</u>) (16,24)<br>* 사람의 아들이 아버지의 영광에 싸여 천사들과 함께 올 터인데, 그때에 (<u>② &nbsp;&nbsp;&nbsp;&nbsp;</u>) (16,27)</div>
+  <ul class="q-options interactive" id="q44-options">
+    <li data-answer="1" onclick="toggleOrdered(this,'q44')">자신을 버리고 제 십자가를 지고 나를 따라야 한다.</li>
+    <li data-answer="2" onclick="toggleOrdered(this,'q44')">각자에게 그 행실대로 갚을 것이다.</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q44')">먼저 하느님의 나라와 그분의 의로움을 찾아야 한다.</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q44')">영원한 생명을 얻어 하늘 나라에 들어갈 것이다.</li>
   </ul>
-
-  <button class="submit-btn" id="q22-submit" onclick="submitSingle('q22')">확인</button>
-
-  <div class="answer-box hidden" id="q22-answer">
-    <div class="label">정답</div>
-    <div class="answer-text">② 그저 한 말씀만 해 주십시오.</div>
-  </div>
-
-  <div class="explain-box hidden" id="q22-explain">
-    <div class="label">해설</div>
-    <p>마태 8,8: "주님, 저는 주님을 제 지붕 아래로 모실 자격이 없습니다. <b>그저 한 말씀만 해 주십시오.</b> 그러면 제 종이 나을 것입니다."</p>
-    <p>이 말은 미사 중 영성체 전 신자들의 기도로도 사용됩니다.</p>
-  </div>
+  <button class="submit-btn" id="q44-submit" onclick="submitOrdered('q44',2)">확인</button>
+  <div class="answer-box hidden" id="q44-answer"><div class="label">정답</div><div class="answer-text">① 자신을 버리고 제 십자가를 지고 나를 따라야 한다. ② 각자에게 그 행실대로 갚을 것이다.</div></div>
+  <div class="explain-box hidden" id="q44-explain"><div class="label">해설</div><p>마태 16,24: "누구든지 내 뒤를 따라오려면, <b>자신을 버리고 제 십자가를 지고 나를 따라야 한다.</b>"</p><p>마태 16,27: "그때에 <b>각자에게 그 행실대로 갚을 것이다.</b>"</p></div>
 </div>
 
 <footer>
   <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집 | 천주교 수원교구 복음화국</p>
-  <p style="margin-top:8px;">
-    <a href="study_day3.html">← 이전</a> | 
-    <a href="study_day5.html">다음 →</a>
-  </p>
+  <p style="margin-top:8px;"><a href="study_day3.html">← 이전</a> | <a href="study_day5.html">다음 →</a></p>
 </footer>
 
 <script>
-function toggleSingle(selected, qId) {
-  const optionsList = document.getElementById(qId + '-options');
-  if (optionsList.classList.contains('solved')) return;
-  optionsList.querySelectorAll('li').forEach(li => li.classList.remove('multi-selected'));
-  selected.classList.add('multi-selected');
-}
-
-function submitSingle(qId) {
-  const optionsList = document.getElementById(qId + '-options');
-  if (optionsList.classList.contains('solved')) return;
-  const selected = optionsList.querySelector('li.multi-selected');
-  if (!selected) return;
-
-  const isCorrect = selected.dataset.correct === 'true';
-  optionsList.classList.add('solved');
-
-  if (isCorrect) {
-    optionsList.querySelectorAll('li').forEach(li => {
-      li.classList.remove('multi-selected');
-      if (li === selected) li.classList.add('selected-correct');
-      else li.classList.add('disabled');
-    });
-  } else {
-    optionsList.querySelectorAll('li').forEach(li => {
-      li.classList.remove('multi-selected');
-      if (li === selected) li.classList.add('selected-wrong');
-      else if (li.dataset.correct === 'true') li.classList.add('selected-correct');
-      else li.classList.add('disabled');
-    });
-  }
-  document.getElementById(qId + '-answer').classList.remove('hidden');
-  document.getElementById(qId + '-explain').classList.remove('hidden');
-  document.getElementById(qId + '-submit').classList.add('hidden');
-}
+function toggleSingle(s,qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;o.querySelectorAll('li').forEach(l=>l.classList.remove('multi-selected'));s.classList.add('multi-selected');}
+function submitSingle(qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;const s=o.querySelector('li.multi-selected');if(!s)return;const c=s.dataset.correct==='true';o.classList.add('solved');o.querySelectorAll('li').forEach(l=>{l.classList.remove('multi-selected');if(c){if(l===s)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(l===s)l.classList.add('selected-wrong');else if(l.dataset.correct==='true')l.classList.add('selected-correct');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+// OX
+function selectOX(btn,qId){const c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;c.querySelectorAll('.ox-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');}
+function submitOX(qId,ans){const c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;const s=c.querySelector('.ox-btn.selected');if(!s)return;c.classList.add('solved');c.querySelectorAll('.ox-btn').forEach(b=>{b.classList.remove('selected');if(b.dataset.value===ans)b.classList.add('ox-correct');else if(b===s&&b.dataset.value!==ans)b.classList.add('ox-wrong');else b.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+// 순서대로 N개 선택
+const orderedState={};
+function toggleOrdered(s,qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId])orderedState[qId]=[];const idx=orderedState[qId].indexOf(s);if(idx!==-1){orderedState[qId].splice(idx,1);renderOP(qId);return;}orderedState[qId].push(s);renderOP(qId);}
+function renderOP(qId){const o=document.getElementById(qId+'-options');o.querySelectorAll('li').forEach(l=>{l.classList.remove('multi-selected','order-1','order-2');});orderedState[qId].forEach((l,i)=>{l.classList.add('multi-selected');l.classList.add('order-'+(i+1));});}
+function submitOrdered(qId,count){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');let ac=true;orderedState[qId].forEach((l,i)=>{if(parseInt(l.dataset.answer)!==(i+1))ac=false;});o.querySelectorAll('li').forEach(l=>{l.classList.remove('multi-selected','order-1','order-2');const a=parseInt(l.dataset.answer);const pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
 </script>
-
 </body>
 </html>
