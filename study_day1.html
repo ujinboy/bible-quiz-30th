@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>30차 성경잔치 공부 1일차 (마태오 복음서)</title>
 <meta property="og:title" content="30차 성경잔치 공부 1일차">
-<meta property="og:description" content="마태오 복음서 1~6번 문제">
+<meta property="og:description" content="마태오 복음서 1~11번 문제">
 <meta property="og:image" content="https://ujinboy.github.io/bible-quiz-30th/images/1.jpg">
 <meta property="og:url" content="https://ujinboy.github.io/bible-quiz-30th/study_day1.html">
 <meta property="og:type" content="website">
@@ -186,6 +186,18 @@ nav a.current {
 .submit-btn:hover {
   background: #6d5310;
 }
+/* Ordered selection */
+.q-options.interactive li.order-1::before { content: "① "; font-weight: bold; color: #1565c0; }
+.q-options.interactive li.order-2::before { content: "② "; font-weight: bold; color: #1565c0; }
+/* 순서 맞추기 */
+.order-items { list-style: none; margin-bottom: 16px; }
+.order-items li { padding: 10px 14px; margin-bottom: 8px; border-radius: 6px; font-size: 0.92em; background: #fafafa; border: 1px solid #ddd; cursor: pointer; transition: background 0.2s; }
+.order-items li:hover { background: #f0ebe3; border-color: #c0a060; }
+.order-items li.picked { background: #e3f2fd; border: 2px solid #42a5f5; }
+.order-items li.order-correct { background: #e8f5e9; border: 2px solid #4caf50; font-weight: 600; }
+.order-items li.order-wrong { background: #ffebee; border: 2px solid #e57373; }
+.order-items li .pick-num { display: inline-block; background: #42a5f5; color: #fff; font-size: 0.75em; font-weight: bold; width: 20px; height: 20px; line-height: 20px; text-align: center; border-radius: 50%; margin-right: 8px; }
+.order-items li.disabled { pointer-events: none; opacity: 0.7; }
 .hidden { display: none; }
 .answer-box {
   background: #e3f2e8;
@@ -248,7 +260,7 @@ footer a {
 
 <header>
   <h1>30차 성경잔치 공부 1일차</h1>
-  <p>마태오 복음서 (1~6번)</p>
+  <p>마태오 복음서 (1~11번)</p>
 </header>
 
 <nav>
@@ -473,6 +485,85 @@ footer a {
   </div>
 </div>
 
+<!-- 7번 (사지선다) -->
+<div class="question-block" id="q7">
+  <span class="q-number">7번</span>
+  <span class="q-ref">마태 3,2</span>
+  <div class="q-text">세례자 요한이 유다 광야에서 선포한 말이다. ( )에 들어갈 말은?</div>
+  <div class="q-passage">"회개하여라. (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)가 가까이 왔다."</div>
+  <ul class="q-options interactive" id="q7-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q7')">① 하느님 나라</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q7')">② 하늘 나라</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q7')">③ 구원의 날</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q7')">④ 심판의 때</li>
+  </ul>
+  <button class="submit-btn" id="q7-submit" onclick="submitSingle('q7')">확인</button>
+  <div class="answer-box hidden" id="q7-answer"><div class="label">정답</div><div class="answer-text">② 하늘 나라</div></div>
+  <div class="explain-box hidden" id="q7-explain"><div class="label">해설</div><p>마태 3,2: "회개하여라. <b>하늘 나라</b>가 가까이 왔다."</p><p>마태오 복음서는 '하느님 나라' 대신 '하늘 나라'라는 표현을 사용합니다.</p></div>
+</div>
+
+<!-- 8번 (복수선택) -->
+<div class="question-block" id="q8">
+  <span class="q-number">8번</span><span class="q-ref">마태 3,7-11</span><span class="q-type">복수선택</span>
+  <div class="q-text">요한이 바리사이와 사두가이에게 한 말을 모두 고르시오.</div>
+  <ul class="q-options interactive" id="q8-options">
+    <li data-correct="true" onclick="toggleMulti(this,'q8')">① 회개에 합당한 열매를 맺어라.</li>
+    <li data-correct="false" onclick="toggleMulti(this,'q8')">② 너희는 깨끗하니 세례를 받을 필요가 없다.</li>
+    <li data-correct="false" onclick="toggleMulti(this,'q8')">③ 나는 너희를 회개시키려고 성령과 불로 세례를 준다.</li>
+    <li data-correct="true" onclick="toggleMulti(this,'q8')">④ 내 뒤에 오시는 분은 나보다 더 큰 능력을 지니신 분이시다.</li>
+  </ul>
+  <button class="submit-btn" id="q8-submit" onclick="submitMulti('q8')">확인</button>
+  <div class="answer-box hidden" id="q8-answer"><div class="label">정답</div><div class="answer-text">①, ④</div></div>
+  <div class="explain-box hidden" id="q8-explain"><div class="label">해설</div><p>마태 3,8: "회개에 합당한 <b>열매를 맺어라</b>."</p><p>마태 3,11: "내 뒤에 오시는 분은 나보다 더 <b>큰 능력</b>을 지니신 분이시다."</p><div class="wrong-reason"><p>② 세례를 거부하지 않았습니다.</p><p>③ 성령과 불로 세례를 주시는 분은 요한 뒤에 오시는 분(예수님)입니다.</p></div></div>
+</div>
+
+<!-- 9번 (순서 맞추기) -->
+<div class="question-block" id="q9">
+  <span class="q-number">9번</span><span class="q-ref">마태 3,13-17</span><span class="q-type">순서</span>
+  <div class="q-text">예수님께서 요한에게 세례를 받으시려고 찾아가셨을 때의 일을 순서대로 선택하시오.</div>
+  <ul class="order-items" id="q9-items">
+    <li data-order="3" onclick="pickOrder(this,'q9')">① 하늘에서 "이는 내가 사랑하는 아들, 내 마음에 드는 아들이다." 소리가 들려왔다.</li>
+    <li data-order="1" onclick="pickOrder(this,'q9')">② 예수님께서는 세례를 받으시고 곧 물에서 올라오셨다. 그때 하늘이 열렸다.</li>
+    <li data-order="0" onclick="pickOrder(this,'q9')">③ 요한은 "제가 선생님께 세례를 받아야 할 터인데" 하면서 예수님을 말렸다.</li>
+    <li data-order="2" onclick="pickOrder(this,'q9')">④ 하느님의 영이 비둘기처럼 당신 위로 내려오시는 것을 보셨다.</li>
+  </ul>
+  <button class="submit-btn" id="q9-submit" onclick="submitOrder('q9')">확인</button>
+  <div class="answer-box hidden" id="q9-answer"><div class="label">정답</div><div class="answer-text">③ → ② → ④ → ①</div></div>
+  <div class="explain-box hidden" id="q9-explain"><div class="label">해설</div><p>1. 요한이 예수님을 말림 (3,14)<br>2. 세례 받으시고 물에서 올라오심, 하늘 열림 (3,16a)<br>3. 하느님의 영이 비둘기처럼 내려오심 (3,16b)<br>4. 하늘에서 소리 (3,17)</p></div>
+</div>
+
+<!-- 10번 (사지선다) -->
+<div class="question-block" id="q10">
+  <span class="q-number">10번</span><span class="q-ref">마태 4,4</span>
+  <div class="q-text">유혹자가 "이 돌들에게 빵이 되라고 해 보시오" 하자, 예수님 대답의 ( )에 들어갈 말은?</div>
+  <div class="q-passage">성경에 기록되어 있다. "사람은 빵만으로 살지 않고 (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)"</div>
+  <ul class="q-options interactive" id="q10-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q10')">① 하느님의 은총으로 산다.</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q10')">② 하느님의 입에서 나오는 모든 말씀으로 산다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q10')">③ 성령의 힘으로 산다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q10')">④ 기도와 단식으로 산다.</li>
+  </ul>
+  <button class="submit-btn" id="q10-submit" onclick="submitSingle('q10')">확인</button>
+  <div class="answer-box hidden" id="q10-answer"><div class="label">정답</div><div class="answer-text">② 하느님의 입에서 나오는 모든 말씀으로 산다.</div></div>
+  <div class="explain-box hidden" id="q10-explain"><div class="label">해설</div><p>마태 4,4: "사람은 빵만으로 살지 않고 <b>하느님의 입에서 나오는 모든 말씀으로 산다</b>." (신명 8,3 인용)</p></div>
+</div>
+
+<!-- 11번 (2개 순서 선택) -->
+<div class="question-block" id="q11">
+  <span class="q-number">11번</span><span class="q-ref">마태 4,19-20</span>
+  <div class="q-text">예수님께서 베드로와 안드레아에게 이르신 말씀(①)과 그들의 행동(②)을 순서대로 선택하시오.</div>
+  <div class="q-passage">예수님께서 이르셨다. "나를 따라오너라. (<u>① &nbsp;&nbsp;&nbsp;&nbsp;</u>)" 그러자 그들은 (<u>② &nbsp;&nbsp;&nbsp;&nbsp;</u>)</div>
+  <ul class="q-options interactive" id="q11-options">
+    <li data-answer="1" onclick="toggleOrdered(this,'q11')">내가 너희를 사람 낚는 어부로 만들겠다.</li>
+    <li data-answer="2" onclick="toggleOrdered(this,'q11')">곧바로 그물을 버리고 예수님을 따랐다.</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q11')">내가 너희에게 하늘 나라의 열쇠를 주겠다.</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q11')">배에서 내려 예수님께 걸어갔다.</li>
+  </ul>
+  <button class="submit-btn" id="q11-submit" onclick="submitOrdered('q11',2)">확인</button>
+  <div class="answer-box hidden" id="q11-answer"><div class="label">정답</div><div class="answer-text">① 내가 너희를 사람 낚는 어부로 만들겠다. ② 곧바로 그물을 버리고 예수님을 따랐다.</div></div>
+  <div class="explain-box hidden" id="q11-explain"><div class="label">해설</div><p>마태 4,19: "나를 따라오너라. <b>내가 너희를 사람 낚는 어부로 만들겠다.</b>"</p><p>마태 4,20: "그러자 그들은 <b>곧바로 그물을 버리고 예수님을 따랐다.</b>"</p></div>
+</div>
+
 <footer>
   <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집 | 천주교 수원교구 복음화국</p>
   <p style="margin-top:8px;">
@@ -482,118 +573,18 @@ footer a {
 </footer>
 
 <script>
-// 단일선택: 하나만 선택 가능
-function toggleSingle(selected, qId) {
-  const optionsList = document.getElementById(qId + '-options');
-  if (optionsList.classList.contains('solved')) return;
-
-  // 이전 선택 해제
-  optionsList.querySelectorAll('li').forEach(li => {
-    li.classList.remove('multi-selected');
-  });
-  // 새로 선택
-  selected.classList.add('multi-selected');
-}
-
-// 단일선택 확인
-function submitSingle(qId) {
-  const optionsList = document.getElementById(qId + '-options');
-  if (optionsList.classList.contains('solved')) return;
-
-  const selected = optionsList.querySelector('li.multi-selected');
-  if (!selected) return;
-
-  const isCorrect = selected.dataset.correct === 'true';
-  optionsList.classList.add('solved');
-
-  if (isCorrect) {
-    // 정답
-    optionsList.querySelectorAll('li').forEach(li => {
-      li.classList.remove('multi-selected');
-      if (li === selected) {
-        li.classList.add('selected-correct');
-      } else {
-        li.classList.add('disabled');
-      }
-    });
-  } else {
-    // 오답 — 선택한 것 빨강, 정답 초록 표시
-    optionsList.querySelectorAll('li').forEach(li => {
-      li.classList.remove('multi-selected');
-      if (li === selected) {
-        li.classList.add('selected-wrong');
-      } else if (li.dataset.correct === 'true') {
-        li.classList.add('selected-correct');
-      } else {
-        li.classList.add('disabled');
-      }
-    });
-  }
-  document.getElementById(qId + '-answer').classList.remove('hidden');
-  document.getElementById(qId + '-explain').classList.remove('hidden');
-  document.getElementById(qId + '-submit').classList.add('hidden');
-}
-
-// 복수선택 문제
-function toggleMulti(selected, qId) {
-  const optionsList = document.getElementById(qId + '-options');
-  if (optionsList.classList.contains('solved')) return;
-
-  // 토글 선택 상태
-  selected.classList.toggle('multi-selected');
-}
-
-function submitMulti(qId) {
-  const optionsList = document.getElementById(qId + '-options');
-  if (optionsList.classList.contains('solved')) return;
-
-  const allItems = optionsList.querySelectorAll('li');
-  const selected = optionsList.querySelectorAll('li.multi-selected');
-
-  if (selected.length === 0) return; // 아무것도 선택 안 한 경우
-
-  // 정답 확인: 선택한 것이 모두 correct이고, correct를 모두 선택했는지
-  let allCorrectSelected = true;
-  let noWrongSelected = true;
-
-  allItems.forEach(li => {
-    const isCorrect = li.dataset.correct === 'true';
-    const isSelected = li.classList.contains('multi-selected');
-    if (isCorrect && !isSelected) allCorrectSelected = false;
-    if (!isCorrect && isSelected) noWrongSelected = false;
-  });
-
-  optionsList.classList.add('solved');
-
-  if (allCorrectSelected && noWrongSelected) {
-    // 정답
-    allItems.forEach(li => {
-      li.classList.remove('multi-selected');
-      if (li.dataset.correct === 'true') {
-        li.classList.add('selected-correct');
-      } else {
-        li.classList.add('disabled');
-      }
-    });
-  } else {
-    // 오답 — 틀린 선택 빨강, 정답 초록 표시
-    allItems.forEach(li => {
-      const isCorrect = li.dataset.correct === 'true';
-      const isSelected = li.classList.contains('multi-selected');
-      li.classList.remove('multi-selected');
-      if (isCorrect) {
-        li.classList.add('selected-correct');
-      } else if (isSelected) {
-        li.classList.add('selected-wrong');
-      } else {
-        li.classList.add('disabled');
-      }
-    });
-  }
-  document.getElementById(qId + '-answer').classList.remove('hidden');
-  document.getElementById(qId + '-explain').classList.remove('hidden');
-  document.getElementById(qId + '-submit').classList.add('hidden');
-}
+function toggleSingle(s,qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;o.querySelectorAll('li').forEach(l=>l.classList.remove('multi-selected'));s.classList.add('multi-selected');}
+function submitSingle(qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;const s=o.querySelector('li.multi-selected');if(!s)return;const c=s.dataset.correct==='true';o.classList.add('solved');o.querySelectorAll('li').forEach(l=>{l.classList.remove('multi-selected');if(c){if(l===s)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(l===s)l.classList.add('selected-wrong');else if(l.dataset.correct==='true')l.classList.add('selected-correct');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+function toggleMulti(s,qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;s.classList.toggle('multi-selected');}
+function submitMulti(qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;const a=o.querySelectorAll('li'),s=o.querySelectorAll('li.multi-selected');if(s.length===0)return;let ac=true,nw=true;a.forEach(l=>{const c=l.dataset.correct==='true',sel=l.classList.contains('multi-selected');if(c&&!sel)ac=false;if(!c&&sel)nw=false;});o.classList.add('solved');a.forEach(l=>{const c=l.dataset.correct==='true',sel=l.classList.contains('multi-selected');l.classList.remove('multi-selected');if(ac&&nw){if(c)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(c)l.classList.add('selected-correct');else if(sel)l.classList.add('selected-wrong');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+const orderState={};
+function pickOrder(s,qId){const items=document.getElementById(qId+'-items');if(items.classList.contains('solved'))return;if(!orderState[qId])orderState[qId]=[];const idx=orderState[qId].indexOf(s);if(idx!==-1){orderState[qId].splice(idx,1);renderOP2(qId);return;}orderState[qId].push(s);renderOP2(qId);}
+function renderOP2(qId){const items=document.getElementById(qId+'-items');items.querySelectorAll('li').forEach(li=>{li.classList.remove('picked');const e=li.querySelector('.pick-num');if(e)e.remove();});orderState[qId].forEach((li,i)=>{li.classList.add('picked');const b=document.createElement('span');b.className='pick-num';b.textContent=i+1;li.insertBefore(b,li.firstChild);});}
+function submitOrder(qId){const items=document.getElementById(qId+'-items');if(items.classList.contains('solved'))return;if(!orderState[qId]||orderState[qId].length!==items.querySelectorAll('li').length)return;items.classList.add('solved');orderState[qId].forEach((li,i)=>{const cp=parseInt(li.dataset.order);if(cp===i)li.classList.add('order-correct');else li.classList.add('order-wrong');li.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+const orderedState={};
+function toggleOrdered(s,qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId])orderedState[qId]=[];const idx=orderedState[qId].indexOf(s);if(idx!==-1){orderedState[qId].splice(idx,1);renderOP3(qId);return;}orderedState[qId].push(s);renderOP3(qId);}
+function renderOP3(qId){const o=document.getElementById(qId+'-options');o.querySelectorAll('li').forEach(l=>{l.classList.remove('multi-selected','order-1','order-2');});orderedState[qId].forEach((l,i)=>{l.classList.add('multi-selected');l.classList.add('order-'+(i+1));});}
+function submitOrdered(qId,count){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');o.querySelectorAll('li').forEach(l=>{l.classList.remove('multi-selected','order-1','order-2');const a=parseInt(l.dataset.answer);const pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
 </script>
 
 </body>
