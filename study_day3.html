@@ -132,8 +132,22 @@ nav a.current { background: #8b6914; color: #fff; }
 .input-group input.input-wrong { border: 2px solid #e57373; background: #ffebee; }
 /* Crossword grid */
 .cw-gray { width: 32px; height: 32px; background: #e0e0e0; border: 1px solid #ccc; }
-.cw-white { width: 32px; height: 32px; background: #fff; border: 1px solid #999; text-align: center; vertical-align: middle; }
-.cw-marker { font-size: 0.7em; font-weight: bold; color: #555; }
+.cw-white { width: 32px; height: 32px; background: #fff; border: 1px solid #999; text-align: center; vertical-align: middle; font-weight: bold; color: #1565c0; font-size: 0.95em; }
+.cw-white.cw-correct { background: #e8f5e9; color: #2e7d32; }
+.cw-white.cw-wrong { background: #ffebee; color: #c62828; }
+/* Crossword clue choices */
+.cw-clue-block { margin-bottom: 12px; }
+.cw-clue-label { font-size: 0.88em; color: #444; margin-bottom: 6px; }
+.cw-choices { display: flex; gap: 8px; }
+.cw-choice {
+  padding: 6px 14px; border: 1px solid #ddd; border-radius: 6px;
+  background: #fafafa; font-size: 0.9em; cursor: pointer; transition: all 0.2s;
+}
+.cw-choice:hover { background: #f0ebe3; border-color: #c0a060; }
+.cw-choice.picked { background: #e3f2fd; border: 2px solid #42a5f5; font-weight: 600; }
+.cw-choice.cw-choice-correct { background: #e8f5e9; border: 2px solid #4caf50; }
+.cw-choice.cw-choice-wrong { background: #ffebee; border: 2px solid #e57373; }
+.cw-choice.disabled { pointer-events: none; opacity: 0.7; }
 .submit-btn {
   display: inline-block; margin-top: 10px; padding: 8px 20px;
   background: #8b6914; color: #fff; border: none;
@@ -363,64 +377,69 @@ footer a { color: #8b6914; text-decoration: none; margin: 0 8px; }
   </div>
 </div>
 
-<!-- 17번 (십자말풀이 - 텍스트 입력) -->
+<!-- 17번 (십자말풀이 - 객관식 + 격자 채우기) -->
 <div class="question-block" id="q17">
   <span class="q-number">17번</span>
   <span class="q-ref">마태 1~5장</span>
-  <span class="q-type">빈칸</span>
+  <span class="q-type">십자말</span>
   
-  <div class="q-text">십자말풀이 열쇠를 보고, 각 빈칸에 알맞은 단어를 입력하시오.</div>
+  <div class="q-text">각 열쇠의 보기를 선택하면 격자에 글자가 채워집니다.</div>
   
-  <table style="border-collapse:collapse; margin:0 auto 14px; font-size:0.8em;">
+  <table style="border-collapse:collapse; margin:0 auto 14px; font-size:0.85em;">
     <tr>
-      <td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white cw-marker">㉰</td><td class="cw-gray"></td><td class="cw-gray"></td>
+      <td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white" id="c17-1-7"></td><td class="cw-gray"></td><td class="cw-gray"></td>
     </tr>
     <tr>
-      <td class="cw-white cw-marker">㉮</td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td>
+      <td class="cw-white" id="c17-2-1"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white" id="c17-2-7"></td><td class="cw-gray"></td><td class="cw-gray"></td>
     </tr>
     <tr>
-      <td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white cw-marker">①</td><td class="cw-white"></td><td class="cw-white"></td><td class="cw-white"></td><td class="cw-white"></td>
+      <td class="cw-white" id="c17-3-1"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white" id="c17-3-5"></td><td class="cw-white" id="c17-3-6"></td><td class="cw-white" id="c17-3-7"></td><td class="cw-white" id="c17-3-8"></td><td class="cw-white" id="c17-3-9"></td>
     </tr>
     <tr>
-      <td class="cw-white cw-marker">②</td><td class="cw-white"></td><td class="cw-white cw-marker">㉯</td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td>
+      <td class="cw-white" id="c17-4-1"></td><td class="cw-white" id="c17-4-2"></td><td class="cw-white" id="c17-4-3"></td><td class="cw-white" id="c17-4-4"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white" id="c17-4-7"></td><td class="cw-gray"></td><td class="cw-gray"></td>
     </tr>
     <tr>
-      <td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white"></td><td class="cw-gray"></td><td class="cw-gray"></td>
+      <td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white" id="c17-5-3"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-gray"></td><td class="cw-white" id="c17-5-7"></td><td class="cw-gray"></td><td class="cw-gray"></td>
     </tr>
   </table>
 
-  <div class="q-passage">
-    <b>가로 열쇠:</b><br>
-    ① ○○○○○, 자비로운 사람들! 그들은 자비를 입을 것이다. (5,7)<br>
-    ② 다윗의 자손이며 ○○○○의 자손이신 예수 그리스도의 족보. (1,1)<br><br>
-    <b>세로 열쇠:</b><br>
-    ㉮ ○○○가 태어날 곳이 어디인지 물어보았다. (2,4)<br>
-    ㉯ 울음소리와 애끊는 통곡 소리. ○○이 자식들을 잃고 운다. (2,18)<br>
-    ㉰ 너를 고소한 자와 함께 법정으로 가는 도중에 얼른 ○○○ ○○. (5,25)
+  <div class="cw-clue-block">
+    <div class="cw-clue-label">① 가로: ○○○○○, 자비로운 사람들! (5,7)</div>
+    <div class="cw-choices" id="q17-clue1">
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue1','행복하여라')">행복하여라</button>
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue1','기뻐하여라')">기뻐하여라</button>
+    </div>
+  </div>
+  <div class="cw-clue-block">
+    <div class="cw-clue-label">② 가로: 다윗의 자손이며 ○○○○의 자손 (1,1)</div>
+    <div class="cw-choices" id="q17-clue2">
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue2','아브라함')">아브라함</button>
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue2','이스라엘')">이스라엘</button>
+    </div>
+  </div>
+  <div class="cw-clue-block">
+    <div class="cw-clue-label">㉮ 세로: ○○○가 태어날 곳이 어디인지 (2,4)</div>
+    <div class="cw-choices" id="q17-clue3">
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue3','메시아')">메시아</button>
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue3','엘리야')">엘리야</button>
+    </div>
+  </div>
+  <div class="cw-clue-block">
+    <div class="cw-clue-label">㉯ 세로: ○○이 자식들을 잃고 운다. (2,18)</div>
+    <div class="cw-choices" id="q17-clue4">
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue4','라헬')">라헬</button>
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue4','사라')">사라</button>
+    </div>
+  </div>
+  <div class="cw-clue-block">
+    <div class="cw-clue-label">㉰ 세로: 법정으로 가는 도중에 얼른 ○○○○○. (5,25)</div>
+    <div class="cw-choices" id="q17-clue5">
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue5','타협하여라')">타협하여라</button>
+      <button class="cw-choice" onclick="pickCW(this,'q17','clue5','회개하여라')">회개하여라</button>
+    </div>
   </div>
 
-  <div class="input-group">
-    <label>① 가로 (5글자)</label>
-    <input type="text" id="q17-input-1" placeholder="○○○○○">
-  </div>
-  <div class="input-group">
-    <label>② 가로 (4글자)</label>
-    <input type="text" id="q17-input-2" placeholder="○○○○">
-  </div>
-  <div class="input-group">
-    <label>㉮ 세로 (3글자)</label>
-    <input type="text" id="q17-input-3" placeholder="○○○">
-  </div>
-  <div class="input-group">
-    <label>㉯ 세로 (2글자)</label>
-    <input type="text" id="q17-input-4" placeholder="○○">
-  </div>
-  <div class="input-group">
-    <label>㉰ 세로 (5글자, 띄어쓰기 포함)</label>
-    <input type="text" id="q17-input-5" placeholder="○○○ ○○">
-  </div>
-
-  <button class="submit-btn" id="q17-submit" onclick="submitCrossword('q17')">확인</button>
+  <button class="submit-btn" id="q17-submit" onclick="submitCW('q17')">확인</button>
 
   <div class="answer-box hidden" id="q17-answer">
     <div class="label">정답</div>
@@ -600,24 +619,74 @@ function submitMatch(qId, totalPairs) {
   document.getElementById(qId + '-submit').classList.add('hidden');
 }
 
-// === 십자말풀이 (텍스트 입력) ===
-function submitCrossword(qId) {
-  const answers = ['행복하여라', '아브라함', '메시아', '라헬', '타협하여라'];
-  let allCorrect = true;
+// === 십자말풀이 (객관식 + 격자 채우기) ===
+const cwState = {};
+const cwGrid = {
+  clue1: { cells: ['c17-3-5','c17-3-6','c17-3-7','c17-3-8','c17-3-9'], answer: '행복하여라' },
+  clue2: { cells: ['c17-4-1','c17-4-2','c17-4-3','c17-4-4'], answer: '아브라함' },
+  clue3: { cells: ['c17-2-1','c17-3-1','c17-4-1'], answer: '메시아' },
+  clue4: { cells: ['c17-4-3','c17-5-3'], answer: '라헬' },
+  clue5: { cells: ['c17-1-7','c17-2-7','c17-3-7','c17-4-7','c17-5-7'], answer: '타협하여라' }
+};
 
-  for (let i = 0; i < answers.length; i++) {
-    const input = document.getElementById(qId + '-input-' + (i + 1));
-    const val = input.value.trim().replace(/\s+/g, ' ');
-    if (val === answers[i]) {
-      input.classList.add('input-correct');
-      input.classList.remove('input-wrong');
-    } else {
-      input.classList.add('input-wrong');
-      input.classList.remove('input-correct');
-      allCorrect = false;
+function pickCW(btn, qId, clueId, word) {
+  if (document.getElementById(qId + '-submit').classList.contains('hidden')) return;
+
+  // 같은 열쇠 내 이전 선택 해제
+  const container = document.getElementById(qId + '-' + clueId);
+  container.querySelectorAll('.cw-choice').forEach(b => b.classList.remove('picked'));
+  btn.classList.add('picked');
+
+  // 상태 저장
+  if (!cwState[qId]) cwState[qId] = {};
+  cwState[qId][clueId] = word;
+
+  // 격자에 글자 채우기
+  const clue = cwGrid[clueId];
+  const chars = word.split('');
+  clue.cells.forEach((cellId, i) => {
+    const cell = document.getElementById(cellId);
+    if (cell && chars[i]) cell.textContent = chars[i];
+  });
+}
+
+function submitCW(qId) {
+  if (!cwState[qId]) return;
+  const state = cwState[qId];
+
+  // 5개 모두 선택했는지 확인
+  if (Object.keys(state).length < 5) return;
+
+  // 각 열쇠 정답 확인
+  Object.keys(cwGrid).forEach(clueId => {
+    const clue = cwGrid[clueId];
+    const container = document.getElementById(qId + '-' + clueId);
+    const picked = container.querySelector('.cw-choice.picked');
+    const isCorrect = state[clueId] === clue.answer;
+
+    container.querySelectorAll('.cw-choice').forEach(b => {
+      b.classList.add('disabled');
+      if (b === picked) {
+        b.classList.add(isCorrect ? 'cw-choice-correct' : 'cw-choice-wrong');
+      }
+    });
+
+    // 격자 셀 색상
+    clue.cells.forEach(cellId => {
+      const cell = document.getElementById(cellId);
+      if (isCorrect) cell.classList.add('cw-correct');
+      else cell.classList.add('cw-wrong');
+    });
+
+    // 오답이면 정답으로 격자 재채움
+    if (!isCorrect) {
+      const chars = clue.answer.split('');
+      clue.cells.forEach((cellId, i) => {
+        const cell = document.getElementById(cellId);
+        if (cell && chars[i]) cell.textContent = chars[i];
+      });
     }
-    input.readOnly = true;
-  }
+  });
 
   document.getElementById(qId + '-answer').classList.remove('hidden');
   document.getElementById(qId + '-explain').classList.remove('hidden');
