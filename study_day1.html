@@ -381,26 +381,28 @@ footer a {
   </div>
 </div>
 
-<!-- 4번 -->
-<div class="question-block">
+<!-- 4번 (interactive) -->
+<div class="question-block" id="q4">
   <span class="q-number">4번</span>
   <span class="q-ref">마태 2,1</span>
   
   <div class="q-text">예수님께서 태어나신 곳은?</div>
   
-  <ul class="q-options">
-    <li class="correct">① 베들레헴</li>
-    <li class="wrong">② 예루살렘</li>
-    <li class="wrong">③ 헤브론</li>
-    <li class="wrong">④ 카파르나움</li>
+  <ul class="q-options interactive" id="q4-options">
+    <li data-correct="true" onclick="toggleSingle(this, 'q4')">① 베들레헴</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q4')">② 예루살렘</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q4')">③ 헤브론</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q4')">④ 카파르나움</li>
   </ul>
 
-  <div class="answer-box">
+  <button class="submit-btn" id="q4-submit" onclick="submitSingle('q4')">확인</button>
+
+  <div class="answer-box hidden" id="q4-answer">
     <div class="label">정답</div>
     <div class="answer-text">①</div>
   </div>
 
-  <div class="explain-box">
+  <div class="explain-box hidden" id="q4-explain">
     <div class="label">해설</div>
     <p>마태 2,1: "헤로데 임금 때에 유다 <b>베들레헴</b>에서 예수님께서 태어나셨다."</p>
     <div class="wrong-reason">
@@ -411,26 +413,28 @@ footer a {
   </div>
 </div>
 
-<!-- 5번 -->
-<div class="question-block">
+<!-- 5번 (interactive) -->
+<div class="question-block" id="q5">
   <span class="q-number">5번</span>
   <span class="q-ref">마태 2,7-12</span>
   
   <div class="q-text">동방에서 온 박사들이 아기가 있는 집에 들어가서 한 행동으로 맞는 것은?</div>
   
-  <ul class="q-options">
-    <li class="wrong">① 어머니 마리아에게 아기의 앞날에 대해 말해 주었다.</li>
-    <li class="wrong">② 요셉에게 통치자의 탄생에 대한 예언자의 기록을 보여 주었다.</li>
-    <li class="correct">③ 아기에게 엎드려 경배하고, 황금과 유향과 몰약을 예물로 드렸다.</li>
-    <li class="wrong">④ 헤로데에게 사람을 보내어 아기가 태어난 곳을 알려 주었다.</li>
+  <ul class="q-options interactive" id="q5-options">
+    <li data-correct="false" onclick="toggleSingle(this, 'q5')">① 어머니 마리아에게 아기의 앞날에 대해 말해 주었다.</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q5')">② 요셉에게 통치자의 탄생에 대한 예언자의 기록을 보여 주었다.</li>
+    <li data-correct="true" onclick="toggleSingle(this, 'q5')">③ 아기에게 엎드려 경배하고, 황금과 유향과 몰약을 예물로 드렸다.</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q5')">④ 헤로데에게 사람을 보내어 아기가 태어난 곳을 알려 주었다.</li>
   </ul>
 
-  <div class="answer-box">
+  <button class="submit-btn" id="q5-submit" onclick="submitSingle('q5')">확인</button>
+
+  <div class="answer-box hidden" id="q5-answer">
     <div class="label">정답</div>
     <div class="answer-text">③</div>
   </div>
 
-  <div class="explain-box">
+  <div class="explain-box hidden" id="q5-explain">
     <div class="label">해설</div>
     <p>마태 2,11: "그들은 집에 들어가 어머니 마리아와 함께 있는 아기를 보고 땅에 엎드려 경배하였다. 그리고 보물 상자를 열어 <b>황금과 유향과 몰약</b>을 예물로 드렸다."</p>
     <div class="wrong-reason">
@@ -441,26 +445,28 @@ footer a {
   </div>
 </div>
 
-<!-- 6번 -->
-<div class="question-block">
+<!-- 6번 (interactive) -->
+<div class="question-block" id="q6">
   <span class="q-number">6번</span>
   <span class="q-ref">마태 2,13-15</span>
   
   <div class="q-text">꿈에 주님의 천사가 요셉에게 나타나서 아기와 그 어머니를 데리고 피신하라고 한 곳은?</div>
   
-  <ul class="q-options">
-    <li class="wrong">① 시리아</li>
-    <li class="wrong">② 바빌론</li>
-    <li class="wrong">③ 미디안</li>
-    <li class="correct">④ 이집트</li>
+  <ul class="q-options interactive" id="q6-options">
+    <li data-correct="false" onclick="toggleSingle(this, 'q6')">① 시리아</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q6')">② 바빌론</li>
+    <li data-correct="false" onclick="toggleSingle(this, 'q6')">③ 미디안</li>
+    <li data-correct="true" onclick="toggleSingle(this, 'q6')">④ 이집트</li>
   </ul>
 
-  <div class="answer-box">
+  <button class="submit-btn" id="q6-submit" onclick="submitSingle('q6')">확인</button>
+
+  <div class="answer-box hidden" id="q6-answer">
     <div class="label">정답</div>
     <div class="answer-text">④</div>
   </div>
 
-  <div class="explain-box">
+  <div class="explain-box hidden" id="q6-explain">
     <div class="label">해설</div>
     <p>마태 2,13: "주님의 천사가 꿈에 요셉에게 나타나 말하였다. '일어나 아기와 그 어머니를 데리고 <b>이집트</b>로 피신하여라. 내가 너에게 일러 줄 때까지 거기에 있어라. 헤로데가 아기를 찾아 없애 버리려고 한다.'"</p>
     <p>이는 호세 11,1의 예언("내가 이집트에서 내 아들을 불러냈다")이 이루어지게 합니다. (마태 2,15)</p>
