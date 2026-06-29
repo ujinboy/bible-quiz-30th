@@ -1929,22 +1929,25 @@ nav a { margin: 0 4px; font-size: 0.8em; }
 <script>
 var vp = document.getElementById('versePlayer');
 var currentBtn = null;
-function playVerse(url) {
-  if (vp.src === url && !vp.paused) {
+function playVerse(url, el) {
+  if (!el) el = event && event.target;
+  if (vp.getAttribute('data-url') === url && !vp.paused) {
     vp.pause();
     if (currentBtn) currentBtn.style.opacity = '1';
     return;
   }
+  vp.setAttribute('data-url', url);
   vp.src = url;
   vp.play();
   if (currentBtn) currentBtn.style.opacity = '1';
-  currentBtn = event.target;
-  currentBtn.style.opacity = '0.5';
+  currentBtn = el;
+  if (currentBtn) currentBtn.style.opacity = '0.5';
   vp.onended = function() {
     if (currentBtn) currentBtn.style.opacity = '1';
-    var p = currentBtn.closest('p');
+    var p = currentBtn ? currentBtn.closest('p') : null;
+    if (!p || !p.id) return;
     var next = p.nextElementSibling;
-    while (next && !next.querySelector('span[onclick]')) {
+    while (next && !(next.id && next.querySelector('span[onclick]'))) {
       next = next.nextElementSibling;
     }
     if (next && next.id) {
@@ -1952,7 +1955,10 @@ function playVerse(url) {
       var nextCh = next.id.split('-')[0];
       if (curCh === nextCh) {
         var nextBtn = next.querySelector('span[onclick]');
-        if (nextBtn) nextBtn.click();
+        if (nextBtn) {
+          var m = nextBtn.getAttribute('onclick').match(/playVerse\('([^']+)'/);
+          if (m) playVerse(m[1], nextBtn);
+        }
       }
     }
   };
