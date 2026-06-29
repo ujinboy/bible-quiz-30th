@@ -4,17 +4,193 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>30차 성경잔치 공부 27일차 (요한 복음서)</title>
+<meta property="og:title" content="30차 성경잔치 공부 27일차">
+<meta property="og:description" content="요한 복음서 42~49번 문제">
+<meta property="og:image" content="https://ujinboy.github.io/bible-quiz-30th/images/1.jpg">
+<meta property="og:url" content="https://ujinboy.github.io/bible-quiz-30th/study_day27.html">
+<meta property="og:type" content="website">
 <style>
-body { font-family: -apple-system, sans-serif; background: #f5f0eb; color: #2c2c2c; padding: 40px 20px; max-width: 720px; margin: 0 auto; text-align: center; }
-h1 { color: #c97a2e; margin-bottom: 10px; }
-p { color: #888; }
-a { color: #c97a2e; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2c2c2c; line-height: 1.7; padding: 20px; max-width: 720px; margin: 0 auto; }
+header { text-align: center; padding: 30px 0 20px; border-bottom: 2px solid #c97a2e; margin-bottom: 30px; }
+header h1 { font-size: 1.4em; color: #c97a2e; margin-bottom: 5px; }
+header p { font-size: 0.9em; color: #666; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 30px; }
+nav a { display: inline-block; padding: 4px 10px; text-decoration: none; border-radius: 4px; font-size: 0.8em; color: #fff; }
+nav a.mt { background: #a0b4d9; } nav a.mk { background: #b8a3cf; } nav a.lk { background: #8cc8a4; } nav a.jn { background: #e8b580; }
+nav a.current { background: #c97a2e; } nav a.mt.current { background: #5c7cba; } nav a.mk.current { background: #7b5ea7; } nav a.lk.current { background: #4a9e6f; } nav a.jn.current { background: #c97a2e; }
+.question-block { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.q-number { display: inline-block; background: #c97a2e; color: #fff; font-size: 0.75em; font-weight: bold; padding: 3px 10px; border-radius: 12px; margin-bottom: 12px; }
+.q-ref { display: inline-block; font-size: 0.75em; color: #888; margin-left: 8px; }
+.q-type { display: inline-block; font-size: 0.7em; color: #fff; background: #c97a2e; padding: 2px 8px; border-radius: 8px; margin-left: 6px; }
+.q-text { font-size: 1.05em; font-weight: 600; margin-bottom: 14px; color: #1a1a1a; }
+.q-passage { background: #f9f6f1; border-left: 3px solid #e8b580; padding: 12px 16px; margin-bottom: 14px; font-size: 0.92em; color: #444; border-radius: 0 6px 6px 0; }
+.q-options { list-style: none; margin-bottom: 16px; }
+.q-options li { padding: 8px 12px; margin-bottom: 6px; border-radius: 6px; font-size: 0.93em; }
+.q-options.interactive li { background: #fafafa; border: 1px solid #ddd; color: #2c2c2c; font-weight: normal; cursor: pointer; transition: background 0.2s; }
+.q-options.interactive li:hover { background: #f0ebe3; border-color: #c0a060; }
+.q-options.interactive li.selected-correct { background: #e8f5e9; border: 2px solid #4caf50; font-weight: 600; cursor: default; }
+.q-options.interactive li.selected-wrong { background: #ffebee; border: 2px solid #e57373; color: #c62828; cursor: default; }
+.q-options.interactive li.disabled { cursor: default; opacity: 0.7; pointer-events: none; }
+.q-options.interactive li.multi-selected { background: #e3f2fd; border: 2px solid #42a5f5; cursor: pointer; }
+.q-options.interactive li.order-1::before { content: "\2460 "; font-weight: bold; color: #1565c0; }
+.q-options.interactive li.order-2::before { content: "\2461 "; font-weight: bold; color: #1565c0; }
+.ox-options { display: flex; gap: 12px; margin-bottom: 16px; }
+.ox-btn { flex: 1; padding: 14px; text-align: center; font-size: 1.3em; font-weight: bold; border: 2px solid #ddd; border-radius: 10px; background: #fafafa; cursor: pointer; transition: all 0.2s; }
+.ox-btn:hover { background: #f0ebe3; border-color: #c0a060; }
+.ox-btn.selected { background: #e3f2fd; border-color: #42a5f5; }
+.ox-btn.ox-correct { background: #e8f5e9; border-color: #4caf50; }
+.ox-btn.ox-wrong { background: #ffebee; border-color: #e57373; }
+.ox-btn.disabled { pointer-events: none; opacity: 0.7; }
+.submit-btn { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #c97a2e; color: #fff; border: none; border-radius: 6px; font-size: 0.9em; cursor: pointer; }
+.submit-btn:hover { background: #a8621f; }
+.hidden { display: none; }
+.answer-box { background: #fef3e2; border: 1px solid #f0c878; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px; }
+.answer-box .label { font-size: 0.8em; font-weight: bold; color: #c97a2e; margin-bottom: 4px; }
+.answer-box .answer-text { font-size: 1em; font-weight: 600; color: #8b5a1a; }
+.explain-box { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; }
+.explain-box .label { font-size: 0.8em; font-weight: bold; color: #f57f17; margin-bottom: 6px; }
+.explain-box p { font-size: 0.9em; color: #444; margin-bottom: 6px; }
+footer { text-align: center; padding: 30px 0; color: #999; font-size: 0.8em; border-top: 1px solid #ddd; margin-top: 20px; }
+footer a { color: #c97a2e; text-decoration: none; margin: 0 8px; }
 </style>
 </head>
 <body>
-<h1>27일차 - 요한 복음서</h1>
-<p>준비 중입니다.</p>
-<p style="margin-top:20px;"><a href="study_day26.html">← 이전</a> | <a href="study_day28.html">다음 →</a></p>
-<p style="margin-top:10px;"><a href="main.html">메인으로</a></p>
+<header><h1>30차 성경잔치 공부 27일차</h1><p>요한 복음서 (42~49번)</p></header>
+<nav><a href="study_day1.html" class="mt">1일차</a><a href="study_day2.html" class="mt">2일차</a><a href="study_day3.html" class="mt">3일차</a><a href="study_day4.html" class="mt">4일차</a><a href="study_day5.html" class="mt">5일차</a><a href="study_day6.html" class="mt">6일차</a><a href="study_day7.html" class="mt">7일차</a><a href="study_day8.html" class="mk">8일차</a><a href="study_day9.html" class="mk">9일차</a><a href="study_day10.html" class="mk">10일차</a><a href="study_day11.html" class="mk">11일차</a><a href="study_day12.html" class="mk">12일차</a><a href="study_day13.html" class="mk">13일차</a><a href="study_day14.html" class="mk">14일차</a><a href="study_day15.html" class="lk">15일차</a><a href="study_day16.html" class="lk">16일차</a><a href="study_day17.html" class="lk">17일차</a><a href="study_day18.html" class="lk">18일차</a><a href="study_day19.html" class="lk">19일차</a><a href="study_day20.html" class="lk">20일차</a><a href="study_day21.html" class="lk">21일차</a><a href="study_day22.html" class="jn">22일차</a><a href="study_day23.html" class="jn">23일차</a><a href="study_day24.html" class="jn">24일차</a><a href="study_day25.html" class="jn">25일차</a><a href="study_day26.html" class="jn">26일차</a><a href="study_day27.html" class="jn current">27일차</a><a href="study_day28.html" class="jn">28일차</a></nav>
+
+<!-- 42번 -->
+<div class="question-block" id="q42">
+  <span class="q-number">42번</span><span class="q-ref">요한 18,12-13</span>
+  <div class="q-text">군대와 그 대장과 유다인들의 성전 경비병들은 예수님을 붙잡아 먼저 누구에게 데려갔나?</div>
+  <ul class="q-options interactive" id="q42-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q42')">① 헤로데</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q42')">② 한나스</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q42')">③ 엘야킴</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q42')">④ 갈리오</li>
+  </ul>
+  <button class="submit-btn" id="q42-submit" onclick="submitSingle('q42')">확인</button>
+  <div class="answer-box hidden" id="q42-answer"><div class="label">정답</div><div class="answer-text">② 한나스</div></div>
+  <div class="explain-box hidden" id="q42-explain"><div class="label">해설</div><p>요한 18,13: "먼저 <b>한나스</b>에게 데려갔다. 한나스는 그해 대사제인 카야파의 장인이었다."</p></div>
+</div>
+
+<!-- 43번 -->
+<div class="question-block" id="q43">
+  <span class="q-number">43번</span><span class="q-ref">요한 18,15-17</span>
+  <div class="q-text">문지기 하녀가 베드로에게 "당신도 저 사람의 제자 가운데 하나가 아닌가요?" 하자, 그가 한 대답은?</div>
+  <ul class="q-options interactive" id="q43-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q43')">① 나야 유다인이 아니잖소?</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q43')">② 그렇소, 내가 그 사람의 제자요</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q43')">③ 나는 아니오</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q43')">④ 나는 그냥 구경하러 왔을 뿐이오</li>
+  </ul>
+  <button class="submit-btn" id="q43-submit" onclick="submitSingle('q43')">확인</button>
+  <div class="answer-box hidden" id="q43-answer"><div class="label">정답</div><div class="answer-text">③ 나는 아니오</div></div>
+  <div class="explain-box hidden" id="q43-explain"><div class="label">해설</div><p>요한 18,17: "베드로는 '<b>나는 아니오.</b>' 하고 대답하였다."</p></div>
+</div>
+
+<!-- 44번 (서술→사지선다) -->
+<div class="question-block" id="q44">
+  <span class="q-number">44번</span><span class="q-ref">요한 18,36</span>
+  <div class="q-text">( )에 공통으로 들어갈 말은?</div>
+  <div class="q-passage">"( <u>&nbsp;&nbsp;&nbsp;&nbsp;</u> )는 이 세상에 속하지 않는다. ( <u>&nbsp;&nbsp;&nbsp;&nbsp;</u> )가 이 세상에 속한다면, 내 신하들이 싸워 내가 유다인들에게 넘겨지지 않게 하였을 것이다. 그러나 ( <u>&nbsp;&nbsp;&nbsp;&nbsp;</u> )는 여기에 속하지 않는다."</div>
+  <ul class="q-options interactive" id="q44-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q44')">① 내 권한</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q44')">② 내 나라</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q44')">③ 내 뜻</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q44')">④ 내 백성</li>
+  </ul>
+  <button class="submit-btn" id="q44-submit" onclick="submitSingle('q44')">확인</button>
+  <div class="answer-box hidden" id="q44-answer"><div class="label">정답</div><div class="answer-text">② 내 나라</div></div>
+  <div class="explain-box hidden" id="q44-explain"><div class="label">해설</div><p>요한 18,36: "<b>내 나라</b>는 이 세상에 속하지 않는다."</p></div>
+</div>
+
+<!-- 45번 (2개순서선택) -->
+<div class="question-block" id="q45">
+  <span class="q-number">45번</span><span class="q-ref">요한 18,38-39</span><span class="q-type">순서</span>
+  <div class="q-text">( )에 들어갈 말을 순서대로 선택하시오.</div>
+  <div class="q-passage">"나는 저 사람에게서 ( <u>①&nbsp;&nbsp;&nbsp;&nbsp;</u> )도 찾지 못하겠소. 그런데 파스카 축제 때에 내가 한 사람을 풀어 주는 관례가 여러분에게 있소. 그러니 내가 ( <u>②&nbsp;&nbsp;&nbsp;&nbsp;</u> )을 풀어 주기를 원하오?"</div>
+  <ul class="q-options interactive" id="q45-options">
+    <li data-answer="1" onclick="toggleOrdered(this,'q45')">아무런 죄목</li>
+    <li data-answer="2" onclick="toggleOrdered(this,'q45')">유다인들의 임금</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q45')">잘못된 행실</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q45')">바라빠</li>
+  </ul>
+  <button class="submit-btn" id="q45-submit" onclick="submitOrdered('q45',2)">확인</button>
+  <div class="answer-box hidden" id="q45-answer"><div class="label">정답</div><div class="answer-text">① 아무런 죄목 ② 유다인들의 임금</div></div>
+  <div class="explain-box hidden" id="q45-explain"><div class="label">해설</div><p>요한 18,38-39: "나는 저 사람에게서 <b>아무런 죄목</b>도 찾지 못하겠소... 내가 <b>유다인들의 임금</b>을 풀어 주기를 원하오?"</p></div>
+</div>
+
+<!-- 46번 (OX) -->
+<div class="question-block" id="q46">
+  <span class="q-number">46번</span><span class="q-ref">요한 19,17</span><span class="q-type">OX</span>
+  <div class="q-text">다음 내용이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">"예수님께서는 몸소 십자가를 지시고 '해골 터'라는 곳으로 나가셨다. 그곳은 그리스 말로 골고타라고 한다."</div>
+  <div class="ox-options" id="q46-ox">
+    <div class="ox-btn" data-value="O" onclick="selectOX(this,'q46')">O</div>
+    <div class="ox-btn" data-value="X" onclick="selectOX(this,'q46')">X</div>
+  </div>
+  <button class="submit-btn" id="q46-submit" onclick="submitOX('q46','X')">확인</button>
+  <div class="answer-box hidden" id="q46-answer"><div class="label">정답</div><div class="answer-text">X</div></div>
+  <div class="explain-box hidden" id="q46-explain"><div class="label">해설</div><p>골고타는 <b>히브리 말</b>이지 그리스 말이 아닙니다.</p><p>요한 19,17: "히브리 말로 골고타라고 한다."</p></div>
+</div>
+
+<!-- 47번 (OX) -->
+<div class="question-block" id="q47">
+  <span class="q-number">47번</span><span class="q-ref">요한 19,18</span><span class="q-type">OX</span>
+  <div class="q-text">다음 내용이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">"거기에서 그들은 예수님을 십자가에 못 박았다. 그리고 다른 두 사람도 예수님을 가운데로 하여 이쪽저쪽에 하나씩 못 박았다."</div>
+  <div class="ox-options" id="q47-ox">
+    <div class="ox-btn" data-value="O" onclick="selectOX(this,'q47')">O</div>
+    <div class="ox-btn" data-value="X" onclick="selectOX(this,'q47')">X</div>
+  </div>
+  <button class="submit-btn" id="q47-submit" onclick="submitOX('q47','O')">확인</button>
+  <div class="answer-box hidden" id="q47-answer"><div class="label">정답</div><div class="answer-text">O</div></div>
+  <div class="explain-box hidden" id="q47-explain"><div class="label">해설</div><p>요한 19,18: "<b>거기에서 그들은 예수님을 십자가에 못 박았다. 그리고 다른 두 사람도 예수님을 가운데로 하여 이쪽저쪽에 하나씩 못 박았다.</b>"</p></div>
+</div>
+
+<!-- 48번 (OX) -->
+<div class="question-block" id="q48">
+  <span class="q-number">48번</span><span class="q-ref">요한 19,19</span><span class="q-type">OX</span>
+  <div class="q-text">다음 내용이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">"빌라도는 명패를 써서 십자가 위에 달게 하였는데, 거기에는 '유다인들의 임금 나자렛 사람 예수'라고 쓰여 있었다."</div>
+  <div class="ox-options" id="q48-ox">
+    <div class="ox-btn" data-value="O" onclick="selectOX(this,'q48')">O</div>
+    <div class="ox-btn" data-value="X" onclick="selectOX(this,'q48')">X</div>
+  </div>
+  <button class="submit-btn" id="q48-submit" onclick="submitOX('q48','O')">확인</button>
+  <div class="answer-box hidden" id="q48-answer"><div class="label">정답</div><div class="answer-text">O</div></div>
+  <div class="explain-box hidden" id="q48-explain"><div class="label">해설</div><p>요한 19,19: "<b>빌라도는 명패를 써서 십자가 위에 달게 하였는데, 거기에는 '유다인들의 임금 나자렛 사람 예수'라고 쓰여 있었다.</b>"</p></div>
+</div>
+
+<!-- 49번 -->
+<div class="question-block" id="q49">
+  <span class="q-number">49번</span><span class="q-ref">요한 19,30</span>
+  <div class="q-text">예수님께서 신 포도주를 드신 다음에, 숨을 거두실 때 하신 말씀은?</div>
+  <ul class="q-options interactive" id="q49-options">
+    <li data-correct="true" onclick="toggleSingle(this,'q49')">① 다 이루어졌다</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q49')">② 아버지, 저를 도우소서</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q49')">③ 나를 따르라</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q49')">④ 목마르다</li>
+  </ul>
+  <button class="submit-btn" id="q49-submit" onclick="submitSingle('q49')">확인</button>
+  <div class="answer-box hidden" id="q49-answer"><div class="label">정답</div><div class="answer-text">① 다 이루어졌다</div></div>
+  <div class="explain-box hidden" id="q49-explain"><div class="label">해설</div><p>요한 19,30: "예수님께서는 신 포도주를 받아 드신 뒤에 '<b>다 이루어졌다.</b>' 하시고, 고개를 숙이시며 영혼을 내놓으셨다."</p></div>
+</div>
+
+<footer>
+  <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집 | 천주교 수원교구 복음화국</p>
+  <p style="margin-top:8px;"><a href="study_day26.html">&larr; 이전</a> | <a href="study_day28.html">다음 &rarr;</a></p>
+</footer>
+<script>
+function toggleSingle(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected')});s.classList.add('multi-selected');}
+function submitSingle(qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;var s=o.querySelector('li.multi-selected');if(!s)return;var c=s.dataset.correct==='true';o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected');if(c){if(l===s)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(l===s)l.classList.add('selected-wrong');else if(l.dataset.correct==='true')l.classList.add('selected-correct');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+function selectOX(btn,qId){var c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;c.querySelectorAll('.ox-btn').forEach(function(b){b.classList.remove('selected')});btn.classList.add('selected');}
+function submitOX(qId,ans){var c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;var s=c.querySelector('.ox-btn.selected');if(!s)return;c.classList.add('solved');c.querySelectorAll('.ox-btn').forEach(function(b){b.classList.remove('selected');if(b.dataset.value===ans)b.classList.add('ox-correct');else if(b===s&&b.dataset.value!==ans)b.classList.add('ox-wrong');else b.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var orderedState={};
+function toggleOrdered(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId])orderedState[qId]=[];var idx=orderedState[qId].indexOf(s);if(idx!==-1){orderedState[qId].splice(idx,1);renderOP3(qId);return;}orderedState[qId].push(s);renderOP3(qId);}
+function renderOP3(qId){var o=document.getElementById(qId+'-options');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');});orderedState[qId].forEach(function(l,i){l.classList.add('multi-selected');l.classList.add('order-'+(i+1));});}
+function submitOrdered(qId,count){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');var a=parseInt(l.dataset.answer);var pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+</script>
 </body>
 </html>
