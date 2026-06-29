@@ -1940,7 +1940,22 @@ function playVerse(url) {
   if (currentBtn) currentBtn.style.opacity = '1';
   currentBtn = event.target;
   currentBtn.style.opacity = '0.5';
-  vp.onended = function() { if (currentBtn) currentBtn.style.opacity = '1'; };
+  vp.onended = function() {
+    if (currentBtn) currentBtn.style.opacity = '1';
+    var p = currentBtn.closest('p');
+    var next = p.nextElementSibling;
+    while (next && !next.querySelector('span[onclick]')) {
+      next = next.nextElementSibling;
+    }
+    if (next && next.id) {
+      var curCh = p.id.split('-')[0];
+      var nextCh = next.id.split('-')[0];
+      if (curCh === nextCh) {
+        var nextBtn = next.querySelector('span[onclick]');
+        if (nextBtn) nextBtn.click();
+      }
+    }
+  };
 }
 </script>
 </body>
