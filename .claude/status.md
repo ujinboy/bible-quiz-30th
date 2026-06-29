@@ -4,7 +4,7 @@ source: 30th Bible quiz project
 - repo: https://github.com/ujinboy/bible-quiz-30th
 - pages: https://ujinboy.github.io/bible-quiz-30th/main.html
 - 위치: D:\30th Bible quiz
-- 상태: 전체 28일 완성 (246문제)
+- 상태: 전체 28일 완성 (246문제) + 성경 본문 4권 + 오디오
 
 # 완료
 - 마태오 복음서 76문제 (1~7일차) 인터랙티브 HTML
@@ -14,6 +14,18 @@ source: 30th Bible quiz project
 - main.html: 28일 네비게이션, OG 태그, 출처 표시, 헬레나 응원 메시지
 - 복음서별 테마 색상: 마태오=#5c7cba(파랑), 마르코=#7b5ea7(보라), 루카=#4a9e6f(녹색), 요한=#c97a2e(주황)
 - 모든 페이지에 헬레나 응원 메시지 + footer 처음으로 링크
+- 성경 본문 HTML 4권: bible_matthew.html, bible_mark.html, bible_luke.html, bible_john.html
+- 각 문제 q-ref에서 성경 본문 절 단위 링크 연결
+- 성경 본문 각 장에 장 전체 오디오 플레이어 (archive.catholic.or.kr)
+- 성경 본문 각 절에 🔊 인라인 재생 + 같은 장 끝까지 자동 연속재생
+
+# 성경 본문 오디오 URL 패턴
+- base: https://archive.catholic.or.kr/agent/read.asp?book=bible&oldnew=sorinew
+- 마태오: kwon=147, filenm=147_XX_YY.mp3 (XX=장2자리, YY=절2자리)
+- 마르코: kwon=148, filenm=148_XX_YY.mp3
+- 루카: kwon=149, filenm=149_XX_YY.mp3
+- 요한: kwon=150, filenm=150_XX_YY.mp3
+- 장 전체: http://archive.catholic.or.kr/mobile/bible/{code}/{code}_{장}.mp3
 
 # 일차별 문제 배분
 - day1(마태1-11), day2(마태12-22), day3(마태23-33), day4(마태34-44)
@@ -38,3 +50,4 @@ source: 30th Bible quiz project
 - 문제: images/*.jpg (PDF 이미지), images/요한.pdf
 - 정답: answers.md
 - 문제텍스트: luke.md, matthew.md
+- 성경원본: C:\Users\A41839\OneDrive - Microchip Technology Inc\2-Personal\가톨릭성경\신약1\
