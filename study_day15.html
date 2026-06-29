@@ -4,17 +4,264 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>30차 성경잔치 공부 15일차 (루카 복음서)</title>
+<meta property="og:title" content="30차 성경잔치 공부 15일차">
+<meta property="og:description" content="루카 복음서 1~10번 문제">
+<meta property="og:image" content="https://ujinboy.github.io/bible-quiz-30th/images/1.jpg">
+<meta property="og:url" content="https://ujinboy.github.io/bible-quiz-30th/study_day15.html">
+<meta property="og:type" content="website">
 <style>
-body { font-family: -apple-system, sans-serif; background: #f5f0eb; color: #2c2c2c; padding: 40px 20px; max-width: 720px; margin: 0 auto; text-align: center; }
-h1 { color: #4a9e6f; margin-bottom: 10px; }
-p { color: #888; }
-a { color: #4a9e6f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2c2c2c; line-height: 1.7; padding: 20px; max-width: 720px; margin: 0 auto; }
+header { text-align: center; padding: 30px 0 20px; border-bottom: 2px solid #4a9e6f; margin-bottom: 30px; }
+header h1 { font-size: 1.4em; color: #4a9e6f; margin-bottom: 5px; }
+header p { font-size: 0.9em; color: #666; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 30px; }
+nav a { display: inline-block; padding: 4px 10px; text-decoration: none; border-radius: 4px; font-size: 0.8em; color: #fff; }
+nav a.mt { background: #a0b4d9; } nav a.mk { background: #b8a3cf; } nav a.lk { background: #8cc8a4; } nav a.jn { background: #e8b580; }
+nav a.current { background: #4a9e6f; } nav a.mt.current { background: #5c7cba; } nav a.mk.current { background: #7b5ea7; } nav a.jn.current { background: #c97a2e; }
+.question-block { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.q-number { display: inline-block; background: #4a9e6f; color: #fff; font-size: 0.75em; font-weight: bold; padding: 3px 10px; border-radius: 12px; margin-bottom: 12px; }
+.q-ref { display: inline-block; font-size: 0.75em; color: #888; margin-left: 8px; }
+.q-type { display: inline-block; font-size: 0.7em; color: #fff; background: #5a8f5a; padding: 2px 8px; border-radius: 8px; margin-left: 6px; }
+.q-text { font-size: 1.05em; font-weight: 600; margin-bottom: 14px; color: #1a1a1a; }
+.q-passage { background: #f9f6f1; border-left: 3px solid #8cc8a4; padding: 12px 16px; margin-bottom: 14px; font-size: 0.92em; color: #444; border-radius: 0 6px 6px 0; }
+.q-options { list-style: none; margin-bottom: 16px; }
+.q-options li { padding: 8px 12px; margin-bottom: 6px; border-radius: 6px; font-size: 0.93em; }
+.q-options.interactive li { background: #fafafa; border: 1px solid #ddd; color: #2c2c2c; font-weight: normal; cursor: pointer; transition: background 0.2s; }
+.q-options.interactive li:hover { background: #f0ebe3; border-color: #c0a060; }
+.q-options.interactive li.selected-correct { background: #e8f5e9; border: 2px solid #4caf50; font-weight: 600; cursor: default; }
+.q-options.interactive li.selected-wrong { background: #ffebee; border: 2px solid #e57373; color: #c62828; cursor: default; }
+.q-options.interactive li.disabled { cursor: default; opacity: 0.7; pointer-events: none; }
+.q-options.interactive li.multi-selected { background: #e3f2fd; border: 2px solid #42a5f5; cursor: pointer; }
+.q-options.interactive li.order-1::before { content: "\2460 "; font-weight: bold; color: #1565c0; }
+.q-options.interactive li.order-2::before { content: "\2461 "; font-weight: bold; color: #1565c0; }
+.ox-options { display: flex; gap: 12px; margin-bottom: 16px; }
+.ox-btn { flex: 1; padding: 14px; text-align: center; font-size: 1.3em; font-weight: bold; border: 2px solid #ddd; border-radius: 10px; background: #fafafa; cursor: pointer; transition: all 0.2s; }
+.ox-btn:hover { background: #f0ebe3; border-color: #c0a060; }
+.ox-btn.selected { background: #e3f2fd; border-color: #42a5f5; }
+.ox-btn.ox-correct { background: #e8f5e9; border-color: #4caf50; }
+.ox-btn.ox-wrong { background: #ffebee; border-color: #e57373; }
+.ox-btn.disabled { pointer-events: none; opacity: 0.7; }
+.match-area { display: flex; gap: 16px; margin-bottom: 16px; }
+.match-left, .match-right { flex: 1; list-style: none; }
+.match-left li, .match-right li { padding: 10px 12px; margin-bottom: 8px; border-radius: 6px; font-size: 0.85em; background: #fafafa; border: 1px solid #ddd; cursor: pointer; transition: all 0.2s; }
+.match-left li:hover, .match-right li:hover { background: #f0ebe3; border-color: #c0a060; }
+.match-left li.active { background: #e3f2fd; border: 2px solid #42a5f5; }
+.match-left li.matched, .match-right li.matched { background: #e8f5e9; border: 2px solid #4caf50; cursor: default; }
+.match-left li.match-wrong, .match-right li.match-wrong { background: #ffebee; border: 2px solid #e57373; }
+.match-left li.disabled, .match-right li.disabled { pointer-events: none; opacity: 0.7; }
+.match-pair-badge { display: inline-block; background: #4caf50; color: #fff; font-size: 0.7em; font-weight: bold; width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 50%; margin-right: 6px; }
+.order-items { list-style: none; margin-bottom: 16px; }
+.order-items li { padding: 10px 14px; margin-bottom: 8px; border-radius: 6px; font-size: 0.93em; background: #fafafa; border: 1px solid #ddd; cursor: pointer; transition: all 0.2s; }
+.order-items li:hover { background: #f0ebe3; border-color: #c0a060; }
+.order-items li.picked { background: #e3f2fd; border: 2px solid #42a5f5; }
+.order-items li.order-correct { background: #e8f5e9; border: 2px solid #4caf50; font-weight: 600; }
+.order-items li.order-wrong { background: #ffebee; border: 2px solid #e57373; }
+.order-items li .pick-num { display: inline-block; background: #42a5f5; color: #fff; font-size: 0.75em; font-weight: bold; width: 20px; height: 20px; line-height: 20px; text-align: center; border-radius: 50%; margin-right: 8px; }
+.order-items li.disabled { pointer-events: none; opacity: 0.7; }
+.submit-btn { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #4a9e6f; color: #fff; border: none; border-radius: 6px; font-size: 0.9em; cursor: pointer; }
+.submit-btn:hover { background: #3a7d58; }
+.hidden { display: none; }
+.answer-box { background: #e3f2e8; border: 1px solid #a5d6a7; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px; }
+.answer-box .label { font-size: 0.8em; font-weight: bold; color: #2e7d32; margin-bottom: 4px; }
+.answer-box .answer-text { font-size: 1em; font-weight: 600; color: #1b5e20; }
+.explain-box { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; }
+.explain-box .label { font-size: 0.8em; font-weight: bold; color: #f57f17; margin-bottom: 6px; }
+.explain-box p { font-size: 0.9em; color: #444; margin-bottom: 6px; }
+footer { text-align: center; padding: 30px 0; color: #999; font-size: 0.8em; border-top: 1px solid #ddd; margin-top: 20px; }
+footer a { color: #4a9e6f; text-decoration: none; margin: 0 8px; }
 </style>
 </head>
 <body>
-<h1>15일차 - 루카 복음서</h1>
-<p>준비 중입니다.</p>
-<p style="margin-top:20px;"><a href="study_day14.html">← 이전</a> | <a href="study_day16.html">다음 →</a></p>
-<p style="margin-top:10px;"><a href="main.html">메인으로</a></p>
+<header><h1>30차 성경잔치 공부 15일차</h1><p>루카 복음서 (1~10번)</p></header>
+<nav><a href="study_day1.html" class="mt">1일차</a><a href="study_day2.html" class="mt">2일차</a><a href="study_day3.html" class="mt">3일차</a><a href="study_day4.html" class="mt">4일차</a><a href="study_day5.html" class="mt">5일차</a><a href="study_day6.html" class="mt">6일차</a><a href="study_day7.html" class="mt">7일차</a><a href="study_day8.html" class="mk">8일차</a><a href="study_day9.html" class="mk">9일차</a><a href="study_day10.html" class="mk">10일차</a><a href="study_day11.html" class="mk">11일차</a><a href="study_day12.html" class="mk">12일차</a><a href="study_day13.html" class="mk">13일차</a><a href="study_day14.html" class="mk">14일차</a><a href="study_day15.html" class="lk current">15일차</a><a href="study_day16.html" class="lk">16일차</a><a href="study_day17.html" class="lk">17일차</a><a href="study_day18.html" class="lk">18일차</a><a href="study_day19.html" class="lk">19일차</a><a href="study_day20.html" class="lk">20일차</a><a href="study_day21.html" class="lk">21일차</a><a href="study_day22.html" class="jn">22일차</a><a href="study_day23.html" class="jn">23일차</a><a href="study_day24.html" class="jn">24일차</a><a href="study_day25.html" class="jn">25일차</a><a href="study_day26.html" class="jn">26일차</a><a href="study_day27.html" class="jn">27일차</a><a href="study_day28.html" class="jn">28일차</a></nav>
+
+<!-- 1번 -->
+<div class="question-block" id="q1">
+  <span class="q-number">1번</span><span class="q-ref">루카 1,5-7</span>
+  <div class="q-text">즈카르야와 그의 아내 엘리사벳에 대한 내용으로 맞는 것은?</div>
+  <ul class="q-options interactive" id="q1-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q1')">① 즈카르야는 유다 임금 필리포스 시대에 아비야 조에 속한 사제였다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q1')">② 엘리사벳은 아브라함의 후손이며 유다의 자손이었다.</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q1')">③ 이 둘은 주님의 모든 계명과 규정에 따라 흠 없이 살아가는 사람들이었다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q1')">④ 이들에게는 아들 일곱과 딸 셋이 있었다.</li>
+  </ul>
+  <button class="submit-btn" id="q1-submit" onclick="submitSingle('q1')">확인</button>
+  <div class="answer-box hidden" id="q1-answer"><div class="label">정답</div><div class="answer-text">③</div></div>
+  <div class="explain-box hidden" id="q1-explain"><div class="label">해설</div><p>루카 1,6: "<b>이 둘은 하느님 앞에서 의로운 사람들로서, 주님의 모든 계명과 규정에 따라 흠 없이 살아가고 있었다.</b>"</p><p>① 헤로데 임금 때입니다. ② 엘리사벳은 아론의 후손입니다. ④ 자녀가 없었습니다.</p></div>
+</div>
+
+<!-- 2번 -->
+<div class="question-block" id="q2">
+  <span class="q-number">2번</span><span class="q-ref">루카 1,26-38</span>
+  <div class="q-text">'예수님의 탄생 예고'에서, 가브리엘 천사가 마리아에게 한 말로 맞는 것은?</div>
+  <ul class="q-options interactive" id="q2-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q2')">① 네가 아들을 낳을 터이니, 그는 벤야민 사람이라 불릴 것이다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q2')">② 주 하느님께서 사울의 왕좌를 그분께 주실 것이다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q2')">③ 그분께서 에사우 집안을 높이 올리실 것이다.</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q2')">④ 그분의 나라는 끝이 없을 것이다.</li>
+  </ul>
+  <button class="submit-btn" id="q2-submit" onclick="submitSingle('q2')">확인</button>
+  <div class="answer-box hidden" id="q2-answer"><div class="label">정답</div><div class="answer-text">④</div></div>
+  <div class="explain-box hidden" id="q2-explain"><div class="label">해설</div><p>루카 1,33: "<b>그분의 나라는 끝이 없을 것이다.</b>"</p><p>① 예수님은 '지극히 높으신 분의 아들'이라 불릴 것입니다. ② 다윗의 왕좌입니다. ③ 야곱 집안을 다스릴 것입니다.</p></div>
+</div>
+
+<!-- 3번 (빈칸→사지선다) -->
+<div class="question-block" id="q3">
+  <span class="q-number">3번</span><span class="q-ref">루카 1,42-45</span>
+  <div class="q-text">엘리사벳이 성령으로 가득 차 큰 소리로 외친 말이다. ( )에 들어갈 말은?</div>
+  <div class="q-passage">"당신은 여인들 가운데에서 가장 복되시며 당신 태중의 아기도 복되십니다. 내 주님의 어머니께서 저에게 오시다니 어찌 된 일입니까? 보십시오, 당신의 인사말 소리가 제 귀에 들리자 저의 태 안에서 아기가 즐거워 뛰놀았습니다. (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)"</div>
+  <ul class="q-options interactive" id="q3-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q3')">① 당신은 하느님의 은총을 가득히 받으신 분이십니다!</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q3')">② 주님께서 당신과 함께 계시니 두려워하지 마십시오!</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q3')">③ 행복하십니다, 주님께서 하신 말씀이 이루어지리라고 믿으신 분!</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q3')">④ 당신의 아기가 온 세상의 구원이 되실 것입니다!</li>
+  </ul>
+  <button class="submit-btn" id="q3-submit" onclick="submitSingle('q3')">확인</button>
+  <div class="answer-box hidden" id="q3-answer"><div class="label">정답</div><div class="answer-text">③ 행복하십니다, 주님께서 하신 말씀이 이루어지리라고 믿으신 분!</div></div>
+  <div class="explain-box hidden" id="q3-explain"><div class="label">해설</div><p>루카 1,45: "<b>행복하십니다, 주님께서 하신 말씀이 이루어지리라고 믿으신 분!</b>"</p></div>
+</div>
+
+<!-- 4번 -->
+<div class="question-block" id="q4">
+  <span class="q-number">4번</span><span class="q-ref">루카 1,76</span>
+  <div class="q-text">'즈카르야의 노래'에서, 즈카르야의 아기가 불릴 호칭은?</div>
+  <ul class="q-options interactive" id="q4-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q4')">① 높은 곳에서 우리를 찾아온 별</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q4')">② 지극히 높으신 분의 예언자</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q4')">③ 하느님의 어린양</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q4')">④ 새로운 구원의 빛</li>
+  </ul>
+  <button class="submit-btn" id="q4-submit" onclick="submitSingle('q4')">확인</button>
+  <div class="answer-box hidden" id="q4-answer"><div class="label">정답</div><div class="answer-text">② 지극히 높으신 분의 예언자</div></div>
+  <div class="explain-box hidden" id="q4-explain"><div class="label">해설</div><p>루카 1,76: "아기야, 너는 <b>지극히 높으신 분의 예언자</b>라 불릴 것이다."</p></div>
+</div>
+
+<!-- 5번 -->
+<div class="question-block" id="q5">
+  <span class="q-number">5번</span><span class="q-ref">루카 2,8-13</span>
+  <div class="q-text">주님의 천사가 목자들에게 전한, 온 백성에게 큰 기쁨이 될 소식은?</div>
+  <ul class="q-options interactive" id="q5-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q5')">① 너희가 서둘러 예루살렘으로 가면 새로 나신 메시아를 볼 것이다.</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q5')">② 오늘 너희를 위하여 다윗 고을에서 구원자가 태어나셨으니, 주 그리스도이시다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q5')">③ 다른 민족들이 예루살렘으로 와서 너희를 섬길 것이다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q5')">④ 이스라엘에 왕이 태어나셨으니, 너희는 로마의 압제에서 벗어날 것이다.</li>
+  </ul>
+  <button class="submit-btn" id="q5-submit" onclick="submitSingle('q5')">확인</button>
+  <div class="answer-box hidden" id="q5-answer"><div class="label">정답</div><div class="answer-text">②</div></div>
+  <div class="explain-box hidden" id="q5-explain"><div class="label">해설</div><p>루카 2,11: "<b>오늘 너희를 위하여 다윗 고을에서 구원자가 태어나셨으니, 주 그리스도이시다.</b>"</p></div>
+</div>
+
+<!-- 6번 (순서 맞추기) -->
+<div class="question-block" id="q6">
+  <span class="q-number">6번</span><span class="q-ref">루카 2,15-20</span><span class="q-type">순서</span>
+  <div class="q-text">목자들이 베들레헴으로 갔을 때의 내용을 순서대로 선택하시오.</div>
+  <ul class="order-items" id="q6-items">
+    <li data-order="2" onclick="pickOrder(this,'q6')">① 그것을 들은 이들은 모두 목자들이 자기들에게 전한 말에 놀라워하였다.</li>
+    <li data-order="0" onclick="pickOrder(this,'q6')">② 목자들은 마리아와 요셉과 구유에 누운 아기를 찾아냈다.</li>
+    <li data-order="1" onclick="pickOrder(this,'q6')">③ 목자들은 아기를 보고 나서, 그 아기에 관하여 들은 말을 알려 주었다.</li>
+    <li data-order="3" onclick="pickOrder(this,'q6')">④ 마리아는 이 모든 일을 마음속에 간직하고 곰곰이 되새겼다.</li>
+  </ul>
+  <button class="submit-btn" id="q6-submit" onclick="submitOrder('q6')">확인</button>
+  <div class="answer-box hidden" id="q6-answer"><div class="label">정답</div><div class="answer-text">② → ③ → ① → ④</div></div>
+  <div class="explain-box hidden" id="q6-explain"><div class="label">해설</div><p>1. 아기를 찾아냄 (2,16)<br>2. 아기에 관해 들은 말을 알려 줌 (2,17)<br>3. 들은 이들이 놀라워함 (2,18)<br>4. 마리아가 마음속에 간직 (2,19)</p></div>
+</div>
+
+<!-- 7번 (빈칸→사지선다) -->
+<div class="question-block" id="q7">
+  <span class="q-number">7번</span><span class="q-ref">루카 2,29-32</span>
+  <div class="q-text">시메온이 아기 예수님을 두 팔에 받아 안고 하느님을 찬미하며 한 말이다. ( )에 들어갈 말은?</div>
+  <div class="q-passage">주님, 이제야 말씀하신 대로 당신 종을 평화로이 떠나게 해 주셨습니다.<br>(<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)<br>이는 당신께서 모든 민족들 앞에서 마련하신 것으로 다른 민족들에게는 계시의 빛이며 당신 백성 이스라엘에게는 영광입니다.</div>
+  <ul class="q-options interactive" id="q7-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q7')">① 제 귀가 당신의 말씀을 들은 것입니다.</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q7')">② 제 눈이 당신의 구원을 본 것입니다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q7')">③ 제 마음이 당신의 평화를 느낀 것입니다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q7')">④ 제 손이 당신의 영광을 만진 것입니다.</li>
+  </ul>
+  <button class="submit-btn" id="q7-submit" onclick="submitSingle('q7')">확인</button>
+  <div class="answer-box hidden" id="q7-answer"><div class="label">정답</div><div class="answer-text">② 제 눈이 당신의 구원을 본 것입니다.</div></div>
+  <div class="explain-box hidden" id="q7-explain"><div class="label">해설</div><p>루카 2,30: "<b>제 눈이 당신의 구원을 본 것입니다.</b>"</p></div>
+</div>
+
+<!-- 8번 (선 잇기) -->
+<div class="question-block" id="q8">
+  <span class="q-number">8번</span><span class="q-ref">루카 3,7-14</span><span class="q-type">연결</span>
+  <div class="q-text">요한에게 세례를 받으러 온 이들과 요한이 그들에게 한 말을 바르게 연결하시오.</div>
+  <div class="match-area">
+    <ul class="match-left" id="q8-left">
+      <li data-pair="3" onclick="selectLeft(this,'q8')">① 군중</li>
+      <li data-pair="1" onclick="selectLeft(this,'q8')">② 세리들</li>
+      <li data-pair="2" onclick="selectLeft(this,'q8')">③ 군사들</li>
+    </ul>
+    <ul class="match-right" id="q8-right">
+      <li data-pair="1" onclick="selectRight(this,'q8')">㉮ 정해진 것보다 더 요구하지 마라.</li>
+      <li data-pair="2" onclick="selectRight(this,'q8')">㉯ 강탈하거나 갈취하지 말고 너희 봉급으로 만족하여라.</li>
+      <li data-pair="3" onclick="selectRight(this,'q8')">㉰ 옷을 두 벌 가진 사람은 못 가진 이에게 나누어 주어라.</li>
+    </ul>
+  </div>
+  <button class="submit-btn" id="q8-submit" onclick="submitMatch('q8',3)">확인</button>
+  <div class="answer-box hidden" id="q8-answer"><div class="label">정답</div><div class="answer-text">① ㉰, ② ㉮, ③ ㉯</div></div>
+  <div class="explain-box hidden" id="q8-explain"><div class="label">해설</div>
+    <p>루카 3,11: 군중에게 → "<b>옷을 두 벌 가진 사람은 못 가진 이에게 나누어 주어라.</b>"</p>
+    <p>루카 3,13: 세리들에게 → "<b>정해진 것보다 더 요구하지 마라.</b>"</p>
+    <p>루카 3,14: 군사들에게 → "<b>강탈하거나 갈취하지 말고 너희 봉급으로 만족하여라.</b>"</p>
+  </div>
+</div>
+
+<!-- 9번 -->
+<div class="question-block" id="q9">
+  <span class="q-number">9번</span><span class="q-ref">루카 4,13-14</span>
+  <div class="q-text">악마가 모든 유혹을 끝내고 다음 기회를 노리며 물러간 후, 예수님께서 성령의 힘을 지니고 돌아가신 곳은?</div>
+  <ul class="q-options interactive" id="q9-options">
+    <li data-correct="false" onclick="toggleSingle(this,'q9')">① 유다</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q9')">② 사마리아</li>
+    <li data-correct="true" onclick="toggleSingle(this,'q9')">③ 갈릴래아</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q9')">④ 페니키아</li>
+  </ul>
+  <button class="submit-btn" id="q9-submit" onclick="submitSingle('q9')">확인</button>
+  <div class="answer-box hidden" id="q9-answer"><div class="label">정답</div><div class="answer-text">③ 갈릴래아</div></div>
+  <div class="explain-box hidden" id="q9-explain"><div class="label">해설</div><p>루카 4,14: "예수님께서 성령의 힘을 지니고 <b>갈릴래아</b>로 돌아가셨다."</p></div>
+</div>
+
+<!-- 10번 (빈칸 2개→2개 순서 선택) -->
+<div class="question-block" id="q10">
+  <span class="q-number">10번</span><span class="q-ref">루카 4,18-19</span>
+  <div class="q-text">'나자렛에서 희년을 선포하시다'에서, 예수님께서 이사야 예언자의 두루마리에서 찾으신 말씀이다. ( )에 들어갈 말을 순서대로 선택하시오.</div>
+  <div class="q-passage">주님께서 나에게 기름을 부어 주시니 주님의 영이 내 위에 내리셨다. 주님께서 나를 보내시어 가난한 이들에게 (<u>①&nbsp;&nbsp;&nbsp;&nbsp;</u>)을 전하고 잡혀간 이들에게 해방을 선포하며 눈먼 이들을 다시 보게 하고 억압받는 이들을 해방시켜 내보내며 (<u>②&nbsp;&nbsp;&nbsp;&nbsp;</u>)를 선포하게 하셨다.</div>
+  <ul class="q-options interactive" id="q10-options">
+    <li data-answer="1" onclick="toggleOrdered(this,'q10')">기쁜 소식</li>
+    <li data-answer="2" onclick="toggleOrdered(this,'q10')">주님의 은혜로운 해</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q10')">하느님의 심판</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q10')">영원한 생명</li>
+  </ul>
+  <button class="submit-btn" id="q10-submit" onclick="submitOrdered('q10',2)">확인</button>
+  <div class="answer-box hidden" id="q10-answer"><div class="label">정답</div><div class="answer-text">① 기쁜 소식 ② 주님의 은혜로운 해</div></div>
+  <div class="explain-box hidden" id="q10-explain"><div class="label">해설</div><p>루카 4,18-19: "가난한 이들에게 <b>기쁜 소식</b>을 전하고... <b>주님의 은혜로운 해</b>를 선포하게 하셨다."</p></div>
+</div>
+
+<footer>
+  <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집 | 천주교 수원교구 복음화국</p>
+  <p style="margin-top:8px;"><a href="study_day14.html">← 이전</a> | <a href="study_day16.html">다음 →</a></p>
+</footer>
+<script>
+function toggleSingle(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected')});s.classList.add('multi-selected');}
+function submitSingle(qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;var s=o.querySelector('li.multi-selected');if(!s)return;var c=s.dataset.correct==='true';o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected');if(c){if(l===s)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(l===s)l.classList.add('selected-wrong');else if(l.dataset.correct==='true')l.classList.add('selected-correct');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+function toggleMulti(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;s.classList.toggle('multi-selected');}
+function submitMulti(qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;var a=o.querySelectorAll('li'),s=o.querySelectorAll('li.multi-selected');if(s.length===0)return;var ac=true,nw=true;a.forEach(function(l){var c=l.dataset.correct==='true',sel=l.classList.contains('multi-selected');if(c&&!sel)ac=false;if(!c&&sel)nw=false;});o.classList.add('solved');a.forEach(function(l){var c=l.dataset.correct==='true',sel=l.classList.contains('multi-selected');l.classList.remove('multi-selected');if(ac&&nw){if(c)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(c)l.classList.add('selected-correct');else if(sel)l.classList.add('selected-wrong');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+function selectOX(btn,qId){var c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;c.querySelectorAll('.ox-btn').forEach(function(b){b.classList.remove('selected')});btn.classList.add('selected');}
+function submitOX(qId,ans){var c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;var s=c.querySelector('.ox-btn.selected');if(!s)return;c.classList.add('solved');c.querySelectorAll('.ox-btn').forEach(function(b){b.classList.remove('selected');if(b.dataset.value===ans)b.classList.add('ox-correct');else if(b===s&&b.dataset.value!==ans)b.classList.add('ox-wrong');else b.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var matchState={};
+function selectLeft(li,qId){if(!matchState[qId])matchState[qId]={pairs:[],activeLeft:null};var st=matchState[qId];if(li.classList.contains('matched'))return;document.getElementById(qId+'-left').querySelectorAll('li').forEach(function(l){l.classList.remove('active')});li.classList.add('active');st.activeLeft=li;}
+function selectRight(ri,qId){if(!matchState[qId])matchState[qId]={pairs:[],activeLeft:null};var st=matchState[qId];if(!st.activeLeft||ri.classList.contains('matched'))return;var n=st.pairs.length+1;st.pairs.push({left:st.activeLeft,right:ri});var bL=document.createElement('span');bL.className='match-pair-badge';bL.textContent=n;st.activeLeft.insertBefore(bL,st.activeLeft.firstChild);var bR=document.createElement('span');bR.className='match-pair-badge';bR.textContent=n;ri.insertBefore(bR,ri.firstChild);st.activeLeft.classList.remove('active');st.activeLeft.classList.add('matched');ri.classList.add('matched');st.activeLeft=null;}
+function submitMatch(qId,total){if(!matchState[qId]||matchState[qId].pairs.length!==total)return;var lL=document.getElementById(qId+'-left'),rL=document.getElementById(qId+'-right');lL.classList.add('solved');matchState[qId].pairs.forEach(function(p){if(p.left.dataset.pair!==p.right.dataset.pair){p.left.classList.remove('matched');p.left.classList.add('match-wrong');p.right.classList.remove('matched');p.right.classList.add('match-wrong');}});lL.querySelectorAll('li').forEach(function(l){l.classList.add('disabled')});rL.querySelectorAll('li').forEach(function(l){l.classList.add('disabled')});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var orderState={};
+function pickOrder(s,qId){var items=document.getElementById(qId+'-items');if(items.classList.contains('solved'))return;if(!orderState[qId])orderState[qId]=[];var idx=orderState[qId].indexOf(s);if(idx!==-1){orderState[qId].splice(idx,1);renderOP2(qId);return;}orderState[qId].push(s);renderOP2(qId);}
+function renderOP2(qId){var items=document.getElementById(qId+'-items');items.querySelectorAll('li').forEach(function(li){li.classList.remove('picked');var e=li.querySelector('.pick-num');if(e)e.remove();});orderState[qId].forEach(function(li,i){li.classList.add('picked');var b=document.createElement('span');b.className='pick-num';b.textContent=i+1;li.insertBefore(b,li.firstChild);});}
+function submitOrder(qId){var items=document.getElementById(qId+'-items');if(items.classList.contains('solved'))return;if(!orderState[qId]||orderState[qId].length!==items.querySelectorAll('li').length)return;items.classList.add('solved');orderState[qId].forEach(function(li,i){var cp=parseInt(li.dataset.order);if(cp===i)li.classList.add('order-correct');else li.classList.add('order-wrong');li.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var orderedState={};
+function toggleOrdered(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId])orderedState[qId]=[];var idx=orderedState[qId].indexOf(s);if(idx!==-1){orderedState[qId].splice(idx,1);renderOP3(qId);return;}orderedState[qId].push(s);renderOP3(qId);}
+function renderOP3(qId){var o=document.getElementById(qId+'-options');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');});orderedState[qId].forEach(function(l,i){l.classList.add('multi-selected');l.classList.add('order-'+(i+1));});}
+function submitOrdered(qId,count){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');var a=parseInt(l.dataset.answer);var pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+</script>
 </body>
 </html>

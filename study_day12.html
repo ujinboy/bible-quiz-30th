@@ -60,6 +60,19 @@ nav a.current { background: #5c7cba; } nav a.mk.current { background: #7b5ea7; }
 .explain-box p { font-size: 0.9em; color: #444; margin-bottom: 6px; }
 footer { text-align: center; padding: 30px 0; color: #999; font-size: 0.8em; border-top: 1px solid #ddd; margin-top: 20px; }
 footer a { color: #7b5ea7; text-decoration: none; margin: 0 8px; }
+.cw-clue-block { margin-bottom: 12px; }
+.cw-clue-label { font-size: 0.88em; color: #444; margin-bottom: 6px; }
+.cw-choices { display: flex; gap: 8px; }
+.cw-choice { padding: 6px 14px; border: 1px solid #ddd; border-radius: 6px; background: #fafafa; font-size: 0.9em; cursor: pointer; transition: all 0.2s; }
+.cw-choice:hover { background: #f0ebe3; border-color: #c0a060; }
+.cw-choice.picked { background: #e3f2fd; border: 2px solid #42a5f5; font-weight: 600; }
+.cw-choice.cw-choice-correct { background: #e8f5e9; border: 2px solid #4caf50; }
+.cw-choice.cw-choice-wrong { background: #ffebee; border: 2px solid #e57373; }
+.cw-choice.disabled { pointer-events: none; opacity: 0.7; }
+.cw-g { width: 32px; height: 32px; background: #e0e0e0; border: 1px solid #ccc; }
+.cw-w { width: 32px; height: 32px; background: #fff; border: 1px solid #999; text-align: center; vertical-align: middle; font-weight: bold; color: #1565c0; font-size: 0.95em; }
+.cw-w.cw-correct { background: #e8f5e9; color: #2e7d32; }
+.cw-w.cw-wrong { background: #ffebee; color: #c62828; }
 </style>
 </head>
 <body>
@@ -67,18 +80,52 @@ footer a { color: #7b5ea7; text-decoration: none; margin: 0 8px; }
 <nav><a href="study_day1.html" class="mt">1일차</a><a href="study_day2.html" class="mt">2일차</a><a href="study_day3.html" class="mt">3일차</a><a href="study_day4.html" class="mt">4일차</a><a href="study_day5.html" class="mt">5일차</a><a href="study_day6.html" class="mt">6일차</a><a href="study_day7.html" class="mt">7일차</a><a href="study_day8.html" class="mk">8일차</a><a href="study_day9.html" class="mk">9일차</a><a href="study_day10.html" class="mk">10일차</a><a href="study_day11.html" class="mk">11일차</a><a href="study_day12.html" class="mk current">12일차</a><a href="study_day13.html" class="mk">13일차</a><a href="study_day14.html" class="mk">14일차</a><a href="study_day15.html" class="lk">15일차</a><a href="study_day16.html" class="lk">16일차</a><a href="study_day17.html" class="lk">17일차</a><a href="study_day18.html" class="lk">18일차</a><a href="study_day19.html" class="lk">19일차</a><a href="study_day20.html" class="lk">20일차</a><a href="study_day21.html" class="lk">21일차</a><a href="study_day22.html" class="jn">22일차</a><a href="study_day23.html" class="jn">23일차</a><a href="study_day24.html" class="jn">24일차</a><a href="study_day25.html" class="jn">25일차</a><a href="study_day26.html" class="jn">26일차</a><a href="study_day27.html" class="jn">27일차</a><a href="study_day28.html" class="jn">28일차</a></nav>
 
 <div class="question-block" id="q29">
-  <span class="q-number">29번</span><span class="q-ref">마르 9장</span>
-  <div class="q-text">십자말풀이 가로 ④번 열쇠: 예수님께서 "( )는 힘차게 와 있다"고 하셨다. (9,1)</div>
-  
-  <ul class="q-options interactive" id="q29-options">
-    <li data-correct="false" onclick="toggleSingle(this,'q29')">① 영원한 생명</li>
-    <li data-correct="false" onclick="toggleSingle(this,'q29')">② 심판의 날</li>
-    <li data-correct="false" onclick="toggleSingle(this,'q29')">③ 하늘 나라</li>
-    <li data-correct="true" onclick="toggleSingle(this,'q29')">④ 하느님 나라</li>
-  </ul>
-  <button class="submit-btn" id="q29-submit" onclick="submitSingle('q29')">확인</button>
-  <div class="answer-box hidden" id="q29-answer"><div class="label">정답</div><div class="answer-text">④ 하느님 나라</div></div>
-  <div class="explain-box hidden" id="q29-explain"><div class="label">해설</div><p>마르 9,1: "<b>하느님 나라</b>가 힘차게 와 있는 것을 볼 것이다."</p></div>
+  <span class="q-number">29번</span><span class="q-ref">마르 9장</span><span class="q-type">십자말</span>
+  <div class="q-text">각 열쇠의 보기를 선택하면 격자에 글자가 채워집니다.</div>
+
+  <table style="border-collapse:collapse; margin:0 auto 14px; font-size:0.85em;">
+    <tr><td class="cw-w" id="c29-1-1"><small>㉮</small></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-w" id="c29-2-1"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-w" id="c29-3-1"><small>①</small></td><td class="cw-w" id="c29-3-2"><small>㉯</small></td><td class="cw-w" id="c29-3-3"></td><td class="cw-g"></td><td class="cw-w" id="c29-3-5"><small>②</small></td><td class="cw-w" id="c29-3-6"><small>㉰</small></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-g"></td><td class="cw-w" id="c29-4-2"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c29-4-6"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c29-4-9"><small>㉱</small></td></tr>
+    <tr><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c29-5-6"><small>③</small></td><td class="cw-w" id="c29-5-7"></td><td class="cw-w" id="c29-5-8"></td><td class="cw-w" id="c29-5-9"></td></tr>
+    <tr><td class="cw-g"></td><td class="cw-w" id="c29-6-2"><small>④</small></td><td class="cw-w" id="c29-6-3"></td><td class="cw-w" id="c29-6-4"></td><td class="cw-w" id="c29-6-5"></td><td class="cw-w" id="c29-6-6"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+  </table>
+
+  <div class="q-passage">
+    <b>가로 열쇠:</b><br>
+    ① 엿새 뒤에 예수님께서 베드로와 ○○○와 요한만 따로 데리고 높은 산에 오르셨다. (9,2)<br>
+    ② 저희가 ○○ 셋을 지어 하나는 스승님께 (9,5)<br>
+    ③ 그분의 옷은 이 세상 어떤 ○○○○도 그토록 하얗게 할 수 없을 만큼 (9,3)<br>
+    ④ 두 눈을 가지고 지옥에 던져지는것보다, 외눈박이로 ○○○ ○○에 들어가는 편이 낫다. (9,47)<br><br>
+    <b>세로 열쇠:</b><br>
+    ㉮ 사실 내가 너희에게 말하는데, ○○○에 관하여 성경에 기록된 대로 (9,13)<br>
+    ㉯ 사람의 아들이 많은 ○○과 멸시를 받으리라고 (9,12)<br>
+    ㉰ ○○ ○○, 내 이름으로 기적을 일으키고 나서 (9,39)<br>
+    ㉱ 사람들이 ○○를 예수님께 데려왔다. (9,20)
+  </div>
+
+  <div class="cw-clue-block"><div class="cw-clue-label">① 가로: ○○○와 요한만 따로 데리고 (9,2)</div><div class="cw-choices" id="q29-clue1"><button class="cw-choice" onclick="pickCW(this,'q29','clue1','야고보')">야고보</button><button class="cw-choice" onclick="pickCW(this,'q29','clue1','안드레')">안드레</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">② 가로: ○○ 셋을 지어 (9,5)</div><div class="cw-choices" id="q29-clue2"><button class="cw-choice" onclick="pickCW(this,'q29','clue2','초막')">초막</button><button class="cw-choice" onclick="pickCW(this,'q29','clue2','제단')">제단</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">③ 가로: 어떤 ○○○○도 그토록 하얗게 (9,3)</div><div class="cw-choices" id="q29-clue3"><button class="cw-choice" onclick="pickCW(this,'q29','clue3','마전장이')">마전장이</button><button class="cw-choice" onclick="pickCW(this,'q29','clue3','빨래꾼이')">빨래꾼이</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">④ 가로: 외눈박이로 ○○○ ○○에 (9,47)</div><div class="cw-choices" id="q29-clue4"><button class="cw-choice" onclick="pickCW(this,'q29','clue4','하느님나라')">하느님 나라</button><button class="cw-choice" onclick="pickCW(this,'q29','clue4','영원한생명')">영원한 생명</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">㉮ 세로: ○○○에 관하여 성경에 기록 (9,13)</div><div class="cw-choices" id="q29-clue5"><button class="cw-choice" onclick="pickCW(this,'q29','clue5','엘리야')">엘리야</button><button class="cw-choice" onclick="pickCW(this,'q29','clue5','이사야')">이사야</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">㉯ 세로: 많은 ○○과 멸시를 (9,12)</div><div class="cw-choices" id="q29-clue6"><button class="cw-choice" onclick="pickCW(this,'q29','clue6','고난')">고난</button><button class="cw-choice" onclick="pickCW(this,'q29','clue6','수난')">수난</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">㉰ 세로: ○○ ○○, 내 이름으로 기적을 (9,39)</div><div class="cw-choices" id="q29-clue7"><button class="cw-choice" onclick="pickCW(this,'q29','clue7','막지마라')">막지 마라</button><button class="cw-choice" onclick="pickCW(this,'q29','clue7','놓아두라')">놓아 두라</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">㉱ 세로: 사람들이 ○○를 예수님께 (9,20)</div><div class="cw-choices" id="q29-clue8"><button class="cw-choice" onclick="pickCW(this,'q29','clue8','아이')">아이</button><button class="cw-choice" onclick="pickCW(this,'q29','clue8','병자')">병자</button></div></div>
+
+  <button class="submit-btn" id="q29-submit" onclick="submitCW('q29')">확인</button>
+  <div class="answer-box hidden" id="q29-answer"><div class="label">정답</div><div class="answer-text">① 야고보 ② 초막 ③ 마전장이 ④ 하느님 나라 ㉮ 엘리야 ㉯ 고난 ㉰ 막지 마라 ㉱ 아이</div></div>
+  <div class="explain-box hidden" id="q29-explain"><div class="label">해설</div>
+    <p>① 마르 9,2: "예수님께서 베드로와 <b>야고보</b>와 요한만 따로 데리고 높은 산에 오르셨다."</p>
+    <p>② 마르 9,5: "저희가 <b>초막</b> 셋을 지어 하나는 스승님께, 하나는 모세께, 또 하나는 엘리야께 드리겠습니다."</p>
+    <p>③ 마르 9,3: "그분의 옷은 이 세상 어떤 <b>마전장이</b>도 그토록 하얗게 할 수 없을 만큼 새하얗게 빛났다."</p>
+    <p>④ 마르 9,47: "외눈박이로 <b>하느님 나라</b>에 들어가는 편이 낫다."</p>
+    <p>㉮ 마르 9,13: "<b>엘리야</b>에 관하여 성경에 기록된 대로 그가 이미 왔지만"</p>
+    <p>㉯ 마르 9,12: "사람의 아들이 많은 <b>고난</b>과 멸시를 받으리라고"</p>
+    <p>㉰ 마르 9,39: "<b>막지 마라.</b> 내 이름으로 기적을 일으키고 나서"</p>
+    <p>㉱ 마르 9,20: "사람들이 <b>아이</b>를 예수님께 데려왔다."</p>
+  </div>
 </div>
 <div class="question-block" id="q30">
   <span class="q-number">30번</span><span class="q-ref">마르 10,26-27</span>
@@ -179,6 +226,19 @@ var matchState={};
 function selectLeft(li,qId){if(!matchState[qId])matchState[qId]={pairs:[],activeLeft:null};var st=matchState[qId];if(li.classList.contains('matched'))return;document.getElementById(qId+'-left').querySelectorAll('li').forEach(function(l){l.classList.remove('active')});li.classList.add('active');st.activeLeft=li;}
 function selectRight(ri,qId){if(!matchState[qId])matchState[qId]={pairs:[],activeLeft:null};var st=matchState[qId];if(!st.activeLeft||ri.classList.contains('matched'))return;var n=st.pairs.length+1;st.pairs.push({left:st.activeLeft,right:ri});var bL=document.createElement('span');bL.className='match-pair-badge';bL.textContent=n;st.activeLeft.insertBefore(bL,st.activeLeft.firstChild);var bR=document.createElement('span');bR.className='match-pair-badge';bR.textContent=n;ri.insertBefore(bR,ri.firstChild);st.activeLeft.classList.remove('active');st.activeLeft.classList.add('matched');ri.classList.add('matched');st.activeLeft=null;}
 function submitMatch(qId,total){if(!matchState[qId]||matchState[qId].pairs.length!==total)return;var lL=document.getElementById(qId+'-left'),rL=document.getElementById(qId+'-right');lL.classList.add('solved');matchState[qId].pairs.forEach(function(p){if(p.left.dataset.pair!==p.right.dataset.pair){p.left.classList.remove('matched');p.left.classList.add('match-wrong');p.right.classList.remove('matched');p.right.classList.add('match-wrong');}});lL.querySelectorAll('li').forEach(function(l){l.classList.add('disabled')});rL.querySelectorAll('li').forEach(function(l){l.classList.add('disabled')});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var cwState={};
+var cwGrid={
+  clue1:{cells:['c29-3-1','c29-3-2','c29-3-3'],answer:'야고보'},
+  clue2:{cells:['c29-3-5','c29-3-6'],answer:'초막'},
+  clue3:{cells:['c29-5-6','c29-5-7','c29-5-8','c29-5-9'],answer:'마전장이'},
+  clue4:{cells:['c29-6-2','c29-6-3','c29-6-4','c29-6-5','c29-6-6'],answer:'하느님나라'},
+  clue5:{cells:['c29-1-1','c29-2-1','c29-3-1'],answer:'엘리야'},
+  clue6:{cells:['c29-3-2','c29-4-2'],answer:'고난'},
+  clue7:{cells:['c29-3-6','c29-4-6','c29-5-6','c29-6-6'],answer:'막지마라'},
+  clue8:{cells:['c29-4-9','c29-5-9'],answer:'아이'}
+};
+function pickCW(btn,qId,clueId,word){if(document.getElementById(qId+'-submit').classList.contains('hidden'))return;var c=document.getElementById(qId+'-'+clueId);c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.remove('picked')});btn.classList.add('picked');if(!cwState[qId])cwState[qId]={};cwState[qId][clueId]=word;var cells=cwGrid[clueId].cells;var chars=word.split('');for(var i=0;i<cells.length;i++){var cell=document.getElementById(cells[i]);if(cell&&chars[i])cell.textContent=chars[i];}}
+function submitCW(qId){if(!cwState[qId])return;var state=cwState[qId];if(Object.keys(state).length<8)return;Object.keys(cwGrid).forEach(function(clueId){var clue=cwGrid[clueId];var c=document.getElementById(qId+'-'+clueId);var picked=c.querySelector('.cw-choice.picked');var isCorrect=state[clueId]===clue.answer;c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.add('disabled');if(b===picked)b.classList.add(isCorrect?'cw-choice-correct':'cw-choice-wrong');});clue.cells.forEach(function(cellId){var cell=document.getElementById(cellId);if(isCorrect)cell.classList.add('cw-correct');else cell.classList.add('cw-wrong');});if(!isCorrect){var chars=clue.answer.split('');clue.cells.forEach(function(cellId,i){var cell=document.getElementById(cellId);if(cell&&chars[i])cell.textContent=chars[i];});}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
 </script>
 </body>
 </html>

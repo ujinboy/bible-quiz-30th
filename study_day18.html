@@ -4,17 +4,228 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>30차 성경잔치 공부 18일차 (루카 복음서)</title>
+<meta property="og:title" content="30차 성경잔치 공부 18일차">
+<meta property="og:description" content="루카 복음서 29~37번 문제">
+<meta property="og:image" content="https://ujinboy.github.io/bible-quiz-30th/images/1.jpg">
+<meta property="og:url" content="https://ujinboy.github.io/bible-quiz-30th/study_day18.html">
+<meta property="og:type" content="website">
 <style>
-body { font-family: -apple-system, sans-serif; background: #f5f0eb; color: #2c2c2c; padding: 40px 20px; max-width: 720px; margin: 0 auto; text-align: center; }
-h1 { color: #4a9e6f; margin-bottom: 10px; }
-p { color: #888; }
-a { color: #4a9e6f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f0eb; color: #2c2c2c; line-height: 1.7; padding: 20px; max-width: 720px; margin: 0 auto; }
+header { text-align: center; padding: 30px 0 20px; border-bottom: 2px solid #4a9e6f; margin-bottom: 30px; }
+header h1 { font-size: 1.4em; color: #4a9e6f; margin-bottom: 5px; }
+header p { font-size: 0.9em; color: #666; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 30px; }
+nav a { display: inline-block; padding: 4px 10px; text-decoration: none; border-radius: 4px; font-size: 0.8em; color: #fff; }
+nav a.mt { background: #a0b4d9; } nav a.mk { background: #b8a3cf; } nav a.lk { background: #8cc8a4; } nav a.jn { background: #e8b580; }
+nav a.current { background: #4a9e6f; } nav a.mt.current { background: #5c7cba; } nav a.mk.current { background: #7b5ea7; } nav a.jn.current { background: #c97a2e; }
+.question-block { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.q-number { display: inline-block; background: #4a9e6f; color: #fff; font-size: 0.75em; font-weight: bold; padding: 3px 10px; border-radius: 12px; margin-bottom: 12px; }
+.q-ref { display: inline-block; font-size: 0.75em; color: #888; margin-left: 8px; }
+.q-type { display: inline-block; font-size: 0.7em; color: #fff; background: #5a8f5a; padding: 2px 8px; border-radius: 8px; margin-left: 6px; }
+.q-text { font-size: 1.05em; font-weight: 600; margin-bottom: 14px; color: #1a1a1a; }
+.q-passage { background: #f9f6f1; border-left: 3px solid #8cc8a4; padding: 12px 16px; margin-bottom: 14px; font-size: 0.92em; color: #444; border-radius: 0 6px 6px 0; }
+.q-options { list-style: none; margin-bottom: 16px; }
+.q-options li { padding: 8px 12px; margin-bottom: 6px; border-radius: 6px; font-size: 0.93em; }
+.q-options.interactive li { background: #fafafa; border: 1px solid #ddd; color: #2c2c2c; font-weight: normal; cursor: pointer; transition: background 0.2s; }
+.q-options.interactive li:hover { background: #f0ebe3; border-color: #c0a060; }
+.q-options.interactive li.selected-correct { background: #e8f5e9; border: 2px solid #4caf50; font-weight: 600; cursor: default; }
+.q-options.interactive li.selected-wrong { background: #ffebee; border: 2px solid #e57373; color: #c62828; cursor: default; }
+.q-options.interactive li.disabled { cursor: default; opacity: 0.7; pointer-events: none; }
+.q-options.interactive li.multi-selected { background: #e3f2fd; border: 2px solid #42a5f5; cursor: pointer; }
+.q-options.interactive li.order-1::before { content: "\2460 "; font-weight: bold; color: #1565c0; }
+.q-options.interactive li.order-2::before { content: "\2461 "; font-weight: bold; color: #1565c0; }
+.ox-options { display: flex; gap: 12px; margin-bottom: 16px; }
+.ox-btn { flex: 1; padding: 14px; text-align: center; font-size: 1.3em; font-weight: bold; border: 2px solid #ddd; border-radius: 10px; background: #fafafa; cursor: pointer; transition: all 0.2s; }
+.ox-btn:hover { background: #f0ebe3; border-color: #c0a060; }
+.ox-btn.selected { background: #e3f2fd; border-color: #42a5f5; }
+.ox-btn.ox-correct { background: #e8f5e9; border-color: #4caf50; }
+.ox-btn.ox-wrong { background: #ffebee; border-color: #e57373; }
+.ox-btn.disabled { pointer-events: none; opacity: 0.7; }
+.match-area { display: flex; gap: 16px; margin-bottom: 16px; }
+.match-left, .match-right { flex: 1; list-style: none; }
+.match-left li, .match-right li { padding: 10px 12px; margin-bottom: 8px; border-radius: 6px; font-size: 0.85em; background: #fafafa; border: 1px solid #ddd; cursor: pointer; transition: all 0.2s; }
+.match-left li:hover, .match-right li:hover { background: #f0ebe3; border-color: #c0a060; }
+.match-left li.active { background: #e3f2fd; border: 2px solid #42a5f5; }
+.match-left li.matched, .match-right li.matched { background: #e8f5e9; border: 2px solid #4caf50; cursor: default; }
+.match-left li.match-wrong, .match-right li.match-wrong { background: #ffebee; border: 2px solid #e57373; }
+.match-left li.disabled, .match-right li.disabled { pointer-events: none; opacity: 0.7; }
+.match-pair-badge { display: inline-block; background: #4caf50; color: #fff; font-size: 0.7em; font-weight: bold; width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 50%; margin-right: 6px; }
+.submit-btn { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #4a9e6f; color: #fff; border: none; border-radius: 6px; font-size: 0.9em; cursor: pointer; }
+.submit-btn:hover { background: #3a7d58; }
+.hidden { display: none; }
+.answer-box { background: #e3f2e8; border: 1px solid #a5d6a7; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px; }
+.answer-box .label { font-size: 0.8em; font-weight: bold; color: #2e7d32; margin-bottom: 4px; }
+.answer-box .answer-text { font-size: 1em; font-weight: 600; color: #1b5e20; }
+.explain-box { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; }
+.explain-box .label { font-size: 0.8em; font-weight: bold; color: #f57f17; margin-bottom: 6px; }
+.explain-box p { font-size: 0.9em; color: #444; margin-bottom: 6px; }
+footer { text-align: center; padding: 30px 0; color: #999; font-size: 0.8em; border-top: 1px solid #ddd; margin-top: 20px; }
+footer a { color: #4a9e6f; text-decoration: none; margin: 0 8px; }
 </style>
 </head>
 <body>
-<h1>18일차 - 루카 복음서</h1>
-<p>준비 중입니다.</p>
-<p style="margin-top:20px;"><a href="study_day17.html">← 이전</a> | <a href="study_day19.html">다음 →</a></p>
-<p style="margin-top:10px;"><a href="main.html">메인으로</a></p>
+<header><h1>30차 성경잔치 공부 18일차</h1><p>루카 복음서 (29~37번)</p></header>
+<nav><a href="study_day1.html" class="mt">1일차</a><a href="study_day2.html" class="mt">2일차</a><a href="study_day3.html" class="mt">3일차</a><a href="study_day4.html" class="mt">4일차</a><a href="study_day5.html" class="mt">5일차</a><a href="study_day6.html" class="mt">6일차</a><a href="study_day7.html" class="mt">7일차</a><a href="study_day8.html" class="mk">8일차</a><a href="study_day9.html" class="mk">9일차</a><a href="study_day10.html" class="mk">10일차</a><a href="study_day11.html" class="mk">11일차</a><a href="study_day12.html" class="mk">12일차</a><a href="study_day13.html" class="mk">13일차</a><a href="study_day14.html" class="mk">14일차</a><a href="study_day15.html" class="lk">15일차</a><a href="study_day16.html" class="lk">16일차</a><a href="study_day17.html" class="lk">17일차</a><a href="study_day18.html" class="lk current">18일차</a><a href="study_day19.html" class="lk">19일차</a><a href="study_day20.html" class="lk">20일차</a><a href="study_day21.html" class="lk">21일차</a><a href="study_day22.html" class="jn">22일차</a><a href="study_day23.html" class="jn">23일차</a><a href="study_day24.html" class="jn">24일차</a><a href="study_day25.html" class="jn">25일차</a><a href="study_day26.html" class="jn">26일차</a><a href="study_day27.html" class="jn">27일차</a><a href="study_day28.html" class="jn">28일차</a></nav>
+
+<!-- 29번 (OX) -->
+<div class="question-block" id="q29">
+  <span class="q-number">29번</span><span class="q-ref">루카 12,31</span><span class="q-type">OX</span>
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">오히려 너희는 그분의 나라를 찾아라. 그러면 이것들도 곁들여 받게 될 것이다. (12,31)</div>
+  <div class="ox-options" id="q29-ox"><div class="ox-btn" data-value="O" onclick="selectOX(this,'q29')">O</div><div class="ox-btn" data-value="X" onclick="selectOX(this,'q29')">X</div></div>
+  <button class="submit-btn" id="q29-submit" onclick="submitOX('q29','O')">확인</button>
+  <div class="answer-box hidden" id="q29-answer"><div class="label">정답</div><div class="answer-text">O</div></div>
+  <div class="explain-box hidden" id="q29-explain"><div class="label">해설</div><p>루카 12,31: "오히려 너희는 그분의 나라를 찾아라. 그러면 이것들도 곁들여 받게 될 것이다." 원문 그대로이므로 O.</p></div>
+</div>
+
+<!-- 30번 (OX) -->
+<div class="question-block" id="q30">
+  <span class="q-number">30번</span><span class="q-ref">루카 12,32</span><span class="q-type">OX</span>
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">너희들 작은 양 떼야, 두려워하지 마라. 너희 아버지께서는 그 나라를 너희에게 기꺼이 주기로 하셨다. (12,32)</div>
+  <div class="ox-options" id="q30-ox"><div class="ox-btn" data-value="O" onclick="selectOX(this,'q30')">O</div><div class="ox-btn" data-value="X" onclick="selectOX(this,'q30')">X</div></div>
+  <button class="submit-btn" id="q30-submit" onclick="submitOX('q30','O')">확인</button>
+  <div class="answer-box hidden" id="q30-answer"><div class="label">정답</div><div class="answer-text">O</div></div>
+  <div class="explain-box hidden" id="q30-explain"><div class="label">해설</div><p>루카 12,32: "너희들 작은 양 떼야, 두려워하지 마라. 너희 아버지께서는 그 나라를 너희에게 기꺼이 주기로 하셨다." 원문 그대로이므로 O.</p></div>
+</div>
+
+<!-- 31번 (2개 순서 선택) -->
+<div class="question-block" id="q31">
+  <span class="q-number">31번</span><span class="q-ref">루카 12,33-34</span><span class="q-type">순서선택</span>
+  <div class="q-text">( )에 들어갈 말을 순서대로 선택하시오.</div>
+  <div class="q-passage">너희는 가진 것을 팔아 (<u>①&nbsp;&nbsp;&nbsp;&nbsp;</u>) 너희 자신을 위하여 해지지 않는 돈주머니와 축나지 않는 보물을 (<u>②&nbsp;&nbsp;&nbsp;&nbsp;</u>) 거기에는 도둑이 다가가지도 못하고 좀이 쏠지도 못한다.</div>
+  <ul class="q-options interactive" id="q31-options">
+    <li data-answer="1" onclick="toggleOrdered(this,'q31')">자선을 베풀어라.</li>
+    <li data-answer="2" onclick="toggleOrdered(this,'q31')">하늘에 마련하여라.</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q31')">가난한 이에게 주어라.</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q31')">땅 위에 쌓아 두어라.</li>
+  </ul>
+  <button class="submit-btn" id="q31-submit" onclick="submitOrdered('q31',2)">확인</button>
+  <div class="answer-box hidden" id="q31-answer"><div class="label">정답</div><div class="answer-text">① 자선을 베풀어라. ② 하늘에 마련하여라.</div></div>
+  <div class="explain-box hidden" id="q31-explain"><div class="label">해설</div><p>루카 12,33-34: "너희는 가진 것을 팔아 <b>자선을 베풀어라.</b> 너희 자신을 위하여 해지지 않는 돈주머니와 축나지 않는 보물을 <b>하늘에 마련하여라.</b>"</p></div>
+</div>
+
+<!-- 32번 (선 잇기 3쌍) -->
+<div class="question-block" id="q32">
+  <span class="q-number">32번</span><span class="q-ref">루카 13,10-17</span><span class="q-type">연결</span>
+  <div class="q-text">안식일에 열여덟 해 동안 병마에 시달리는 여자를 고쳐 주셨을 때, 바르게 연결하시오.</div>
+  <div class="match-area">
+    <ul class="match-left" id="q32-left">
+      <li data-pair="2" onclick="selectLeft(this,'q32')">① 그 여자</li>
+      <li data-pair="3" onclick="selectLeft(this,'q32')">② 회당장</li>
+      <li data-pair="1" onclick="selectLeft(this,'q32')">③ 군중</li>
+    </ul>
+    <ul class="match-right" id="q32-right">
+      <li data-pair="1" onclick="selectRight(this,'q32')">㉮ 예수님께서 하신 그 모든 영광스러운 일을 두고 기뻐하였다.</li>
+      <li data-pair="2" onclick="selectRight(this,'q32')">㉯ 즉시 똑바로 일어서서 하느님을 찬양하였다.</li>
+      <li data-pair="3" onclick="selectRight(this,'q32')">㉰ 예수님께서 안식일에 병을 고쳐 주셨으므로 분개하였다.</li>
+    </ul>
+  </div>
+  <button class="submit-btn" id="q32-submit" onclick="submitMatch('q32',3)">확인</button>
+  <div class="answer-box hidden" id="q32-answer"><div class="label">정답</div><div class="answer-text">① ㉯, ② ㉰, ③ ㉮</div></div>
+  <div class="explain-box hidden" id="q32-explain"><div class="label">해설</div>
+    <p>루카 13,13: 그 여자는 즉시 똑바로 일어서서 하느님을 찬양하였다.</p>
+    <p>루카 13,14: 회당장은 예수님께서 안식일에 병을 고쳐 주셨으므로 분개하였다.</p>
+    <p>루카 13,17: 군중은 예수님께서 하신 그 모든 영광스러운 일을 두고 기뻐하였다.</p>
+  </div>
+</div>
+
+<!-- 33번 (복수선택) -->
+<div class="question-block" id="q33">
+  <span class="q-number">33번</span><span class="q-ref">루카 13,31-33</span><span class="q-type">복수선택</span>
+  <div class="q-text">바리사이 몇 사람이 헤로데가 예수님을 죽이려 한다고 말하자, 예수님께서 이르신 말씀으로 맞는 것을 모두 고르시오.</div>
+  <ul class="q-options interactive" id="q33-options">
+    <li data-correct="false" onclick="toggleMulti(this,'q33')">① 헤로데가 회개하고 하느님의 자녀가 될 수 있도록 가서 성경을 풀이해 주어라.</li>
+    <li data-correct="true" onclick="toggleMulti(this,'q33')">② 오늘과 내일은 내가 마귀들을 쫓아내며 병을 고쳐 주고, 사흘째 되는 날에는 내 일을 마친다.</li>
+    <li data-correct="true" onclick="toggleMulti(this,'q33')">③ 오늘도 내일도 그다음 날도 내 길을 계속 가야 한다.</li>
+    <li data-correct="false" onclick="toggleMulti(this,'q33')">④ 예언자는 베들레헴이 아닌 다른 곳에서 죽을 수 없다.</li>
+  </ul>
+  <button class="submit-btn" id="q33-submit" onclick="submitMulti('q33')">확인</button>
+  <div class="answer-box hidden" id="q33-answer"><div class="label">정답</div><div class="answer-text">②③</div></div>
+  <div class="explain-box hidden" id="q33-explain"><div class="label">해설</div>
+    <p>루카 13,32: "<b>오늘과 내일은 내가 마귀들을 쫓아내며 병을 고쳐 주고, 사흘째 되는 날에는 내 일을 마친다.</b>"</p>
+    <p>루카 13,33: "<b>오늘도 내일도 그다음 날도 내 길을 계속 가야 한다.</b> 예언자가 <b>예루살렘</b> 밖에서 죽는 일은 있을 수 없기 때문이다." (베들레헴이 아닌 예루살렘)</p>
+  </div>
+</div>
+
+<!-- 34번 (2개 순서 선택) -->
+<div class="question-block" id="q34">
+  <span class="q-number">34번</span><span class="q-ref">루카 14,10-11</span><span class="q-type">순서선택</span>
+  <div class="q-text">( )에 들어갈 말을 순서대로 선택하시오.</div>
+  <div class="q-passage">초대를 받거든 (<u>①&nbsp;&nbsp;&nbsp;&nbsp;</u>) 그러면 너를 초대한 이가 너에게 와서, '여보게, 더 앞 자리로 올라앉게.' 할 것이다. (<u>②&nbsp;&nbsp;&nbsp;&nbsp;</u>)</div>
+  <ul class="q-options interactive" id="q34-options">
+    <li data-answer="1" onclick="toggleOrdered(this,'q34')">끝자리에 가서 앉아라.</li>
+    <li data-answer="2" onclick="toggleOrdered(this,'q34')">누구든지 자신을 높이는 이는 낮아지고 자신을 낮추는 이는 높아질 것이다.</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q34')">가장 좋은 자리에 앉아라.</li>
+    <li data-answer="0" onclick="toggleOrdered(this,'q34')">남을 위해 자리를 비워라.</li>
+  </ul>
+  <button class="submit-btn" id="q34-submit" onclick="submitOrdered('q34',2)">확인</button>
+  <div class="answer-box hidden" id="q34-answer"><div class="label">정답</div><div class="answer-text">① 끝자리에 가서 앉아라. ② 누구든지 자신을 높이는 이는 낮아지고 자신을 낮추는 이는 높아질 것이다.</div></div>
+  <div class="explain-box hidden" id="q34-explain"><div class="label">해설</div><p>루카 14,10-11: "초대를 받거든 <b>끝자리에 가서 앉아라.</b> 그러면 너를 초대한 이가 너에게 와서, '여보게, 더 앞 자리로 올라앉게.' 할 것이다. <b>누구든지 자신을 높이는 이는 낮아지고 자신을 낮추는 이는 높아질 것이다.</b>"</p></div>
+</div>
+
+<!-- 35번 (사지선다) -->
+<div class="question-block" id="q35">
+  <span class="q-number">35번</span><span class="q-ref">루카 14,27</span>
+  <div class="q-text">루카 14,27의 말씀은?</div>
+  <ul class="q-options interactive" id="q35-options">
+    <li data-correct="true" onclick="toggleSingle(this,'q35')">① 누구든지 제 십자가를 짊어지고 내 뒤를 따라오지 않는 사람은 내 제자가 될 수 없다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q35')">② 누구든지 자기 목숨을 잃는 자는 그것을 구할 것이다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q35')">③ 나를 따라오려면 먼저 재산을 팔아 가난한 이에게 주어라.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q35')">④ 누구든지 내 이름으로 기도하면 아버지께서 응답하실 것이다.</li>
+  </ul>
+  <button class="submit-btn" id="q35-submit" onclick="submitSingle('q35')">확인</button>
+  <div class="answer-box hidden" id="q35-answer"><div class="label">정답</div><div class="answer-text">① 누구든지 제 십자가를 짊어지고 내 뒤를 따라오지 않는 사람은 내 제자가 될 수 없다.</div></div>
+  <div class="explain-box hidden" id="q35-explain"><div class="label">해설</div><p>루카 14,27: "<b>누구든지 제 십자가를 짊어지고 내 뒤를 따라오지 않는 사람은 내 제자가 될 수 없다.</b>"</p></div>
+</div>
+
+<!-- 36번 (사지선다) -->
+<div class="question-block" id="q36">
+  <span class="q-number">36번</span><span class="q-ref">루카 15,5-7</span>
+  <div class="q-text">'되찾은 양의 비유'에서 빈칸에 들어갈 말은?</div>
+  <div class="q-passage">내가 너희에게 말한다. 이와 같이 하늘에서는, (<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>)</div>
+  <ul class="q-options interactive" id="q36-options">
+    <li data-correct="true" onclick="toggleSingle(this,'q36')">① 회개할 필요가 없는 의인 아흔아홉보다 회개하는 죄인 한 사람 때문에 더 기뻐할 것이다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q36')">② 잃어버린 양 한 마리를 위해 아흔아홉 마리를 들에 남겨 둘 것이다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q36')">③ 모든 사람이 회개하여 한 사람도 잃지 않기를 바라신다.</li>
+    <li data-correct="false" onclick="toggleSingle(this,'q36')">④ 양 한 마리라도 잃으면 목자의 책임이 무겁다.</li>
+  </ul>
+  <button class="submit-btn" id="q36-submit" onclick="submitSingle('q36')">확인</button>
+  <div class="answer-box hidden" id="q36-answer"><div class="label">정답</div><div class="answer-text">① 회개할 필요가 없는 의인 아흔아홉보다 회개하는 죄인 한 사람 때문에 더 기뻐할 것이다.</div></div>
+  <div class="explain-box hidden" id="q36-explain"><div class="label">해설</div><p>루카 15,7: "이와 같이, <b>회개할 필요가 없는 의인 아흔아홉보다 회개하는 죄인 한 사람 때문에 하늘에서는 더 기뻐할 것이다.</b>"</p></div>
+</div>
+
+<!-- 37번 (OX) -->
+<div class="question-block" id="q37">
+  <span class="q-number">37번</span><span class="q-ref">루카 15,20</span><span class="q-type">OX</span>
+  <div class="q-text">다음 문장이 맞으면 O, 틀리면 X를 선택하시오.</div>
+  <div class="q-passage">작은아들이 아직도 멀리 떨어져 있을 때에 아버지가 그를 보고 가엾은 마음이 들었다. 그리고 달려가 아들의 목을 껴안고 입을 맞추었다. (15,20)</div>
+  <div class="ox-options" id="q37-ox"><div class="ox-btn" data-value="O" onclick="selectOX(this,'q37')">O</div><div class="ox-btn" data-value="X" onclick="selectOX(this,'q37')">X</div></div>
+  <button class="submit-btn" id="q37-submit" onclick="submitOX('q37','O')">확인</button>
+  <div class="answer-box hidden" id="q37-answer"><div class="label">정답</div><div class="answer-text">O</div></div>
+  <div class="explain-box hidden" id="q37-explain"><div class="label">해설</div><p>루카 15,20: "작은아들이 아직도 멀리 떨어져 있을 때에 아버지가 그를 보고 가엾은 마음이 들었다. 그리고 달려가 아들의 목을 껴안고 입을 맞추었다." 원문 그대로이므로 O.</p></div>
+</div>
+
+<footer>
+  <p>2026년 제30차 성경잔치 성경 경시대회 예상문제집 | 천주교 수원교구 복음화국</p>
+  <p style="margin-top:8px;"><a href="study_day17.html">← 이전</a> | <a href="study_day19.html">다음 →</a></p>
+</footer>
+<script>
+function toggleSingle(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected')});s.classList.add('multi-selected');}
+function submitSingle(qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;var s=o.querySelector('li.multi-selected');if(!s)return;var c=s.dataset.correct==='true';o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected');if(c){if(l===s)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(l===s)l.classList.add('selected-wrong');else if(l.dataset.correct==='true')l.classList.add('selected-correct');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+function toggleMulti(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;s.classList.toggle('multi-selected');}
+function submitMulti(qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;var a=o.querySelectorAll('li'),s=o.querySelectorAll('li.multi-selected');if(s.length===0)return;var ac=true,nw=true;a.forEach(function(l){var c=l.dataset.correct==='true',sel=l.classList.contains('multi-selected');if(c&&!sel)ac=false;if(!c&&sel)nw=false;});o.classList.add('solved');a.forEach(function(l){var c=l.dataset.correct==='true',sel=l.classList.contains('multi-selected');l.classList.remove('multi-selected');if(ac&&nw){if(c)l.classList.add('selected-correct');else l.classList.add('disabled');}else{if(c)l.classList.add('selected-correct');else if(sel)l.classList.add('selected-wrong');else l.classList.add('disabled');}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+function selectOX(btn,qId){var c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;c.querySelectorAll('.ox-btn').forEach(function(b){b.classList.remove('selected')});btn.classList.add('selected');}
+function submitOX(qId,ans){var c=document.getElementById(qId+'-ox');if(c.classList.contains('solved'))return;var s=c.querySelector('.ox-btn.selected');if(!s)return;c.classList.add('solved');c.querySelectorAll('.ox-btn').forEach(function(b){b.classList.remove('selected');if(b.dataset.value===ans)b.classList.add('ox-correct');else if(b===s&&b.dataset.value!==ans)b.classList.add('ox-wrong');else b.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var matchState={};
+function selectLeft(li,qId){if(!matchState[qId])matchState[qId]={pairs:[],activeLeft:null};var st=matchState[qId];if(li.classList.contains('matched'))return;document.getElementById(qId+'-left').querySelectorAll('li').forEach(function(l){l.classList.remove('active')});li.classList.add('active');st.activeLeft=li;}
+function selectRight(ri,qId){if(!matchState[qId])matchState[qId]={pairs:[],activeLeft:null};var st=matchState[qId];if(!st.activeLeft||ri.classList.contains('matched'))return;var n=st.pairs.length+1;st.pairs.push({left:st.activeLeft,right:ri});var bL=document.createElement('span');bL.className='match-pair-badge';bL.textContent=n;st.activeLeft.insertBefore(bL,st.activeLeft.firstChild);var bR=document.createElement('span');bR.className='match-pair-badge';bR.textContent=n;ri.insertBefore(bR,ri.firstChild);st.activeLeft.classList.remove('active');st.activeLeft.classList.add('matched');ri.classList.add('matched');st.activeLeft=null;}
+function submitMatch(qId,total){if(!matchState[qId]||matchState[qId].pairs.length!==total)return;var lL=document.getElementById(qId+'-left'),rL=document.getElementById(qId+'-right');lL.classList.add('solved');matchState[qId].pairs.forEach(function(p){if(p.left.dataset.pair!==p.right.dataset.pair){p.left.classList.remove('matched');p.left.classList.add('match-wrong');p.right.classList.remove('matched');p.right.classList.add('match-wrong');}});lL.querySelectorAll('li').forEach(function(l){l.classList.add('disabled')});rL.querySelectorAll('li').forEach(function(l){l.classList.add('disabled')});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var orderedState={};
+function toggleOrdered(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId])orderedState[qId]=[];var idx=orderedState[qId].indexOf(s);if(idx!==-1){orderedState[qId].splice(idx,1);renderOP3(qId);return;}orderedState[qId].push(s);renderOP3(qId);}
+function renderOP3(qId){var o=document.getElementById(qId+'-options');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');});orderedState[qId].forEach(function(l,i){l.classList.add('multi-selected');l.classList.add('order-'+(i+1));});}
+function submitOrdered(qId,count){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');var a=parseInt(l.dataset.answer);var pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+</script>
 </body>
 </html>

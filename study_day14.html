@@ -60,6 +60,19 @@ nav a.current { background: #5c7cba; } nav a.mk.current { background: #7b5ea7; }
 .explain-box p { font-size: 0.9em; color: #444; margin-bottom: 6px; }
 footer { text-align: center; padding: 30px 0; color: #999; font-size: 0.8em; border-top: 1px solid #ddd; margin-top: 20px; }
 footer a { color: #7b5ea7; text-decoration: none; margin: 0 8px; }
+.cw-clue-block { margin-bottom: 12px; }
+.cw-clue-label { font-size: 0.88em; color: #444; margin-bottom: 6px; }
+.cw-choices { display: flex; gap: 8px; }
+.cw-choice { padding: 6px 14px; border: 1px solid #ddd; border-radius: 6px; background: #fafafa; font-size: 0.9em; cursor: pointer; transition: all 0.2s; }
+.cw-choice:hover { background: #f0ebe3; border-color: #c0a060; }
+.cw-choice.picked { background: #e3f2fd; border: 2px solid #42a5f5; font-weight: 600; }
+.cw-choice.cw-choice-correct { background: #e8f5e9; border: 2px solid #4caf50; }
+.cw-choice.cw-choice-wrong { background: #ffebee; border: 2px solid #e57373; }
+.cw-choice.disabled { pointer-events: none; opacity: 0.7; }
+.cw-g { width: 32px; height: 32px; background: #e0e0e0; border: 1px solid #ccc; }
+.cw-w { width: 32px; height: 32px; background: #fff; border: 1px solid #999; text-align: center; vertical-align: middle; font-weight: bold; color: #1565c0; font-size: 0.95em; }
+.cw-w.cw-correct { background: #e8f5e9; color: #2e7d32; }
+.cw-w.cw-wrong { background: #ffebee; color: #c62828; }
 </style>
 </head>
 <body>
@@ -151,18 +164,38 @@ footer a { color: #7b5ea7; text-decoration: none; margin: 0 8px; }
   <div class="explain-box hidden" id="q48-explain"><div class="label">해설</div><p>마르 16,15: "<b>너희는 온 세상에 가서 모든 피조물에게 복음을 선포하여라.</b>"</p></div>
 </div>
 <div class="question-block" id="q49">
-  <span class="q-number">49번</span><span class="q-ref">마르 16,6</span>
-  <div class="q-text">십자말풀이 가로 ②번 열쇠: ( ) ( ). 너희가 십자가에 못 박히신 나자렛 사람 예수님을 찾고 있지만 그분께서는 되살아나셨다.</div>
-  
-  <ul class="q-options interactive" id="q49-options">
-    <li data-correct="false" onclick="toggleSingle(this,'q49')">① 기뻐하여라 찬미하여라</li>
-    <li data-correct="false" onclick="toggleSingle(this,'q49')">② 용기를 내어라 일어나라</li>
-    <li data-correct="true" onclick="toggleSingle(this,'q49')">③ 놀라지 마라 두려워마라</li>
-    <li data-correct="false" onclick="toggleSingle(this,'q49')">④ 깨어 있어라 준비하여라</li>
-  </ul>
-  <button class="submit-btn" id="q49-submit" onclick="submitSingle('q49')">확인</button>
-  <div class="answer-box hidden" id="q49-answer"><div class="label">정답</div><div class="answer-text">③ 놀라지 마라</div></div>
-  <div class="explain-box hidden" id="q49-explain"><div class="label">해설</div><p>마르 16,6: "<b>놀라지 마라.</b> 너희가 십자가에 못 박히신 나자렛 사람 예수님을 찾고 있지만 그분께서는 되살아나셨다."</p></div>
+  <span class="q-number">49번</span><span class="q-ref">마르 14~16장</span><span class="q-type">십자말</span>
+  <div class="q-text">각 열쇠의 보기를 선택하면 격자에 글자가 채워집니다.</div>
+
+  <table style="border-collapse:collapse; margin:0 auto 14px; font-size:0.85em;">
+    <tr><td class="cw-g"></td><td class="cw-w" id="c49-1-2"><small>㉮</small></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c49-1-5"><small>㉯</small></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-g"></td><td class="cw-w" id="c49-2-2"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-w" id="c49-2-5"><small>①</small></td><td class="cw-w" id="c49-2-6"></td><td class="cw-w" id="c49-2-7"></td></tr>
+    <tr><td class="cw-w" id="c49-3-1"><small>②</small></td><td class="cw-w" id="c49-3-2"></td><td class="cw-w" id="c49-3-3"></td><td class="cw-w" id="c49-3-4"></td><td class="cw-w" id="c49-3-5"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+    <tr><td class="cw-g"></td><td class="cw-w" id="c49-4-2"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td><td class="cw-g"></td></tr>
+  </table>
+
+  <div class="q-passage">
+    <b>가로 열쇠:</b><br>
+    ① 영원한 구원을 선포하는 ○○○ 불멸의 말씀이 두루 퍼져 나가게 하셨다. 아멘. (16,20)<br>
+    ② ○○○ ○○. 너희가 십자가에 못 박히신 나자렛 사람 예수님을 찾고 있지만 그분께서는 되살아나셨다. (16,6)<br><br>
+    <b>세로 열쇠:</b><br>
+    ㉮ 우리가 보고 믿게, ○○○○의 임금 메시아는 지금 십자가에서 내려와 보시지. (15,32)<br>
+    ㉯ 도성 안으로 ○○○. (14,13)
+  </div>
+
+  <div class="cw-clue-block"><div class="cw-clue-label">① 가로: ○○○ 불멸의 말씀이 (16,20)</div><div class="cw-choices" id="q49-clue1"><button class="cw-choice" onclick="pickCW(this,'q49','clue1','거룩한')">거룩한</button><button class="cw-choice" onclick="pickCW(this,'q49','clue1','영원한')">영원한</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">② 가로: ○○○ ○○, 너희가 십자가에 (16,6)</div><div class="cw-choices" id="q49-clue2"><button class="cw-choice" onclick="pickCW(this,'q49','clue2','놀라지마라')">놀라지 마라</button><button class="cw-choice" onclick="pickCW(this,'q49','clue2','두려워마라')">두려워 마라</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">㉮ 세로: ○○○○의 임금 메시아는 (15,32)</div><div class="cw-choices" id="q49-clue3"><button class="cw-choice" onclick="pickCW(this,'q49','clue3','이스라엘')">이스라엘</button><button class="cw-choice" onclick="pickCW(this,'q49','clue3','예루살렘')">예루살렘</button></div></div>
+  <div class="cw-clue-block"><div class="cw-clue-label">㉯ 세로: 도성 안으로 ○○○ (14,13)</div><div class="cw-choices" id="q49-clue4"><button class="cw-choice" onclick="pickCW(this,'q49','clue4','가거라')">가거라</button><button class="cw-choice" onclick="pickCW(this,'q49','clue4','들어라')">들어라</button></div></div>
+
+  <button class="submit-btn" id="q49-submit" onclick="submitCW('q49')">확인</button>
+  <div class="answer-box hidden" id="q49-answer"><div class="label">정답</div><div class="answer-text">① 거룩한 ② 놀라지 마라 ㉮ 이스라엘 ㉯ 가거라</div></div>
+  <div class="explain-box hidden" id="q49-explain"><div class="label">해설</div>
+    <p>① 마르 16,20: "영원한 구원을 선포하는 <b>거룩한</b> 불멸의 말씀이 두루 퍼져 나가게 하셨다."</p>
+    <p>② 마르 16,6: "<b>놀라지 마라.</b> 너희가 십자가에 못 박히신 나자렛 사람 예수님을 찾고 있지만 그분께서는 되살아나셨다."</p>
+    <p>㉮ 마르 15,32: "우리가 보고 믿게, <b>이스라엘</b>의 임금 메시아는 지금 십자가에서 내려와 보시지."</p>
+    <p>㉯ 마르 14,13: "도성 안으로 <b>가거라.</b>"</p>
+  </div>
 </div>
 
 
@@ -179,6 +212,15 @@ var matchState={};
 function selectLeft(li,qId){if(!matchState[qId])matchState[qId]={pairs:[],activeLeft:null};var st=matchState[qId];if(li.classList.contains('matched'))return;document.getElementById(qId+'-left').querySelectorAll('li').forEach(function(l){l.classList.remove('active')});li.classList.add('active');st.activeLeft=li;}
 function selectRight(ri,qId){if(!matchState[qId])matchState[qId]={pairs:[],activeLeft:null};var st=matchState[qId];if(!st.activeLeft||ri.classList.contains('matched'))return;var n=st.pairs.length+1;st.pairs.push({left:st.activeLeft,right:ri});var bL=document.createElement('span');bL.className='match-pair-badge';bL.textContent=n;st.activeLeft.insertBefore(bL,st.activeLeft.firstChild);var bR=document.createElement('span');bR.className='match-pair-badge';bR.textContent=n;ri.insertBefore(bR,ri.firstChild);st.activeLeft.classList.remove('active');st.activeLeft.classList.add('matched');ri.classList.add('matched');st.activeLeft=null;}
 function submitMatch(qId,total){if(!matchState[qId]||matchState[qId].pairs.length!==total)return;var lL=document.getElementById(qId+'-left'),rL=document.getElementById(qId+'-right');lL.classList.add('solved');matchState[qId].pairs.forEach(function(p){if(p.left.dataset.pair!==p.right.dataset.pair){p.left.classList.remove('matched');p.left.classList.add('match-wrong');p.right.classList.remove('matched');p.right.classList.add('match-wrong');}});lL.querySelectorAll('li').forEach(function(l){l.classList.add('disabled')});rL.querySelectorAll('li').forEach(function(l){l.classList.add('disabled')});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+var cwState={};
+var cwGrid={
+  clue1:{cells:['c49-2-5','c49-2-6','c49-2-7'],answer:'거룩한'},
+  clue2:{cells:['c49-3-1','c49-3-2','c49-3-3','c49-3-4','c49-3-5'],answer:'놀라지마라'},
+  clue3:{cells:['c49-1-2','c49-2-2','c49-3-2','c49-4-2'],answer:'이스라엘'},
+  clue4:{cells:['c49-1-5','c49-2-5','c49-3-5'],answer:'가거라'}
+};
+function pickCW(btn,qId,clueId,word){if(document.getElementById(qId+'-submit').classList.contains('hidden'))return;var c=document.getElementById(qId+'-'+clueId);c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.remove('picked')});btn.classList.add('picked');if(!cwState[qId])cwState[qId]={};cwState[qId][clueId]=word;var cells=cwGrid[clueId].cells;var chars=word.split('');for(var i=0;i<cells.length;i++){var cell=document.getElementById(cells[i]);if(cell&&chars[i])cell.textContent=chars[i];}}
+function submitCW(qId){if(!cwState[qId])return;var state=cwState[qId];if(Object.keys(state).length<4)return;Object.keys(cwGrid).forEach(function(clueId){var clue=cwGrid[clueId];var c=document.getElementById(qId+'-'+clueId);var picked=c.querySelector('.cw-choice.picked');var isCorrect=state[clueId]===clue.answer;c.querySelectorAll('.cw-choice').forEach(function(b){b.classList.add('disabled');if(b===picked)b.classList.add(isCorrect?'cw-choice-correct':'cw-choice-wrong');});clue.cells.forEach(function(cellId){var cell=document.getElementById(cellId);if(isCorrect)cell.classList.add('cw-correct');else cell.classList.add('cw-wrong');});if(!isCorrect){var chars=clue.answer.split('');clue.cells.forEach(function(cellId,i){var cell=document.getElementById(cellId);if(cell&&chars[i])cell.textContent=chars[i];});}});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
 </script>
 </body>
 </html>
