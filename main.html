@@ -134,7 +134,9 @@ footer {
 </header>
 
 <div class="info-box" style="text-align:center; background:#fff9f0; border:1px solid #e8c88a;">
-  <p style="font-size:1.05em; font-weight:600; color:#8b6914; margin-bottom:6px;">헬레나의 골든벨을 응원하며</p>
+  <p style="font-size:1.05em; font-weight:600; color:#8b6914; margin-bottom:6px;">
+    <span id="cheer-name" style="cursor:pointer; border-bottom:1px dashed #8b6914;" title="클릭하여 이름 변경">헬레나</span>의 골든벨을 응원하며
+  </p>
   <p style="font-size:0.88em; color:#555; font-style:italic; margin:0;">"당신 말씀은 제 발에 등불, 저의 길에 빛입니다."</p>
   <p style="font-size:0.8em; color:#888; margin-top:4px;">(시편 119,105)</p>
 </div>
@@ -322,5 +324,33 @@ footer {
   <p style="margin-top:12px; font-size:0.75em; color:#aaa;">본 문제의 원본 출처:<br><a href="https://pastor.casuwon.or.kr/data/bible/110158" style="color:#999;">천주교 수원교구 사목연구소 - 제30차 성경잔치 경시대회 예상문제집</a></p>
 </footer>
 
+<script>
+(function() {
+  var KEY = 'bible_quiz_user_name';
+  var el = document.getElementById('cheer-name');
+  var saved = localStorage.getItem(KEY);
+
+  function setName(name) {
+    name = name.trim();
+    if (name) {
+      localStorage.setItem(KEY, name);
+      el.textContent = name;
+    }
+  }
+
+  function askName() {
+    var name = prompt('이름(세례명)을 입력하세요:', saved || '');
+    if (name !== null && name.trim()) setName(name);
+  }
+
+  if (saved) {
+    el.textContent = saved;
+  } else {
+    askName();
+  }
+
+  el.addEventListener('click', askName);
+})();
+</script>
 </body>
 </html>
