@@ -81,7 +81,7 @@ footer a { color: #5c7cba; text-decoration: none; margin: 0 8px; }
 </nav>
 
 <div style="text-align:center; background:#fff9f0; border:1px solid #e8c88a; border-radius:10px; padding:14px 18px; margin-bottom:24px;">
-  <p style="font-size:0.95em; font-weight:600; color:#8b6914; margin-bottom:4px;">헬레나의 골든벨을 응원하며</p>
+  <p style="font-size:0.95em; font-weight:600; color:#8b6914; margin-bottom:4px;"><span id="cheer-name" style="cursor:pointer; border-bottom:1px dashed #8b6914;" title="클릭하여 이름 변경">헬레나</span>의 골든벨을 응원하며</p>
   <p style="font-size:0.85em; color:#555; font-style:italic; margin:0;">"당신 말씀은 제 발에 등불, 저의 길에 빛입니다."</p>
   <p style="font-size:0.78em; color:#888; margin-top:2px;">(시편 119,105)</p>
 </div>
@@ -255,6 +255,25 @@ const orderedState={};
 function toggleOrdered(s,qId){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId])orderedState[qId]=[];const idx=orderedState[qId].indexOf(s);if(idx!==-1){orderedState[qId].splice(idx,1);renderOP(qId);return;}orderedState[qId].push(s);renderOP(qId);}
 function renderOP(qId){const o=document.getElementById(qId+'-options');o.querySelectorAll('li').forEach(l=>{l.classList.remove('multi-selected','order-1','order-2');});orderedState[qId].forEach((l,i)=>{l.classList.add('multi-selected');l.classList.add('order-'+(i+1));});}
 function submitOrdered(qId,count){const o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');let ac=true;orderedState[qId].forEach((l,i)=>{if(parseInt(l.dataset.answer)!==(i+1))ac=false;});o.querySelectorAll('li').forEach(l=>{l.classList.remove('multi-selected','order-1','order-2');const a=parseInt(l.dataset.answer);const pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+</script>
+
+<script>
+(function() {
+  var KEY = 'bible_quiz_user_name';
+  var el = document.getElementById('cheer-name');
+  if (!el) return;
+  var saved = localStorage.getItem(KEY);
+  function setName(name) {
+    name = name.trim();
+    if (name) { localStorage.setItem(KEY, name); el.textContent = name; }
+  }
+  function askName() {
+    var name = prompt('이름(세례명)을 입력하세요:', saved || '');
+    if (name !== null && name.trim()) setName(name);
+  }
+  if (saved) { el.textContent = saved; }
+  el.addEventListener('click', askName);
+})();
 </script>
 </body>
 </html>
