@@ -16,16 +16,18 @@ source: 30th Bible quiz project
 - 모든 페이지에 헬레나 응원 메시지 + footer 처음으로 링크
 - 성경 본문 HTML 4권: bible_matthew.html, bible_mark.html, bible_luke.html, bible_john.html
 - 각 문제 q-ref에서 성경 본문 절 단위 링크 연결
-- 성경 본문 각 장에 장 전체 오디오 플레이어 (archive.catholic.or.kr)
-- 성경 본문 각 절에 🔊 인라인 재생 + 같은 장 끝까지 자동 연속재생
+- 성경 본문 각 장에 play/pause 토글 버튼 (인트로+소제목+절 순서 연속재생)
+- 성경 본문 각 절에 🔊 클릭 → 해당 절부터 같은 장 끝까지 연속재생
+- 재생 중 절 본문 볼드 표시
+- 오디오 소스: maria.catholic.or.kr jPlayer 플레이리스트 방식 (인트로 _00 + 소제목 _p + 절)
 
 # 성경 본문 오디오 URL 패턴
 - base: https://archive.catholic.or.kr/agent/read.asp?book=bible&oldnew=sorinew
-- 마태오: kwon=147, filenm=147_XX_YY.mp3 (XX=장2자리, YY=절2자리)
-- 마르코: kwon=148, filenm=148_XX_YY.mp3
-- 루카: kwon=149, filenm=149_XX_YY.mp3
-- 요한: kwon=150, filenm=150_XX_YY.mp3
-- 장 전체: http://archive.catholic.or.kr/mobile/bible/{code}/{code}_{장}.mp3
+- 마태오: kwon=147, 마르코: kwon=148, 루카: kwon=149, 요한: kwon=150
+- 인트로: filenm={kwon}_{장2자리}_00.mp3
+- 소제목: filenm={kwon}_{장2자리}_{절2자리}_p.mp3
+- 절: filenm={kwon}_{장2자리}_{절2자리}.mp3
+- 플레이리스트 데이터: playlists.json (89장분, 빌드용, git 미포함)
 
 # 일차별 문제 배분
 - day1(마태1-11), day2(마태12-22), day3(마태23-33), day4(마태34-44)
