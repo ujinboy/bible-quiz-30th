@@ -61,7 +61,7 @@ footer a { color: #c97a2e; text-decoration: none; margin: 0 8px; }
 <nav><a href="main.html" style="background:#8b6914;">처음으로</a><a href="study_day1.html" class="mt">1일차</a><a href="study_day2.html" class="mt">2일차</a><a href="study_day3.html" class="mt">3일차</a><a href="study_day4.html" class="mt">4일차</a><a href="study_day5.html" class="mt">5일차</a><a href="study_day6.html" class="mt">6일차</a><a href="study_day7.html" class="mt">7일차</a><a href="study_day8.html" class="mk">8일차</a><a href="study_day9.html" class="mk">9일차</a><a href="study_day10.html" class="mk">10일차</a><a href="study_day11.html" class="mk">11일차</a><a href="study_day12.html" class="mk">12일차</a><a href="study_day13.html" class="mk">13일차</a><a href="study_day14.html" class="mk">14일차</a><a href="study_day15.html" class="lk">15일차</a><a href="study_day16.html" class="lk">16일차</a><a href="study_day17.html" class="lk">17일차</a><a href="study_day18.html" class="lk">18일차</a><a href="study_day19.html" class="lk">19일차</a><a href="study_day20.html" class="lk">20일차</a><a href="study_day21.html" class="lk">21일차</a><a href="study_day22.html" class="jn">22일차</a><a href="study_day23.html" class="jn">23일차</a><a href="study_day24.html" class="jn">24일차</a><a href="study_day25.html" class="jn">25일차</a><a href="study_day26.html" class="jn">26일차</a><a href="study_day27.html" class="jn">27일차</a><a href="study_day28.html" class="jn current">28일차</a></nav>
 
 <div style="text-align:center; background:#fff9f0; border:1px solid #e8c88a; border-radius:10px; padding:14px 18px; margin-bottom:24px;">
-  <p style="font-size:0.95em; font-weight:600; color:#8b6914; margin-bottom:4px;">헬레나의 골든벨을 응원하며</p>
+  <p style="font-size:0.95em; font-weight:600; color:#8b6914; margin-bottom:4px;"><span id="cheer-name" style="cursor:pointer; border-bottom:1px dashed #8b6914;" title="클릭하여 이름 변경">헬레나</span>의 골든벨을 응원하며</p>
   <p style="font-size:0.85em; color:#555; font-style:italic; margin:0;">"사람이 빵만으로 사는 것이 아니라 하느님의 입에서 나오는 모든 말씀으로 산다."</p>
   <p style="font-size:0.78em; color:#888; margin-top:2px;">(마태 4,4)</p>
 </div>
@@ -211,6 +211,25 @@ var orderedState={};
 function toggleOrdered(s,qId){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId])orderedState[qId]=[];var idx=orderedState[qId].indexOf(s);if(idx!==-1){orderedState[qId].splice(idx,1);renderOP3(qId);return;}orderedState[qId].push(s);renderOP3(qId);}
 function renderOP3(qId){var o=document.getElementById(qId+'-options');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');});orderedState[qId].forEach(function(l,i){l.classList.add('multi-selected');l.classList.add('order-'+(i+1));});}
 function submitOrdered(qId,count){var o=document.getElementById(qId+'-options');if(o.classList.contains('solved'))return;if(!orderedState[qId]||orderedState[qId].length!==count)return;o.classList.add('solved');o.querySelectorAll('li').forEach(function(l){l.classList.remove('multi-selected','order-1','order-2');var a=parseInt(l.dataset.answer);var pi=orderedState[qId].indexOf(l);if(a>0)l.classList.add('selected-correct');else if(pi!==-1)l.classList.add('selected-wrong');else l.classList.add('disabled');});document.getElementById(qId+'-answer').classList.remove('hidden');document.getElementById(qId+'-explain').classList.remove('hidden');document.getElementById(qId+'-submit').classList.add('hidden');}
+</script>
+
+<script>
+(function() {
+  var KEY = 'bible_quiz_user_name';
+  var el = document.getElementById('cheer-name');
+  if (!el) return;
+  var saved = localStorage.getItem(KEY);
+  function setName(name) {
+    name = name.trim();
+    if (name) { localStorage.setItem(KEY, name); el.textContent = name; }
+  }
+  function askName() {
+    var name = prompt('이름(세례명)을 입력하세요:', saved || '');
+    if (name !== null && name.trim()) setName(name);
+  }
+  if (saved) { el.textContent = saved; }
+  el.addEventListener('click', askName);
+})();
 </script>
 </body>
 </html>
