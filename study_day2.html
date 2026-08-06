@@ -200,7 +200,7 @@ footer a { color: #5c7cba; text-decoration: none; margin: 0 8px; }
 </nav>
 
 <div style="text-align:center; background:#fff9f0; border:1px solid #e8c88a; border-radius:10px; padding:14px 18px; margin-bottom:24px;">
-  <p style="font-size:0.95em; font-weight:600; color:#8b6914; margin-bottom:4px;"><span id="cheer-name" style="cursor:pointer; border-bottom:1px dashed #8b6914;" title="클릭하여 이름 변경">헬레나</span>의 골든벨을 응원하며</p>
+  <p style="font-size:0.95em; font-weight:600; color:#8b6914; margin-bottom:4px;"><span id="cheer-name">헬레나</span>의 골든벨을 응원하며</p>
   <p style="font-size:0.85em; color:#555; font-style:italic; margin:0;">"사람이 빵만으로 사는 것이 아니라 하느님의 입에서 나오는 모든 말씀으로 산다."</p>
   <p style="font-size:0.78em; color:#888; margin-top:2px;">(마태 4,4)</p>
 </div>
@@ -849,20 +849,8 @@ function submitCW(qId) {
 
 <script>
 (function() {
-  var KEY = 'bible_quiz_user_name';
   var el = document.getElementById('cheer-name');
-  if (!el) return;
-  var saved = localStorage.getItem(KEY);
-  function setName(name) {
-    name = name.trim();
-    if (name) { localStorage.setItem(KEY, name); el.textContent = name; }
-  }
-  function askName() {
-    var name = prompt('이름(세례명)을 입력하세요:', saved || '');
-    if (name !== null && name.trim()) setName(name);
-  }
-  if (saved) { el.textContent = saved; }
-  el.addEventListener('click', askName);
+  if (el) el.textContent = '헬레나';
 })();
 </script>
 </body>
